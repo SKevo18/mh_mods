@@ -1,10 +1,11 @@
 package transformers
 
 import (
-	"errors"
-	"strings"
 	"encoding/binary"
+	"errors"
+	"os"
 	"path/filepath"
+	"strings"
 )
 
 // Reads header from MHK2 data file.
@@ -32,7 +33,7 @@ func encryptConfig(data []byte) {
 		cVar1 >>= 1
 		uVar2 <<= 1
 		data[i] = (uVar2 ^ cVar1) ^ byte(key&0xFF)
-		key = (key * 3) + 2 & 0xffff
+		key = (key * 3) + 2&0xffff
 	}
 }
 
@@ -44,7 +45,7 @@ func decryptConfig(data []byte) {
 
 // Packs MHK2 data file from given `inputFolder` into `dataFileLocation`.
 func packMhk2(dataFileLocation string, inputFolder string) error {
-	outFile, err := openFileForWriting(dataFileLocation)
+	outFile, err := os.Create(dataFileLocation)
 	if err != nil {
 		return err
 	}
@@ -56,15 +57,15 @@ func packMhk2(dataFileLocation string, inputFolder string) error {
 	}
 
 	// Write header
-	header := generateHeader("MHK2", uint32(len(files)))
+	header := generateHeader("Moorhuhn", uint32(len(files)))
 	_, err = outFile.Write(header)
 
 	// Write file entries
-	offset := int64(0x40 + len(files) * 0x80)
+	offset := int64(0x40 + (len(files) * 0x80))
 	for _, file := range files {
 		byteFileEntry := make([]byte, 0x80)
 		relativePath, _ := filepath.Rel(inputFolder, file.Filename)
-		copy(byteFileEntry, "data\\" + strings.ReplaceAll(relativePath, "/", "\\"))
+		copy(byteFileEntry, strings.ReplaceAll(relativePath, "/", "\\"))
 
 		binary.LittleEndian.PutUint64(byteFileEntry[0x68:], uint64(offset))
 		binary.LittleEndian.PutUint64(byteFileEntry[0x6C:], uint64(file.Filesize))
@@ -75,7 +76,7 @@ func packMhk2(dataFileLocation string, inputFolder string) error {
 
 	// Write file data
 	for _, file := range files {
-		fileData, err := readFile(inputFolder + "/" + file.Filename)
+		fileData, err := os.ReadFile(inputFolder + "/" + file.Filename)
 		if err != nil {
 			return err
 		}
@@ -84,7 +85,7 @@ func packMhk2(dataFileLocation string, inputFolder string) error {
 			encryptConfig(fileData)
 		}
 
-		padding := make([]byte, file.Filesize % 0x100)
+		padding := make([]byte, file.Filesize%0x100)
 		outFile.Write(append(fileData, padding...))
 	}
 
@@ -93,7 +94,14 @@ func packMhk2(dataFileLocation string, inputFolder string) error {
 
 // Unpacks MHK2 data file from `dataFileLocation` into `outputFolder`.
 func unpackMhk2(dataFileLocation string, outputFolder string) error {
-	inFile, err := openFileForReading(dataFileLocation)
+	// Create output folder
+	err := os.MkdirAll(outputFolder, os.ModePerm)
+	if err != nil {
+		return err
+	}
+
+	// Open data file for reading
+	inFile, err := os.Open(dataFileLocation)
 	if err != nil {
 		return err
 	}
@@ -106,8 +114,46 @@ func unpackMhk2(dataFileLocation string, outputFolder string) error {
 		return err
 	}
 
-	name, numFiles := readHeader(header)
-	// todo
+	// Read file entries
+	_, numFiles := readHeader(header)
+
+	for i := uint32(0); i < numFiles; i++ {
+		// Read file entry
+		fileEntry := make([]byte, 0x80)
+		_, err = inFile.Read(fileEntry)
+		if err != nil {
+			return err
+		}
+
+		// Extract file entry data
+		filename := string(fileEntry[:0x68])
+		filesize := binary.LittleEndian.Uint64(fileEntry[0x6C:])
+
+		// Read file data
+		fileData := make([]byte, filesize)
+		_, err = inFile.Read(fileData)
+		if err != nil {
+			return err
+		}
+
+		// Decrypt config files
+		if filepath.Ext(filename) == ".txt" {
+			decryptConfig(fileData)
+		}
+
+		// Create directory of the file
+		path := outputFolder + "/" + strings.ReplaceAll(filename, "\\", "/")
+		err := os.MkdirAll(filepath.Dir(path), os.ModePerm)
+		if err != nil {
+			return err
+		}
+
+		// Write file data
+		err = os.WriteFile(path, fileData, os.ModePerm)
+		if err != nil {
+			return err
+		}
+	}
 
 	return nil
 }

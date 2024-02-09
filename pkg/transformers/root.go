@@ -4,54 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"filepath"
+	"path/filepath"
 )
-
-// Opens existing file for reading in byte mode.
-// If the file does not exist, an error is returned.
-func openFileForReading(path string) (*os.File, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Error opening data file: %s", err))
-	}
-
-	return file, nil
-}
-
-// Reads the file into a byte array.
-// Returns an error if the file cannot be read.
-func readFile(path string) ([]byte, error) {
-	file, err := openFileForReading(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	dataFileInfo, err := file.Stat()
-	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Error reading data file: %s", err))
-	}
-
-	dataBytes := make([]byte, dataFileInfo.Size())
-	_, err = file.Read(dataBytes)
-	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Error reading data file: %s", err))
-	}
-
-	return dataBytes, nil
-}
-
-// Opens new file for writing in byte mode.
-// If the file does not exist, it is created.
-// If the file already exists, it is truncated to zero length.
-func openFileForWriting(path string) (*os.File, error) {
-	file, err := os.Create(path)
-	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Error creating data file: %s", err))
-	}
-
-	return file, nil
-}
 
 // A simple struct to represent a file entry.
 type FileEntry struct {
@@ -84,9 +38,8 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 
 		return nil
 	})
-
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Error walking through files: %s", err))
+		return nil, errors.New(fmt.Sprintf("error walking through files: %s", err))
 	}
 
 	return files, nil

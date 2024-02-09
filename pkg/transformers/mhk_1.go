@@ -14,7 +14,7 @@ func packMhk1(dataFileLocation string, inputFolder string) error {
 	// tricky, because the ZIP file itself has some withcraftery in it
 
 	// Read the input folder as ZIP
-	dataBytes, err := readFile(inputFolder + "/mhke.zip")
+	dataBytes, err := os.ReadFile(inputFolder + "/mhke.zip")
 	if err != nil {
 		return err
 	}
@@ -22,15 +22,8 @@ func packMhk1(dataFileLocation string, inputFolder string) error {
 	// Apply XOR key to the data
 	dataBytes = xorData(dataBytes, xorKey)
 
-	// Open the data file for writing
-	outputFile, err := openFileForWriting(dataFileLocation)
-	if err != nil {
-		return err
-	}
-	defer outputFile.Close()
-
 	// Write the packed data to the data file
-	_, err = outputFile.Write(dataBytes)
+	err = os.WriteFile(dataFileLocation, dataBytes, os.ModePerm)
 	if err != nil {
 		return err
 	}
@@ -42,7 +35,7 @@ func packMhk1(dataFileLocation string, inputFolder string) error {
 // The output folder will contain the unpacked zip file (`mhke.zip`)
 func unpackMhk1(dataFileLocation string, outputFolder string) error {
 	// Obtain the data file in byte form
-	dataBytes, err := readFile(dataFileLocation)
+	dataBytes, err := os.ReadFile(dataFileLocation)
 	if err != nil {
 		return err
 	}
@@ -56,15 +49,8 @@ func unpackMhk1(dataFileLocation string, outputFolder string) error {
 		return err
 	}
 
-	// Open the data file for writing
-	outputFile, err := openFileForWriting(outputFolder + "/mhke.zip")
-	if err != nil {
-		return err
-	}
-	defer outputFile.Close()
-
 	// Write the packed data to the data file
-	_, err = outputFile.Write(dataBytes)
+	err = os.WriteFile(outputFolder + "/mhke.zip", dataBytes, os.ModePerm)
 	if err != nil {
 		return err
 	}
