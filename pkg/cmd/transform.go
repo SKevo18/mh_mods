@@ -8,19 +8,24 @@ import (
 	"mhmods/pkg/transformers"
 )
 
+// Returns a function that can be used to pack or unpack files.
 func genericTransform(action string) func(cmd *cobra.Command, args []string) {
 	return func(cmd *cobra.Command, args []string) {
 		gameID := args[0]
 		dataFileLocation := args[1]
 		folderPath := args[2]
 
+		log.Printf("Beginning the %sing of files from data file `%s` into output folder `%s` for game `%s`...\n", action, dataFileLocation, folderPath, gameID)
 		err := transformers.Transform(action, gameID, dataFileLocation, folderPath)
 		if err != nil {
 			log.Fatal(err.Error())
 		}
+
+		log.Printf("Successfully %sed files for game `%s`!\n", action, gameID)
 	}
 }
 
+// Returns the root command to pack files.
 func PackCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "pack <game ID> <data file location> <input folder path>",
@@ -33,6 +38,7 @@ func PackCmd() *cobra.Command {
 	}
 }
 
+// Returns the command used to unpack files.
 func UnpackCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "unpack <game ID> <data file location> <output folder path>",
