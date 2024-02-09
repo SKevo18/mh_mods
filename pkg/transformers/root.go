@@ -4,12 +4,13 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"filepath"
 )
 
-// Opens existing data file for reading in byte mode.
+// Opens existing file for reading in byte mode.
 // If the file does not exist, an error is returned.
-func openDataFileForReading(dataFileLocation string) (*os.File, error) {
-	file, err := os.Open(dataFileLocation)
+func openFileForReading(path string) (*os.File, error) {
+	file, err := os.Open(path)
 	if err != nil {
 		return nil, errors.New(fmt.Sprintf("Error opening data file: %s", err))
 	}
@@ -17,10 +18,10 @@ func openDataFileForReading(dataFileLocation string) (*os.File, error) {
 	return file, nil
 }
 
-// Reads the data file into a byte array.
+// Reads the file into a byte array.
 // Returns an error if the file cannot be read.
-func readDataFile(dataFileLocation string) ([]byte, error) {
-	file, err := openDataFileForReading(dataFileLocation)
+func readFile(path string) ([]byte, error) {
+	file, err := openFileForReading(path)
 	if err != nil {
 		return nil, err
 	}
@@ -38,19 +39,57 @@ func readDataFile(dataFileLocation string) ([]byte, error) {
 	}
 
 	return dataBytes, nil
-
 }
 
-// Opens new data file for writing in byte mode.
+// Opens new file for writing in byte mode.
 // If the file does not exist, it is created.
 // If the file already exists, it is truncated to zero length.
-func openDataFileForWriting(dataFileLocation string) (*os.File, error) {
-	file, err := os.Create(dataFileLocation)
+func openFileForWriting(path string) (*os.File, error) {
+	file, err := os.Create(path)
 	if err != nil {
 		return nil, errors.New(fmt.Sprintf("Error creating data file: %s", err))
 	}
 
 	return file, nil
+}
+
+// A simple struct to represent a file entry.
+type FileEntry struct {
+	// The path of the file relative to the root folder.
+	Filename string
+	// The size of the file in bytes.
+	Filesize int64
+}
+
+// Walks through files in `rootFolder` and returns array of file entries.
+func walkFiles(rootFolder string) ([]FileEntry, error) {
+	var files []FileEntry
+
+	err := filepath.Walk(rootFolder, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if !info.IsDir() {
+			relPath, err := filepath.Rel(rootFolder, path)
+			if err != nil {
+				return err
+			}
+
+			files = append(files, FileEntry{
+				Filename: relPath,
+				Filesize: info.Size(),
+			})
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return nil, errors.New(fmt.Sprintf("Error walking through files: %s", err))
+	}
+
+	return files, nil
 }
 
 // A simple XOR function that applies a key to the data (used in MHK Extra).
