@@ -3,55 +3,72 @@ package transformers
 import (
 	"errors"
 	"os"
+	"path/filepath"
 )
 
+// XOR key used to pack/unpack MHK1 data files.
 var xorKey = []byte{0x0C, 0x38, 0x4E, 0x41, 0x0C, 0x2B, 0x70, 0xB2, 0xD4, 0x04, 0x4C, 0x20, 0x6F}
 
-// Packs MHK1 data file from given `rootFolder` into `dataFileLocation`.
-// The input folder should contain the zip file that will be packed.
-func packMhk1(dataFileLocation string, inputFolder string) error {
-	// TODO: pack files in root folder into a zip file
-	// tricky, because the ZIP file itself has some withcraftery in it
+// Packs MHK1 data file from given `inputPath` (path to unpacked root of `mhke.zip`)
+// into `dataFileLocation` (path to result data file).
+func packMhk1(dataFileLocation string, inputPath string) error {
+	zipLocation := dataFileLocation + ".zip"
 
-	// Read the input folder as ZIP
-	dataBytes, err := os.ReadFile(inputFolder + "/mhke.zip")
-	if err != nil {
+	// temp zip
+	if err := zipFolder(inputPath, zipLocation); err != nil {
 		return err
 	}
 
-	// Apply XOR key to the data
-	dataBytes = xorData(dataBytes, xorKey)
+	// xor
+	if err := xorMhk1File(zipLocation, dataFileLocation); err != nil {
+		return err
+	}
 
-	// Write the packed data to the data file
-	err = os.WriteFile(dataFileLocation, dataBytes, os.ModePerm)
-	if err != nil {
+	// remove temp zip
+	if err := os.Remove(zipLocation); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-// Unpacks MHK1 data file from `dataFileLocation` into `rootFolder`.
-// The output folder will contain the unpacked zip file (`mhke.zip`)
-func unpackMhk1(dataFileLocation string, outputFolder string) error {
-	// Obtain the data file in byte form
-	dataBytes, err := os.ReadFile(dataFileLocation)
+// Unpacks MHK1 data file from `dataFileLocation` into `outputPath`.
+func unpackMhk1(dataFileLocation string, outputPath string) error {
+	zipLocation := outputPath + ".zip"
+
+	// xor
+	if err := xorMhk1File(dataFileLocation, zipLocation); err != nil {
+		return err
+	}
+
+	// unzip
+	if err := unzipFile(zipLocation, outputPath); err != nil {
+		return err
+	}
+
+	// remove temp zip
+	if err := os.Remove(zipLocation); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func xorMhk1File(toXorPath string, outputPath string) error {
+	// read
+	dataBytes, err := os.ReadFile(toXorPath)
 	if err != nil {
 		return err
 	}
 
-	// Apply XOR key to the data
+	// xor
 	dataBytes = xorData(dataBytes, xorKey)
 
-	// Create the output folder
-	err = os.MkdirAll(outputFolder, os.ModePerm)
-	if err != nil {
+	// write
+	if err = os.MkdirAll(filepath.Dir(outputPath), os.ModePerm); err != nil {
 		return err
 	}
-
-	// Write the packed data to the data file
-	err = os.WriteFile(outputFolder + "/mhke.zip", dataBytes, os.ModePerm)
-	if err != nil {
+	if err = os.WriteFile(outputPath, dataBytes, os.ModePerm); err != nil {
 		return err
 	}
 

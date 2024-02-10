@@ -2,6 +2,8 @@ package cmd
 
 import (
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/spf13/cobra"
 
@@ -15,8 +17,16 @@ func genericTransform(action string) func(cmd *cobra.Command, args []string) {
 		dataFileLocation := args[1]
 		folderPath := args[2]
 
+		// Convert paths to absolute, from the working directory
+		wd, err := os.Getwd()
+		if err != nil {
+			log.Fatal("Failed to obtain working directory: ", err.Error())
+		}
+		folderPath = filepath.Join(wd, folderPath)
+		dataFileLocation = filepath.Join(wd, dataFileLocation)
+
 		log.Printf("Beginning the %sing of files from data file `%s` into output folder `%s` for game `%s`...\n", action, dataFileLocation, folderPath, gameID)
-		err := transformers.Transform(action, gameID, dataFileLocation, folderPath)
+		err = transformers.Transform(action, gameID, dataFileLocation, folderPath)
 		if err != nil {
 			log.Fatal(err.Error())
 		}

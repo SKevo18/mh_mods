@@ -44,27 +44,27 @@ func decryptConfig(data []byte) {
 }
 
 // Packs MHK2 data file from given `inputFolder` into `dataFileLocation`.
-func packMhk2(dataFileLocation string, inputFolder string) error {
+func packMhk2(dataFileLocation string, inputPath string) error {
 	outFile, err := os.Create(dataFileLocation)
 	if err != nil {
 		return err
 	}
 	defer outFile.Close()
 
-	files, err := walkFiles(inputFolder)
+	files, err := walkFiles(inputPath)
 	if err != nil {
 		return err
 	}
 
-	// Write header
+	// header
 	header := generateHeader("Moorhuhn", uint32(len(files)))
 	_, err = outFile.Write(header)
 
-	// Write file entries
+	// save entries
 	offset := int64(0x40 + (len(files) * 0x80))
 	for _, file := range files {
 		byteFileEntry := make([]byte, 0x80)
-		relativePath, _ := filepath.Rel(inputFolder, file.Filename)
+		relativePath, _ := filepath.Rel(inputPath, file.Filename)
 		copy(byteFileEntry, strings.ReplaceAll(relativePath, "/", "\\"))
 
 		binary.LittleEndian.PutUint64(byteFileEntry[0x68:], uint64(offset))
@@ -74,9 +74,9 @@ func packMhk2(dataFileLocation string, inputFolder string) error {
 		outFile.Write(byteFileEntry)
 	}
 
-	// Write file data
+	// write data
 	for _, file := range files {
-		fileData, err := os.ReadFile(inputFolder + "/" + file.Filename)
+		fileData, err := os.ReadFile(inputPath + "/" + file.Filename)
 		if err != nil {
 			return err
 		}
@@ -93,64 +93,50 @@ func packMhk2(dataFileLocation string, inputFolder string) error {
 }
 
 // Unpacks MHK2 data file from `dataFileLocation` into `outputFolder`.
-func unpackMhk2(dataFileLocation string, outputFolder string) error {
-	// Create output folder
-	err := os.MkdirAll(outputFolder, os.ModePerm)
-	if err != nil {
+func unpackMhk2(dataFileLocation string, outputPath string) error {
+	if err := os.MkdirAll(outputPath, os.ModePerm); err != nil {
 		return err
 	}
-
-	// Open data file for reading
 	inFile, err := os.Open(dataFileLocation)
 	if err != nil {
 		return err
 	}
 	defer inFile.Close()
 
-	// Read header (first 64 bytes)
+	// header
 	header := make([]byte, 0x40)
 	_, err = inFile.Read(header)
 	if err != nil {
 		return err
 	}
-
-	// Read file entries
 	_, numFiles := readHeader(header)
 
 	for i := uint32(0); i < numFiles; i++ {
-		// Read file entry
+		// read file entry
 		fileEntry := make([]byte, 0x80)
-		_, err = inFile.Read(fileEntry)
-		if err != nil {
+		if _, err = inFile.Read(fileEntry); err != nil {
 			return err
 		}
-
-		// Extract file entry data
 		filename := string(fileEntry[:0x68])
 		filesize := binary.LittleEndian.Uint64(fileEntry[0x6C:])
 
-		// Read file data
+		// read data
 		fileData := make([]byte, filesize)
-		_, err = inFile.Read(fileData)
-		if err != nil {
+		if _, err = inFile.Read(fileData); err != nil {
 			return err
 		}
 
-		// Decrypt config files
+		// decrypt config
 		if filepath.Ext(filename) == ".txt" {
 			decryptConfig(fileData)
 		}
 
-		// Create directory of the file
-		path := outputFolder + "/" + strings.ReplaceAll(filename, "\\", "/")
-		err := os.MkdirAll(filepath.Dir(path), os.ModePerm)
-		if err != nil {
+		// write
+		path := outputPath + "/" + strings.ReplaceAll(filename, "\\", "/")
+		if err := os.MkdirAll(filepath.Dir(path), os.ModePerm); err != nil {
 			return err
 		}
-
-		// Write file data
-		err = os.WriteFile(path, fileData, os.ModePerm)
-		if err != nil {
+		if err = os.WriteFile(path, fileData, os.ModePerm); err != nil {
 			return err
 		}
 	}
