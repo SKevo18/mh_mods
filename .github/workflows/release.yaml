@@ -46,14 +46,7 @@ jobs:
           [ -f LICENSE ] && FILES="$FILES LICENSE"
           [ -f README.md ] && FILES="$FILES README.md"
           tar -czvf mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
-      
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
-          path: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
-
-      - uses: actions/download-artifact@v3
       - uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
