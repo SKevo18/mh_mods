@@ -54,6 +54,8 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 	return nil
 }
 
+// Applies XOR operation on MHK 1 file at `toXorPath` and writes result to `outputPath`.
+// XOR is symmetric, so this function can be used for both packing and unpacking.
 func xorMhk1File(toXorPath string, outputPath string) error {
 	// read
 	dataBytes, err := os.ReadFile(toXorPath)

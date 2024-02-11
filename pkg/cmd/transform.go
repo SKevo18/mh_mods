@@ -17,7 +17,7 @@ func genericTransform(action string) func(cmd *cobra.Command, args []string) {
 		dataFileLocation := args[1]
 		folderPath := args[2]
 
-		// Convert paths to absolute, from the working directory
+		// get work dir, convert to absolute
 		wd, err := os.Getwd()
 		if err != nil {
 			log.Fatal("Failed to obtain working directory: ", err.Error())
@@ -25,13 +25,14 @@ func genericTransform(action string) func(cmd *cobra.Command, args []string) {
 		folderPath = filepath.Join(wd, folderPath)
 		dataFileLocation = filepath.Join(wd, dataFileLocation)
 
+		// go!
 		log.Printf("Beginning the %sing of files from data file `%s` into output folder `%s` for game `%s`...\n", action, dataFileLocation, folderPath, gameID)
 		err = transformers.Transform(action, gameID, dataFileLocation, folderPath)
 		if err != nil {
-			log.Fatal(err.Error())
+			log.Fatal("Fatal error: ", err.Error())
 		}
 
-		log.Printf("Successfully %sed files for game `%s`!\n", action, gameID)
+		log.Printf("Successfully(?) performed action `%s` for game `%s`!\n", action, gameID)
 	}
 }
 

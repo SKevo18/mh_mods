@@ -1,6 +1,6 @@
 # Moorhuhn Mods
 
-An all-in-one Go command-line tool for patching Moorhuhn data files.
+An all-in-one experimental Go command-line tool for patching Moorhuhn data files.
 
 ## Features
 
