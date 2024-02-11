@@ -2,6 +2,7 @@ package transformers
 
 import (
 	"errors"
+	"log"
 	"os"
 	"path/filepath"
 )
@@ -15,11 +16,13 @@ func packMhk1(dataFileLocation string, inputPath string) error {
 	zipLocation := dataFileLocation + ".zip"
 
 	// temp zip
+	log.Printf("Zipping `%s`...\n", inputPath)
 	if err := zipFolder(inputPath, zipLocation); err != nil {
 		return err
 	}
 
 	// xor
+	log.Printf("Applying XOR to `%s`...\n", zipLocation)
 	if err := xorMhk1File(zipLocation, dataFileLocation); err != nil {
 		return err
 	}
@@ -37,11 +40,13 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 	zipLocation := outputPath + ".zip"
 
 	// xor
+	log.Printf("Applying XOR to `%s`...\n", dataFileLocation)
 	if err := xorMhk1File(dataFileLocation, zipLocation); err != nil {
 		return err
 	}
 
 	// unzip
+	log.Printf("Unzipping `%s`...\n", zipLocation)
 	if err := unzipFile(zipLocation, outputPath); err != nil {
 		return err
 	}

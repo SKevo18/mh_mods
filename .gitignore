@@ -1,8 +1,7 @@
-# For webserver:
+/build/
+
 /data/*
 !/data/README.md
 
-/build/
-
-/unpacked/
-!/unpacked/autounpack.sh
+/unpacked/*
+!/unpacked/unpack_all.sh
