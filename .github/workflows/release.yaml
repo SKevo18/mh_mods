@@ -22,6 +22,11 @@ jobs:
 
     name: Build for ${{ matrix.os }}/${{ matrix.arch }}
     steps:
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 10
+
       - uses: actions/checkout@v3
       - name: Set up Go
         uses: actions/setup-go@v3
