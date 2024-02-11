@@ -65,14 +65,14 @@ func Transform(action string, gameId string, dataFileLocation string, rootFolder
 	switch gameId {
 	case "mhk_extra", "mhk_1":
 		transformFunction = transformMhk1
-	case "mhk_2", "schatzjager": // should also work on Schatzjäger (Jump and Run), but untested
+	case "mhk_2", "schatzjaeger": // should also work on Schatzjäger (Jump and Run), but untested
 		transformFunction = transformMhk2
 	case "mhk_3":
 		transformFunction = transformMhk3
 	case "mhk_4", "mhk_thunder":
 		transformFunction = transformMhk4
 	default:
-		return errors.New("Invalid game ID! Please, use one of the following: `mhk_extra`, `mhk_1`, `mhk_2`, `schatzjager`, `mhk_3`, `mhk_4`, `mhk_thunder`.")
+		return errors.New("Invalid game ID! Please, use one of the following: `mhk_extra`, `mhk_1`, `mhk_2`, `schatzjaeger`, `mhk_3`, `mhk_4`, `mhk_thunder`.")
 	}
 
 	var err error

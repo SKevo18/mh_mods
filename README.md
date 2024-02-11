@@ -9,6 +9,14 @@ An all-in-one experimental Go command-line tool for patching Moorhuhn data files
 - [ ] Packing and merging multiple mods into unified data file;
 - [ ] A Python webserver, to patch and download modded data files on the fly;
 
+## Supported games
+
+- [x] Moorhuhn Kart Extra XXL (game ID: `mhk_1`/`mhk_extra`)
+- [x] Moorhuhn Kart 2 (game ID: `mhk_2`)
+  - [ ] Schatzjäger (untested) (game ID: `schatzjaeger`)
+- [ ] Moorhuhn Kart 3 (game ID: `mhk_3`)
+- [ ] Moorhuhn Kart 4 (Thunder) (game ID: `mhk_4`/`mhk_thunder`)
+
 ## Wait, what?
 
 Moorhuhn Kart games are the games of my childhood. I've always wanted to mod them, however it seems that there are a very few enthusiasts like me who are interested in modding these games. In fact, I thought that I was the only one.
