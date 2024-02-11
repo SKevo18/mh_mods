@@ -34,7 +34,7 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 	// save file entry data
 	log.Println("Saving file entries data...")
-	offset := int64(0x40 + len(files) * 0x80)
+	offset := int64(0x40 + len(files)*0x80)
 	for _, file := range files {
 		fileEntry := make([]byte, 0x80)
 		copy(fileEntry, strings.ReplaceAll(file.Filename, "/", "\\"))
@@ -63,12 +63,12 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 		// write data
 		log.Printf("Writing `%s`...", file.Filename)
-		padding := make([]byte, file.Filesize % 0x100)
+		padding := make([]byte, file.Filesize%0x100)
 		if _, err := outFile.Write(append(fileData, padding...)); err != nil {
 			return err
 		}
 	}
- 
+
 	return nil
 }
 
