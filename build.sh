@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 # Builds the project. Requires Go 1.22
 
 cd "$(dirname "$0")"

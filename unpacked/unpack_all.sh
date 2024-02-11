@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 # Run this script with data files placed inside `../data` directory
 # The files should be named by their game IDs. The game ID is determined
 # by the file name before first dot. Everything after the first dot is ignored,
