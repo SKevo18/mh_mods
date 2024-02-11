@@ -13,71 +13,71 @@ import (
 
 // Packs MHK2 data file from given `inputFolder` into `dataFileLocation`.
 func packMhk2(dataFileLocation string, inputPath string) error {
-    log.Printf("Creating `%s`...", dataFileLocation)
-    outFile, err := os.Create(dataFileLocation)
-    if err != nil {
-        return err
-    }
-    defer outFile.Close()
+	log.Printf("Creating `%s`...", dataFileLocation)
+	outFile, err := os.Create(dataFileLocation)
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
 
-    files, err := walkFiles(inputPath)
-    if err != nil {
-        return err
-    }
-    log.Printf("Packing %d files...", len(files))
+	files, err := walkFiles(inputPath)
+	if err != nil {
+		return err
+	}
+	log.Printf("Packing %d files...", len(files))
 
-    // header
-    log.Println("Generating header...")
-    header := generateHeader("Moorhuhn", uint32(len(files)))
-    if _, err = outFile.Write(header); err != nil {
-        return err
-    }
+	// header
+	log.Println("Generating header...")
+	header := generateHeader("Moorhuhn", uint32(len(files)))
+	if _, err = outFile.Write(header); err != nil {
+		return err
+	}
 
-    // save file entry data
-    log.Println("Saving file entries data...")
-    offset := int64(0x40) + int64(len(files)*0x80)
-    for _, file := range files {
-        fileEntry := make([]byte, 0x80)
-        relativePath, _ := filepath.Rel(inputPath, file.Filename)
-        pathWithPrefix := strings.ReplaceAll(relativePath, "/", "\\")
-        copy(fileEntry, pathWithPrefix)
+	// save file entry data
+	log.Println("Saving file entries data...")
+	offset := int64(0x40) + int64(len(files)*0x80)
+	for _, file := range files {
+		fileEntry := make([]byte, 0x80)
+		relativePath, _ := filepath.Rel(inputPath, file.Filename)
+		pathWithPrefix := strings.ReplaceAll(relativePath, "/", "\\")
+		copy(fileEntry, pathWithPrefix)
 
-        binary.LittleEndian.PutUint64(fileEntry[0x68:], uint64(offset))
-        binary.LittleEndian.PutUint64(fileEntry[0x6C:], uint64(file.Filesize))
+		binary.LittleEndian.PutUint64(fileEntry[0x68:], uint64(offset))
+		binary.LittleEndian.PutUint64(fileEntry[0x6C:], uint64(file.Filesize))
 
-        offset += file.Filesize + (file.Filesize % 0x100)
-        if _, err := outFile.Write(fileEntry); err != nil {
-            return err
-        }
-    }
+		offset += file.Filesize + (file.Filesize % 0x100)
+		if _, err := outFile.Write(fileEntry); err != nil {
+			return err
+		}
+	}
 
-    log.Println("Writing file data...")
-    for _, file := range files {
-        fileData, err := os.ReadFile(filepath.Join(inputPath, file.Filename))
-        if err != nil {
-            return err
-        }
+	log.Println("Writing file data...")
+	for _, file := range files {
+		fileData, err := os.ReadFile(filepath.Join(inputPath, file.Filename))
+		if err != nil {
+			return err
+		}
 
 		// encrypt, if necessary
-        if filepath.Ext(file.Filename) == ".txt" {
-            log.Printf("Encrypting `%s`...", file.Filename)
-            encryptConfig(fileData)
-        }
+		if filepath.Ext(file.Filename) == ".txt" {
+			log.Printf("Encrypting `%s`...", file.Filename)
+			encryptConfig(fileData)
+		}
 
 		// write data
-        paddingLength := 0x100 - (len(fileData) % 0x100)
-        if paddingLength == 0x100 {
-            paddingLength = 0 // no padding needed if `fileData` is already aligned
-        }
-        padding := make([]byte, paddingLength)
+		paddingLength := 0x100 - (len(fileData) % 0x100)
+		if paddingLength == 0x100 {
+			paddingLength = 0 // no padding needed if `fileData` is already aligned
+		}
+		padding := make([]byte, paddingLength)
 
 		log.Printf("Writing `%s`...", file.Filename)
-        if _, err := outFile.Write(append(fileData, padding...)); err != nil {
-            return err
-        }
-    }
+		if _, err := outFile.Write(append(fileData, padding...)); err != nil {
+			return err
+		}
+	}
 
-    return nil
+	return nil
 }
 
 // Unpacks MHK2 data file from `dataFileLocation` into `outputFolder`.
@@ -210,7 +210,7 @@ func encryptConfig(data []byte) {
 		cVar1 := data[i] & 0xAA
 		cVar1 >>= 0x1
 		uVar2 <<= 0x1
-		data[i] = (uVar2 ^ cVar1) ^ byte(key & 0xFF)
+		data[i] = (uVar2 ^ cVar1) ^ byte(key&0xFF)
 		key = (key * 0x3) + (0x2 & 0xffff)
 	}
 }

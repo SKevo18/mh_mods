@@ -47,12 +47,12 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 }
 
 // A simple XOR function that applies a key to the data (used in MHK Extra).
-// 
+//
 // https://www.101computing.net/xor-encryption-algorithm/
 func xorData(data []byte, key []byte) []byte {
 	keyLength := len(key)
 	for i := range data {
-		data[i] ^= key[i % keyLength]
+		data[i] ^= key[i%keyLength]
 	}
 	return data
 }
