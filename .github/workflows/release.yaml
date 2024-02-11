@@ -1,29 +1,58 @@
-name: Release
+name: Release Builds
 
 on:
   release:
-    types: 
-        - created
+    types: [created]
 
 jobs:
   build:
-    name: Build cross-platform builds
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
+    strategy:
+      matrix:
+        go-version: [1.22]
+        os: [linux, windows, darwin]
+        arch: [amd64, arm64]
+        include:
+          - os: windows
+            extension: .exe
+          - os: linux
+            extension: ''
+          - os: darwin
+            extension: ''
 
-      - name: Generate build files
-        uses: thatisuday/go-cross-build@v1
+    name: Build for ${{ matrix.os }}/${{ matrix.arch }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
         with:
-            platforms: 'linux/amd64, darwin/amd64, windows/amd64, linux/arm64, darwin/arm64, windows/arm64'
-            name: 'mhmods'
-            compress: 'true'
-            dest: 'build'
-      
-      - name: Upload build artifacts
-        uses: skx/github-action-publish-binaries@master
+          go-version: ${{ matrix.go-version }}
+
+      - name: Build
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
+        run: |
+          go build -o mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
+
+      - name: Compress binary
+        run: |
+          tar -czvf mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }} ${LICENSE:+"LICENSE"} ${README:+"README.md"}
+        env:
+          LICENSE: ${{ github.workspace }}/LICENSE
+          README: ${{ github.workspace }}/README.md
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+          path: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+
+      - uses: actions/download-artifact@v3
+      - uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: "./build/*.tar.gz"
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+          asset_name: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+          asset_content_type: application/gzip
