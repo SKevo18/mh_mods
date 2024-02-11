@@ -6,8 +6,8 @@ An all-in-one experimental Go command-line tool for patching Moorhuhn data files
 
 - [x] Unpacking data files;
 - [x] Repacking data files;
-- [x] Packing and merging multiple mods into unified data file;
-- [x] A Python webserver, to patch and download modded data files on the fly;
+- [ ] Packing and merging multiple mods into unified data file;
+- [ ] A Python webserver, to patch and download modded data files on the fly;
 
 ## Wait, what?
 
