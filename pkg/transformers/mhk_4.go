@@ -10,10 +10,14 @@ import (
 	"strings"
 )
 
+// Packs MHK 4 (Thunder) data files.
 func packMhk4(dataFileLocation string, rootFolder string) error {
-	return errors.New("not implemented")
+	return errors.New("MHK 4 packing is not implemented yet")
 }
 
+// Unpacks MHK 4 (Thunder) data files.
+// MHK 4 has 2 data files in the installation directory: `data.sar` (main one),
+// and `data.s01` (whose purpose is unknown, but it might be some demo data?).
 func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 	dataFile, err := os.Open(dataFileLocation)
 	if err != nil {
