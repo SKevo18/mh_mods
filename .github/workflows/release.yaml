@@ -37,10 +37,11 @@ jobs:
 
       - name: Compress binary
         run: |
-          tar -czvf mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }} ${LICENSE:+"LICENSE"} ${README:+"README.md"}
-        env:
-          LICENSE: ${{ github.workspace }}/LICENSE
-          README: ${{ github.workspace }}/README.md
+          FILES="mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
+          [ -f LICENSE ] && FILES="$FILES LICENSE"
+          [ -f README.md ] && FILES="$FILES README.md"
+          tar -czvf mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
+      
 
       - uses: actions/upload-artifact@v3
         with:
