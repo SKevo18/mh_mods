@@ -2,7 +2,6 @@ package transformers
 
 import (
 	"archive/zip"
-	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -12,13 +11,13 @@ import (
 // Unzip a file into a folder.
 func unzipFile(zipFile string, outputFolder string) error {
 	if err := os.MkdirAll(outputFolder, os.ModePerm); err != nil {
-		return errors.New(fmt.Sprintf("error creating output folder: %s", err))
+		return fmt.Errorf("error creating output folder: %s", err)
 	}
 
 	// unzip
 	zipReader, err := zip.OpenReader(zipFile)
 	if err != nil {
-		return errors.New(fmt.Sprintf("error opening ZIP file: %s", err))
+		return fmt.Errorf("error opening ZIP file: %s", err)
 	}
 	defer zipReader.Close()
 
@@ -28,23 +27,23 @@ func unzipFile(zipFile string, outputFolder string) error {
 		// read
 		fileReader, err := file.Open()
 		if err != nil {
-			return errors.New(fmt.Sprintf("error opening file: %s", err))
+			return fmt.Errorf("error opening file: %s", err)
 		}
 		defer fileReader.Close()
 
 		if err = os.MkdirAll(filepath.Dir(filePath), os.ModePerm); err != nil {
-			return errors.New(fmt.Sprintf("error creating directory: %s", err))
+			return fmt.Errorf("error creating directory: %s", err)
 		}
 
 		// write
 		outFile, err := os.Create(filePath)
 		if err != nil {
-			return errors.New(fmt.Sprintf("error creating file: %s", err))
+			return fmt.Errorf("error creating file: %s", err)
 		}
 		defer outFile.Close()
 
 		if _, err = io.Copy(outFile, fileReader); err != nil {
-			return errors.New(fmt.Sprintf("error copying file: %s", err))
+			return fmt.Errorf("error copying file: %s", err)
 		}
 	}
 
@@ -56,7 +55,7 @@ func zipFolder(folder string, zipFile string) error {
 	// open
 	outFile, err := os.Create(zipFile)
 	if err != nil {
-		return errors.New(fmt.Sprintf("error creating ZIP file: %s", err))
+		return fmt.Errorf("error creating ZIP file: %s", err)
 	}
 	defer outFile.Close()
 	zipWriter := zip.NewWriter(outFile)
@@ -100,7 +99,7 @@ func zipFolder(folder string, zipFile string) error {
 		return nil
 	})
 	if err != nil {
-		return errors.New(fmt.Sprintf("error while walking through files: %s", err))
+		return fmt.Errorf("error while walking through files: %s", err)
 	}
 
 	return nil

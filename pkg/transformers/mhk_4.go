@@ -19,6 +19,6 @@ func transformMhk4(action string, dataFileLocation string, rootFolder string) er
 	case "unpack":
 		return unpackMhk4(dataFileLocation, rootFolder)
 	default:
-		return errors.New("Invalid action!")
+		return errors.New("invalid action")
 	}
 }

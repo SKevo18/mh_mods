@@ -13,18 +13,17 @@ import (
 
 // Packs MHK2 data file from given `inputFolder` into `dataFileLocation`.
 func packMhk2(dataFileLocation string, inputPath string) error {
-	log.Printf("Creating `%s`...", dataFileLocation)
+	files, err := walkFiles(inputPath)
+	if err != nil {
+		return err
+	}
+
+	log.Printf("Packing %d files...", len(files))
 	outFile, err := os.Create(dataFileLocation)
 	if err != nil {
 		return err
 	}
 	defer outFile.Close()
-
-	files, err := walkFiles(inputPath)
-	if err != nil {
-		return err
-	}
-	log.Printf("Packing %d files...", len(files))
 
 	// header
 	log.Println("Generating header...")
@@ -35,12 +34,10 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 	// save file entry data
 	log.Println("Saving file entries data...")
-	offset := int64(0x40) + int64(len(files)*0x80)
+	offset := int64(0x40 + len(files) * 0x80)
 	for _, file := range files {
 		fileEntry := make([]byte, 0x80)
-		relativePath, _ := filepath.Rel(inputPath, file.Filename)
-		pathWithPrefix := strings.ReplaceAll(relativePath, "/", "\\")
-		copy(fileEntry, pathWithPrefix)
+		copy(fileEntry, strings.ReplaceAll(file.Filename, "/", "\\"))
 
 		binary.LittleEndian.PutUint64(fileEntry[0x68:], uint64(offset))
 		binary.LittleEndian.PutUint64(fileEntry[0x6C:], uint64(file.Filesize))
@@ -65,18 +62,13 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 		}
 
 		// write data
-		paddingLength := 0x100 - (len(fileData) % 0x100)
-		if paddingLength == 0x100 {
-			paddingLength = 0 // no padding needed if `fileData` is already aligned
-		}
-		padding := make([]byte, paddingLength)
-
 		log.Printf("Writing `%s`...", file.Filename)
+		padding := make([]byte, file.Filesize % 0x100)
 		if _, err := outFile.Write(append(fileData, padding...)); err != nil {
 			return err
 		}
 	}
-
+ 
 	return nil
 }
 
@@ -160,7 +152,7 @@ func unpackMhk2(dataFileLocation string, outputPath string) error {
 // Extracts the file position from a file entry block.
 func getPosition(fileEntry []byte) (uint32, error) {
 	if len(fileEntry) < 104 {
-		return 0, errors.New("Input data must have at least 104 bytes")
+		return 0, errors.New("input data must have at least 104 bytes")
 	}
 	return binary.LittleEndian.Uint32(fileEntry[0x68:0x6C]), nil
 }
@@ -168,7 +160,7 @@ func getPosition(fileEntry []byte) (uint32, error) {
 // Extracts the file length from a file entry block.
 func getFileLength(fileEntry []byte) (uint32, error) {
 	if len(fileEntry) < 108 {
-		return 0, errors.New("Input data must have at least 108 bytes")
+		return 0, errors.New("input data must have at least 108 bytes")
 	}
 	return binary.LittleEndian.Uint32(fileEntry[0x6C:0x70]), nil
 }
@@ -240,6 +232,6 @@ func transformMhk2(action string, dataFileLocation string, rootFolder string) er
 	case "unpack":
 		return unpackMhk2(dataFileLocation, rootFolder)
 	default:
-		return errors.New("Invalid action!")
+		return errors.New("invalid action")
 	}
 }

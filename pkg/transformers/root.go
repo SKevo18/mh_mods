@@ -15,7 +15,7 @@ type FileEntry struct {
 	Filesize int64
 }
 
-// Walks through files in `rootFolder` and returns array of file entries.
+// Walks through files in `rootFolder` and returns array of relative file entries.
 func walkFiles(rootFolder string) ([]FileEntry, error) {
 	var files []FileEntry
 
@@ -40,7 +40,7 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 		return nil
 	})
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("error walking through files: %s", err))
+		return nil, fmt.Errorf("error walking through files: %s", err)
 	}
 
 	return files, nil
@@ -52,7 +52,7 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 func xorData(data []byte, key []byte) []byte {
 	keyLength := len(key)
 	for i := range data {
-		data[i] ^= key[i%keyLength]
+		data[i] ^= key[i % keyLength]
 	}
 	return data
 }
@@ -72,14 +72,13 @@ func Transform(action string, gameId string, dataFileLocation string, rootFolder
 	case "mhk_4", "mhk_thunder":
 		transformFunction = transformMhk4
 	default:
-		return errors.New("Invalid game ID! Please, use one of the following: `mhk_extra`, `mhk_1`, `mhk_2`, `schatzjaeger`, `mhk_3`, `mhk_4`, `mhk_thunder`.")
+		return errors.New("invalid game ID! Please, use one of the following: `mhk_extra`, `mhk_1`, `mhk_2`, `schatzjaeger`, `mhk_3`, `mhk_4`, `mhk_thunder`")
 	}
 
-	var err error
-	err = transformFunction(action, dataFileLocation, rootFolder)
+	err := transformFunction(action, dataFileLocation, rootFolder)
 
 	if err != nil {
-		return errors.New(fmt.Sprintf("Error transforming data: %s", err))
+		return fmt.Errorf("error transforming data: %s", err)
 	}
 
 	return nil
