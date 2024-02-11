@@ -71,6 +71,7 @@ func packMhk2(dataFileLocation string, inputPath string) error {
         }
         padding := make([]byte, paddingLength)
 
+		log.Printf("Writing `%s`...", file.Filename)
         if _, err := outFile.Write(append(fileData, padding...)); err != nil {
             return err
         }
