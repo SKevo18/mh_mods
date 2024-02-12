@@ -37,12 +37,12 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 	offset := int64(0x40 + len(files)*0x80)
 	for _, file := range files {
 		fileEntry := make([]byte, 0x80)
-		copy(fileEntry, strings.ReplaceAll(file.Filename, "/", "\\"))
+		copy(fileEntry, strings.ReplaceAll(file.FilePath, "/", "\\"))
 
 		binary.LittleEndian.PutUint64(fileEntry[0x68:], uint64(offset))
-		binary.LittleEndian.PutUint64(fileEntry[0x6C:], uint64(file.Filesize))
+		binary.LittleEndian.PutUint64(fileEntry[0x6C:], uint64(file.FileSize))
 
-		offset += file.Filesize + (file.Filesize % 0x100)
+		offset += file.FileSize + (file.FileSize % 0x100)
 		if _, err := outFile.Write(fileEntry); err != nil {
 			return err
 		}
@@ -50,20 +50,20 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 	log.Println("Writing file data...")
 	for _, file := range files {
-		fileData, err := os.ReadFile(filepath.Join(inputPath, file.Filename))
+		fileData, err := os.ReadFile(filepath.Join(inputPath, file.FilePath))
 		if err != nil {
 			return err
 		}
 
 		// encrypt, if necessary
-		if filepath.Ext(file.Filename) == ".txt" {
-			log.Printf("Encrypting `%s`...", file.Filename)
+		if filepath.Ext(file.FilePath) == ".txt" {
+			log.Printf("Encrypting `%s`...", file.FilePath)
 			encryptConfig(fileData)
 		}
 
 		// write data
-		log.Printf("Writing `%s`...", file.Filename)
-		padding := make([]byte, file.Filesize%0x100)
+		log.Printf("Writing `%s`...", file.FilePath)
+		padding := make([]byte, file.FileSize%0x100)
 		if _, err := outFile.Write(append(fileData, padding...)); err != nil {
 			return err
 		}

@@ -10,9 +10,11 @@ import (
 // A simple struct to represent a file entry.
 type FileEntry struct {
 	// The path of the file relative to the root folder.
-	Filename string
+	FilePath string
 	// The size of the file in bytes.
-	Filesize int64
+	FileSize int64
+	// Content position, in the data file
+	ContentOffset int64
 }
 
 // Walks through files in `rootFolder` and returns array of relative file entries.
@@ -32,8 +34,8 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 			}
 
 			files = append(files, FileEntry{
-				Filename: relPath,
-				Filesize: info.Size(),
+				FilePath: relPath,
+				FileSize: info.Size(),
 			})
 		}
 
@@ -76,7 +78,6 @@ func Transform(action string, gameId string, dataFileLocation string, rootFolder
 	}
 
 	err := transformFunction(action, dataFileLocation, rootFolder)
-
 	if err != nil {
 		return fmt.Errorf("error transforming data: %s", err)
 	}

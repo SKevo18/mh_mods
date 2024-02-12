@@ -11,8 +11,68 @@ import (
 )
 
 // Packs MHK 4 (Thunder) data files.
-func packMhk4(dataFileLocation string, rootFolder string) error {
-	return errors.New("MHK 4 packing is not implemented yet")
+// Unpacks MHK 4 (Thunder) data files.
+// MHK 4 has 2 data files in the installation directory: `data.sar` (main one),
+// and `data.s01` (whose purpose is unknown, but it might be some demo data?).
+func packMhk4(dataFileLocation string, inputFolder string) error {
+	dataFile, err := os.Create(dataFileLocation)
+	if err != nil {
+		return err
+	}
+	defer dataFile.Close()
+
+	// read input folder
+	fileEntries, err := walkFiles(inputFolder)
+	if err != nil {
+		return err
+	}
+
+	// reserve space for header + file entries offset
+	dataFile.Seek(0x10, io.SeekStart)
+
+	// write input file contents
+	for i, entry := range fileEntries {
+		contentOffset, _ := dataFile.Seek(0, io.SeekCurrent)
+		fileContent, _ := os.ReadFile(filepath.Join(inputFolder, entry.FilePath))
+
+		dataFile.Write(fileContent)
+		log.Printf("Wrote `%s`", entry.FilePath)
+
+		fileEntries[i].ContentOffset = contentOffset
+		fileEntries[i].FileSize = int64(len(fileContent))
+	}
+
+	// write file entries
+	fileEntriesBegin, _ := dataFile.Seek(0, io.SeekCurrent) // original data file: 874881073
+	for _, entry := range fileEntries {
+		filename := strings.ReplaceAll(entry.FilePath, "/", "\\")
+		filename = strings.Replace(filename, "\\", ":\\", 1)
+		filenameLength := uint8(len(filename))
+
+		binary.Write(dataFile, binary.LittleEndian, filenameLength)
+		dataFile.Write([]byte(filename))
+		dataFile.Write([]byte{0x0})
+
+		binary.Write(dataFile, binary.LittleEndian, uint32(entry.ContentOffset))
+		dataFile.Write([]byte{0x0})
+
+		binary.Write(dataFile, binary.LittleEndian, uint32(entry.FileSize))
+		dataFile.Seek(0x5, io.SeekCurrent)
+
+		log.Printf("Wrote file entry `%s`: offset=%d; size=%d", filename, entry.ContentOffset, entry.FileSize)
+	}
+
+	// write header
+	dataFile.Seek(0x0, io.SeekStart)
+	dataFile.Write([]byte("SARC"))
+
+	// write file entries
+	dataFile.Seek(0x8, io.SeekCurrent)
+	binary.Write(dataFile, binary.LittleEndian, uint32(fileEntriesBegin))
+
+	log.Printf("Pack complete: File entries begin at `%d`.", fileEntriesBegin)
+
+	return nil
 }
 
 // Unpacks MHK 4 (Thunder) data files.
@@ -25,40 +85,36 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 	}
 	defer dataFile.Close()
 
-	// get file size
+	// header
+	dataFileType := make([]byte, 0x4)
+	dataFile.Read(dataFileType)
 	fileInfo, err := dataFile.Stat()
 	if err != nil {
 		return err
 	}
-	fileSize := fileInfo.Size()
-	log.Printf("Data file size: %d", fileSize)
+	dataSize := fileInfo.Size()
+	log.Printf("Data file type: %s; Data size: %d", dataFileType, dataSize)
 
-	// go to beginning of files
-	var indexOffset uint32
-	if _, err := dataFile.Seek(0x0C, io.SeekStart); err != nil {
-		return err
-	}
-
-	binary.Read(dataFile, binary.LittleEndian, &indexOffset)
-	dataFile.Seek(int64(indexOffset), io.SeekStart)
+	// read file entries offset
+	var fileEntriesBegin uint32
+	dataFile.Seek(0xC, io.SeekStart)
+	binary.Read(dataFile, binary.LittleEndian, &fileEntriesBegin)
 
 	// read file entries
-	log.Printf("Reading file entries...")
+	// note: these are listed at end of file
+	log.Printf("Reading file entries from offset %d...", fileEntriesBegin)
+	dataFile.Seek(int64(fileEntriesBegin), io.SeekStart)
 	for {
 		// if at end of file
-		if currentOffset, _ := dataFile.Seek(0x0, io.SeekCurrent); currentOffset >= fileSize {
+		if currentOffset, _ := dataFile.Seek(0x0, io.SeekCurrent); currentOffset >= dataSize {
 			break
 		}
 
 		// read filename
 		var filenameLength uint8
-		if err := binary.Read(dataFile, binary.LittleEndian, &filenameLength); err != nil {
-			return err
-		}
+		binary.Read(dataFile, binary.LittleEndian, &filenameLength)
 		filenameBytes := make([]byte, filenameLength)
-		if _, err := dataFile.Read(filenameBytes); err != nil {
-			return err
-		}
+		dataFile.Read(filenameBytes)
 
 		// make parent dir for file
 		filename := strings.ReplaceAll(string(filenameBytes), ":", "")
@@ -75,6 +131,8 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 		var fileOffset, fileLength uint32
 		binary.Read(dataFile, binary.LittleEndian, &fileOffset)
 		binary.Read(dataFile, binary.LittleEndian, &fileLength)
+
+		// offset of the next file entry
 		nextOffset, _ := dataFile.Seek(0x4, io.SeekCurrent)
 
 		// write file
