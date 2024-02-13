@@ -14,7 +14,7 @@ import (
 
 func PackmodCmd() *cobra.Command {
 	return &cobra.Command{
-		Use:   "packmods <game ID> <original data file> <output modded data file> <mod paths>...",
+		Use:   "packmod <game ID> <original data file> <output modded data file> <mod paths>...",
 		Short: "Pack all mod paths into a single data file",
 		Long:  `Packs all mod paths into a single data file for a specific game.`,
 		Args:  cobra.MinimumNArgs(4),

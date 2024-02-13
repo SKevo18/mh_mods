@@ -34,13 +34,25 @@ class Mod(BaseModel):
     game: Game
     path: Path
 
-    @property
     async def get_readme(self) -> str:
-        async with aiofiles.open(MODS_ROOT / self.id / "README.md", "r") as f:
-            return await f.read()
+        try:
+            async with aiofiles.open(MODS_ROOT / self.id / "README.md", "r") as f:
+                return await f.read()
 
-    def mod(self):
-        run([MHMODS_BINARY, "packmods", self.game.id, self.path])
+        except FileNotFoundError:
+            return "No README."
+
+    def mod(self, output_path: Path, mods: list[Mod] = []):
+        run(
+            [
+                MHMODS_BINARY,
+                "packmod",
+                self.game.id,
+                self.game.original_datafile,
+                output_path,
+                *[mod.path for mod in mods],
+            ]
+        )
 
 
 GAMES = []
