@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<Imageset Name="Minimap_Objects" Imagefile="Minimap_Objects.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="true">
+
+   <Image Name="Red"   XPos="0"  YPos="0" Width="17" Height="17" />
+   <Image Name="Green" XPos="16" YPos="0" Width="33" Height="33" />
+   <Image Name="Blue"  XPos="0" YPos="32" Width="48" Height="48" />
+</Imageset>

@@ -1,0 +1,7 @@
+flask
+fastapi
+
+aiofiles
+
+gunicorn
+uvicorn

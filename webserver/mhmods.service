@@ -1,0 +1,25 @@
+# Place in `/etc/systemd/system/mhkmods.service`
+#
+# `systemctl daemon-reload`
+# `systemctl enable mhkmods.service`
+# `systemctl start mhkmods.service`
+# Update `ExecStart` with the correct path to `start.sh`
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=MHK Mods daemon
+After=network.target
+
+[Service]
+Type=simple
+
+# FIXME: Update with your path to `start.sh`:
+ExecStart=./start.sh
+
+Restart=on-failure
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

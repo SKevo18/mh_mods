@@ -1,0 +1,3031 @@
+# ------------------------------------------------ Level Settings
+OBJECT START
+class type: "class LevelSettings"
+[LevelSettings] "Level Settings"
+{
+    [AI 50cc] "Unknown"
+    {
+        "leading distance" 300.000000
+        "leading speed factor" 0.600000
+        "normal speed factor" 0.700000
+        "trailing distance" 200.000000
+        "trailing speed factor" 0.900000
+    }
+
+    [AI 100cc] "Unknown"
+    {
+        "leading distance" 200.000000
+        "leading speed factor" 0.800000
+        "normal speed factor" 0.900000
+        "trailing distance" 200.000000
+        "trailing speed factor" 0.900000
+    }
+
+    [AI 150cc] "Unknown"
+    {
+        "leading distance" 500.000000
+        "leading speed factor" 0.900000
+        "normal speed factor" 1.000000
+        "trailing distance" 100.000000
+        "trailing speed factor" 1.750000
+    }
+ 
+    [start] "Unknown"
+    {
+        "start spline offset" 0.905000
+    }
+
+    [Target ranking 50cc] "Unknown"
+    {
+        "1st factor" 1.000000
+        "2nd factor" 0.950000
+        "4rd factor" 0.900000
+        "4th factor" 0.850000
+        "5th factor" 0.800000
+        "6th factor" 0.800000
+    }
+
+    [Target ranking 100cc] "Unknown"
+    {
+        "1st factor" 1.000000
+        "2nd factor" 1.000000
+        "4rd factor" 0.950000
+        "4th factor" 0.900000
+        "5th factor" 0.850000
+        "6th factor" 0.800000
+    }
+
+    [Target ranking 150cc] "Unknown"
+    {
+        "1st factor" 1.000000
+        "2nd factor" 1.000000
+        "4rd factor" 1.000000
+        "4th factor" 0.950000
+        "5th factor" 0.950000
+        "6th factor" 0.900000
+    }
+}
+
+# ------------------------------------------------ Track
+OBJECT START
+class type: "class Track"
+[Track] "Track"
+{
+    "display collision geometry" 0
+    "display reset geometry" 0
+    "display drop geometry" 0
+    "render double sided" 1
+    [] "Textures"
+    {
+        "Bambusteil_UV" 4
+        "Bambus2_UV" 4
+        "Bambus_UV" 4
+        "Bodenstein_UV" 0
+        "Fels3_UV" 0
+        "Fels4_UV" 0
+        "Mauer_UV" 0
+        "Mauer2_UV" 0
+        "bande_UV" 0
+        "Door_UV" 0
+        "Mauer3_UV" 0
+        "Palmenstamm_UV" 0
+        "Sand1" 1
+        "Sand1b" 1
+        "Sand1c" 1
+        "Sand2" 1
+        "Sand2b" 1
+        "Sand2c" 1
+        "Sand3" 1
+        "Sand3b" 1
+        "Sand3c" 1
+        "Sand_wechsel" 1
+        "Sandstrasse_UV" 2
+        "Sandstrasse2_UV" 2
+        "Strasse3sand_UV" 2
+        "schild_UV" 0
+        "Strasse1_S_UV" 0
+        "Stein_UV" 6
+        "Strasse2_UV" 0
+        "Strasse2s_UV" 0
+        "Strasse3_UV" 0
+        "Seite1_UV" 6
+        "Seite2_UV" 6
+        "Turm_UV" 0
+        "Zaun_Seite_UV" 0
+    }
+
+    [] "Materials"
+    {
+        "material properties count" 7
+        "material #0" "beton"
+        "material #1" "sand"
+        "material #2" "sandstrasse"
+        "material #3" "gras"
+        "material #4" "holz"
+        "material #5" "sandstrasse grip"
+        "material #6" "seite"
+        class type: "class Track::MaterialProperty"
+        [MaterialProperty] "beton"
+        {
+            "name" "beton"
+            "lat dir friction" 1.000000
+            "roll dir friction" 1.000000
+            "material resistance" 0.000000
+            "sound effect" 1
+            "min. skid energy" 10.000000
+            "max. skid energy" 20.000000
+            "skidmark color" 0.000000 0.000000 0.000000 0.756098
+            "particleEffect" 0
+            "particleBaseEmitterFreq" 0.000000
+            "particleSpeedEmitterFreq" 10.000000
+            "particleMinSpeed" 5.000000
+            "particleMaxSpeed" 25.000000
+            "particleSkidEmitterFreq" 20.000000
+            "particleMinSkidEnergy" 10.000000
+            "particleMaxSkidEnergy" 20.000000
+            "particleCarVelocityFactor" 0.800000
+        }
+
+        class type: "class Track::MaterialProperty"
+        [MaterialProperty] "sand"
+        {
+            "name" "sand"
+            "lat dir friction" 0.400000
+            "roll dir friction" 0.400000
+            "material resistance" 0.200000
+            "sound effect" 3
+            "min. skid energy" 10.000000
+            "max. skid energy" 20.000000
+            "skidmark color" 0.858824 0.725490 0.192157 0.400000
+            "particleEffect" 1
+            "particleBaseEmitterFreq" 0.000000
+            "particleSpeedEmitterFreq" 10.000000
+            "particleMinSpeed" 10.000000
+            "particleMaxSpeed" 40.000000
+            "particleSkidEmitterFreq" 40.000000
+            "particleMinSkidEnergy" 10.000000
+            "particleMaxSkidEnergy" 20.000000
+            "particleCarVelocityFactor" 0.700000
+        }
+
+        class type: "class Track::MaterialProperty"
+        [MaterialProperty] "sandstrasse"
+        {
+            "name" "sandstrasse"
+            "lat dir friction" 0.400000
+            "roll dir friction" 0.400000
+            "material resistance" 0.020000
+            "sound effect" 1
+            "min. skid energy" 10.000000
+            "max. skid energy" 20.000000
+            "skidmark color" 0.866667 0.741176 0.235294 1.000000
+            "particleEffect" 1
+            "particleBaseEmitterFreq" 0.000000
+            "particleSpeedEmitterFreq" 10.000000
+            "particleMinSpeed" 10.000000
+            "particleMaxSpeed" 40.000000
+            "particleSkidEmitterFreq" 40.000000
+            "particleMinSkidEnergy" 10.000000
+            "particleMaxSkidEnergy" 20.000000
+            "particleCarVelocityFactor" 0.700000
+        }
+
+        class type: "class Track::MaterialProperty"
+        [MaterialProperty] "gras"
+        {
+            "name" "gras"
+            "lat dir friction" 0.500000
+            "roll dir friction" 0.500000
+            "material resistance" 0.200000
+            "sound effect" 2
+            "min. skid energy" 10.000000
+            "max. skid energy" 20.000000
+            "skidmark color" 0.180392 0.254902 0.105882 0.400000
+            "particleEffect" 0
+            "particleBaseEmitterFreq" 0.000000
+            "particleSpeedEmitterFreq" 10.000000
+            "particleMinSpeed" 5.000000
+            "particleMaxSpeed" 25.000000
+            "particleSkidEmitterFreq" 20.000000
+            "particleMinSkidEnergy" 10.000000
+            "particleMaxSkidEnergy" 20.000000
+            "particleCarVelocityFactor" 0.800000
+        }
+
+        class type: "class Track::MaterialProperty"
+        [MaterialProperty] "holz"
+        {
+            "name" "holz"
+            "lat dir friction" 0.600000
+            "roll dir friction" 0.600000
+            "material resistance" 0.000000
+            "sound effect" 4
+            "min. skid energy" 10.000000
+            "max. skid energy" 20.000000
+            "skidmark color" 0.337255 0.258824 0.239216 0.528455
+            "particleEffect" 0
+            "particleBaseEmitterFreq" 0.000000
+            "particleSpeedEmitterFreq" 10.000000
+            "particleMinSpeed" 5.000000
+            "particleMaxSpeed" 25.000000
+            "particleSkidEmitterFreq" 20.000000
+            "particleMinSkidEnergy" 10.000000
+            "particleMaxSkidEnergy" 20.000000
+            "particleCarVelocityFactor" 0.700000
+        }
+
+        class type: "class Track::MaterialProperty"
+        [MaterialProperty] "sandstrasse grip"
+        {
+            "name" "sandstrasse grip"
+            "lat dir friction" 0.500000
+            "roll dir friction" 0.500000
+            "material resistance" 0.200000
+            "sound effect" 1
+            "min. skid energy" 10.000000
+            "max. skid energy" 20.000000
+            "skidmark color" 0.709804 0.592157 0.125490 0.400000
+            "particleEffect" 0
+            "particleBaseEmitterFreq" 0.000000
+            "particleSpeedEmitterFreq" 10.000000
+            "particleMinSpeed" 5.000000
+            "particleMaxSpeed" 25.000000
+            "particleSkidEmitterFreq" 20.000000
+            "particleMinSkidEnergy" 10.000000
+            "particleMaxSkidEnergy" 20.000000
+            "particleCarVelocityFactor" 0.700000
+        }
+
+        class type: "class Track::MaterialProperty"
+        [MaterialProperty] "seite"
+        {
+            "name" "seite"
+            "lat dir friction" 0.500000
+            "roll dir friction" 0.500000
+            "material resistance" 0.200000
+            "sound effect" 1
+            "min. skid energy" 15.000000
+            "max. skid energy" 20.000000
+            "skidmark color" 0.368627 0.270588 0.258824 0.400000
+            "particleEffect" 0
+            "particleBaseEmitterFreq" 0.000000
+            "particleSpeedEmitterFreq" 10.000000
+            "particleMinSpeed" 5.000000
+            "particleMaxSpeed" 25.000000
+            "particleSkidEmitterFreq" 20.000000
+            "particleMinSkidEnergy" 10.000000
+            "particleMaxSkidEnergy" 20.000000
+            "particleCarVelocityFactor" 0.700000
+        }
+
+    }
+
+}
+
+# ------------------------------------------------ Track Path
+OBJECT START
+class type: "class TrackPath"
+[TrackPath] "Track Path"
+{
+    [Invalid Respawn areas] "Unknown"
+    {
+        "count" 1
+        "start    0" 0.180000
+        "end    0" 0.200000
+    }
+
+}
+
+# ------------------------------------------------ ClumpElement_2
+DYNAMIC OBJECT START
+class type: "class ClumpElement"
+[ClumpElement] "ClumpElement_2"
+{
+    "alpha clip" 0
+    class type: "class Clump"
+    [Clump] "clump"
+    {
+        "geometry" "data\MK2\Level03\Objects\Wasserfall_h1.dff"
+        "textures" "data\MK2\Level03\<TP>\"
+        "loading hack" 0
+        "Position" 0.000000 0.000000 0.000000
+        "Orientation" 1.000000 0.000000 0.000000 0.000000
+        "Scale" 1.000000 1.000000 1.000000
+    }
+
+    "Actions Count" 1
+    "Action Type" "AnimateUVAction"
+    class type: "class AnimateUVAction"
+    [AnimateUVAction] "action 1"
+    {
+        "speed U" 0.000000
+        "speed V" -0.500000
+    }
+
+    "Create" 0
+}
+
+# ------------------------------------------------ ClumpElement_3
+DYNAMIC OBJECT START
+class type: "class ClumpElement"
+[ClumpElement] "ClumpElement_3"
+{
+    "alpha clip" 0
+    class type: "class Clump"
+    [Clump] "clump"
+    {
+        "geometry" "<LP>Objects\Wasser.dff"
+        "textures" "<LP><TP>"
+        "loading hack" 0
+        "Position" 0.000000 0.000000 0.000000
+        "Orientation" 1.000000 0.000000 0.000000 0.000000
+        "Scale" 1.000000 1.000000 1.000000
+    }
+
+    "Actions Count" 1
+    "Action Type" "WaterAction"
+    class type: "class WaterAction"
+    [WaterAction] "action 1"
+    {
+        "factor x" 0.000000
+        "factor Z" 0.000000
+        "waveHeight" 0.000000
+        "alpha min" 100.000000
+        "alpha max" 240.000000
+    }
+
+    "Create" 0
+}
+
+# ------------------------------------------------ GeParticleSystem_4
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "GeParticleSystem_4"
+{
+    [GameElement] "GeParticleSystem_4"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" -50.000000 55.000000 115.000000
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 1
+    "enable fog" 0
+    "sorting offset" 0.000000
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 1
+        "Max. Particles" 9
+        "Emitter Speed" 1.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+                "maskname" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+            }
+
+            "Blend Src" 4
+            "Blend Dest" 5
+            "row count" 1
+            "column count" 1
+            "frames count" 1
+            "Z Write" 0
+            "Z Test" 1
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 15.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 6.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 0.279253
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 90.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 4.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 0.290196 0.254902 0.215686 1.000000
+        "End Color" 0.423529 0.368627 0.274510 1.000000
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 10.000000
+            }
+
+        }
+
+        "Actions Count" 4
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 3.000000
+            }
+
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 0.000000
+            }
+
+            "Action Type" 1
+            class type: "class ParticleActionFadeIn"
+            [Fade In] "Fade In"
+            {
+                "time" 1.000000
+            }
+
+            "Action Type" 3
+            class type: "class ParticleActionHeightWind"
+            [Height Wind] "Height Wind"
+            {
+                "Start height" 0.000000
+                "Wind speed" 3.000000 -4.000000 0.000000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ GeParticleSystem_5
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "GeParticleSystem_5"
+{
+    [GameElement] "GeParticleSystem_5"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" -50.000000 60.000000 115.000000
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 0
+    "enable fog" 0
+    "sorting offset" 3.000000
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 1
+        "Max. Particles" 100
+        "Emitter Speed" 100.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+                "maskname" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+            }
+
+            "Blend Src" 1
+            "Blend Dest" 1
+            "row count" 1
+            "column count" 1
+            "frames count" 1
+            "Z Write" 0
+            "Z Test" 1
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 1
+            class type: "class BoxEmitter"
+            [Box Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "Size" 15.000000 12.000000 15.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 1.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 0.104720
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 4.000000
+                "Variance" 2.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 1.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 0.992157 0.890196 0.192157 1.000000
+        "End Color" 0.760784 0.172549 0.086275 1.000000
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 1.500000
+            }
+
+        }
+
+        "Actions Count" 4
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 1.000000
+            }
+
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 0.000000
+            }
+
+            "Action Type" 1
+            class type: "class ParticleActionFadeIn"
+            [Fade In] "Fade In"
+            {
+                "time" 1.000000
+            }
+
+            "Action Type" 3
+            class type: "class ParticleActionHeightWind"
+            [Height Wind] "Height Wind"
+            {
+                "Start height" 0.000000
+                "Wind speed" 0.000000 -15.000000 0.000000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ GeParticleSystem_6
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "GeParticleSystem_6"
+{
+    [GameElement] "GeParticleSystem_6"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" -50.000000 67.592194 115.000000
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 2
+    "enable fog" 1
+    "sorting offset" 0.000000
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 1
+        "Max. Particles" 15
+        "Emitter Speed" 20.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+                "maskname" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+            }
+
+            "Blend Src" 1
+            "Blend Dest" 1
+            "row count" 1
+            "column count" 1
+            "frames count" 1
+            "Z Write" 0
+            "Z Test" 1
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 1
+            class type: "class BoxEmitter"
+            [Box Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "Size" 20.000000 30.000000 20.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 1.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 0.104720
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 1.000000
+                "Variance" 1.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 1.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 0.992157 0.890196 0.192157 1.000000
+        "End Color" 0.760784 0.172549 0.086275 1.000000
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.800000
+            }
+
+        }
+
+        "Actions Count" 4
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 1.000000
+            }
+
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 0.000000
+            }
+
+            "Action Type" 1
+            class type: "class ParticleActionFadeIn"
+            [Fade In] "Fade In"
+            {
+                "time" 1.000000
+            }
+
+            "Action Type" 3
+            class type: "class ParticleActionHeightWind"
+            [Height Wind] "Height Wind"
+            {
+                "Start height" 0.000000
+                "Wind speed" 0.000000 0.000000 0.000000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ RotatedBoxArea_7
+DYNAMIC OBJECT START
+class type: "class RotatedBoxArea"
+[RotatedBoxArea] "RotatedBoxArea_7"
+{
+    [GameElement] "RotatedBoxArea_7"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "position" 77.566307 4.481082 -28.105415
+    "rotation" 0.577190 0.029235 0.813541 -0.064406
+    "size" 35.000000 35.000000 4.000000
+    "trigger" 0
+    "message" "start"
+    "parameters" ""
+}
+
+# ------------------------------------------------ PowerUpElement_9
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_9"
+{
+    [GameElement] "PowerUpElement_9"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 220.400940 0.667852 -48.340130
+    "Start Rotation" -0.784826 0.000000 -0.619715 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_10
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_10"
+{
+    [GameElement] "PowerUpElement_10"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 222.283600 0.667852 -46.860294
+    "Start Rotation" -0.966746 0.000000 0.255730 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_11
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_11"
+{
+    [GameElement] "PowerUpElement_11"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 224.213684 0.667852 -45.065487
+    "Start Rotation" 0.777029 0.000000 0.629464 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_12
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_12"
+{
+    [GameElement] "PowerUpElement_12"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 226.254425 0.667852 -43.431011
+    "Start Rotation" 0.258744 0.000000 -0.965939 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_13
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_13"
+{
+    [GameElement] "PowerUpElement_13"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 350.918732 0.691126 -142.907730
+    "Start Rotation" 0.074614 0.000000 -0.997204 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_14
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_14"
+{
+    [GameElement] "PowerUpElement_14"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 348.376587 0.691126 -141.768372
+    "Start Rotation" -0.720315 0.000000 -0.693646 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_15
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_15"
+{
+    [GameElement] "PowerUpElement_15"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 345.911438 0.691126 -140.566483
+    "Start Rotation" 0.959825 0.000000 0.280586 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_16
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_16"
+{
+    [GameElement] "PowerUpElement_16"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 353.531677 0.691126 -144.337769
+    "Start Rotation" 0.527147 0.000000 0.849772 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_17
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_17"
+{
+    [GameElement] "PowerUpElement_17"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 280.866760 1.075508 77.903145
+    "Start Rotation" 0.482262 0.000000 -0.876026 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_18
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_18"
+{
+    [GameElement] "PowerUpElement_18"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 277.768829 1.075508 77.903145
+    "Start Rotation" -0.240554 0.000000 0.970634 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_19
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_19"
+{
+    [GameElement] "PowerUpElement_19"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 274.743103 1.075508 77.903145
+    "Start Rotation" 0.999992 0.000000 0.003462 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_20
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_20"
+{
+    [GameElement] "PowerUpElement_20"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 283.837860 1.075508 77.903145
+    "Start Rotation" 0.454194 0.000000 -0.890899 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_21
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_21"
+{
+    [GameElement] "PowerUpElement_21"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 232.778015 3.248266 176.362167
+    "Start Rotation" 0.534718 0.000000 -0.845030 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_22
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_22"
+{
+    [GameElement] "PowerUpElement_22"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 200.243317 1.428772 229.878540
+    "Start Rotation" 0.958786 0.000000 0.284120 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_23
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_23"
+{
+    [GameElement] "PowerUpElement_23"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 199.367111 1.428772 225.027054
+    "Start Rotation" -0.801563 0.000000 0.597899 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_24
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_24"
+{
+    [GameElement] "PowerUpElement_24"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 199.000702 1.428772 222.521118
+    "Start Rotation" -0.461526 0.000000 -0.887126 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_25
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_25"
+{
+    [GameElement] "PowerUpElement_25"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 199.875259 1.428772 227.589142
+    "Start Rotation" -0.559766 0.000000 -0.828648 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_26
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_26"
+{
+    [GameElement] "PowerUpElement_26"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -356.913330 0.771190 172.932892
+    "Start Rotation" 0.258260 0.000000 0.966072 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_27
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_27"
+{
+    [GameElement] "PowerUpElement_27"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -360.063568 0.771190 172.308304
+    "Start Rotation" -0.317025 0.000000 -0.948416 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_28
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_28"
+{
+    [GameElement] "PowerUpElement_28"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -363.736725 0.771190 171.412521
+    "Start Rotation" 0.782303 0.000000 0.622897 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_29
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_29"
+{
+    [GameElement] "PowerUpElement_29"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -354.239349 0.771190 173.322220
+    "Start Rotation" 0.657025 0.000000 -0.753867 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_30
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_30"
+{
+    [GameElement] "PowerUpElement_30"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -198.721970 1.036748 49.850643
+    "Start Rotation" 0.788247 0.000000 0.615359 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_31
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_31"
+{
+    [GameElement] "PowerUpElement_31"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -196.044998 1.036748 49.260052
+    "Start Rotation" -0.437236 0.000000 -0.899344 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_32
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_32"
+{
+    [GameElement] "PowerUpElement_32"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -193.316437 1.036748 48.457832
+    "Start Rotation" -0.097214 0.000000 0.995265 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_33
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_33"
+{
+    [GameElement] "PowerUpElement_33"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -201.079269 1.036748 50.635452
+    "Start Rotation" -0.940129 0.000000 -0.340822 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_34
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_34"
+{
+    [GameElement] "PowerUpElement_34"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -251.891373 3.630892 -29.243097
+    "Start Rotation" -0.942993 0.000000 -0.332804 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_35
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_35"
+{
+    [GameElement] "PowerUpElement_35"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -251.100586 3.630892 -26.027424
+    "Start Rotation" 0.999629 0.000000 0.027110 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_36
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_36"
+{
+    [GameElement] "PowerUpElement_36"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -250.287430 3.630892 -20.109015
+    "Start Rotation" -0.869060 0.000000 -0.494704 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_37
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_37"
+{
+    [GameElement] "PowerUpElement_37"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -250.533524 3.630892 -23.108948
+    "Start Rotation" -0.551039 0.000000 -0.834473 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_38
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_38"
+{
+    [GameElement] "PowerUpElement_38"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -5.054782 3.842887 -256.757080
+    "Start Rotation" 0.999972 0.000000 0.007747 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_39
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_39"
+{
+    [GameElement] "PowerUpElement_39"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -4.400587 3.842887 -254.067307
+    "Start Rotation" -0.036658 0.000000 0.999325 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_40
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_40"
+{
+    [GameElement] "PowerUpElement_40"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -3.796242 3.842887 -251.409714
+    "Start Rotation" 0.796032 0.000000 0.605252 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_41
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_41"
+{
+    [GameElement] "PowerUpElement_41"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" -5.502258 3.842887 -259.058441
+    "Start Rotation" -0.907842 0.000000 0.419313 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_42
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_42"
+{
+    [GameElement] "PowerUpElement_42"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 124.726036 -2.560360 -147.040375
+    "Start Rotation" 0.088285 0.000000 0.996092 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_43
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_43"
+{
+    [GameElement] "PowerUpElement_43"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 126.001625 -2.560360 -149.143509
+    "Start Rotation" 0.655094 0.000000 -0.755544 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_44
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_44"
+{
+    [GameElement] "PowerUpElement_44"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 127.271248 -2.560360 -151.141739
+    "Start Rotation" -0.601057 0.000000 0.799205 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_45
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_45"
+{
+    [GameElement] "PowerUpElement_45"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 123.194214 -2.560360 -144.965744
+    "Start Rotation" -0.488406 0.000000 0.872616 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_46
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_46"
+{
+    [GameElement] "PowerUpElement_46"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 133.538483 8.819412 -43.257381
+    "Start Rotation" -0.977021 0.000000 -0.213145 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_47
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_47"
+{
+    [GameElement] "PowerUpElement_47"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 131.745590 8.819412 -45.501858
+    "Start Rotation" 0.835197 0.000000 -0.549945 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_48
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_48"
+{
+    [GameElement] "PowerUpElement_48"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 130.344223 9.331530 -47.759686
+    "Start Rotation" -0.995617 0.000000 0.093528 0.000000
+}
+
+# ------------------------------------------------ PowerUpElement_49
+DYNAMIC OBJECT START
+class type: "class PowerUpElement"
+[PowerUpElement] "PowerUpElement_49"
+{
+    [GameElement] "PowerUpElement_49"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Start Position" 134.906891 8.819412 -41.293941
+    "Start Rotation" -0.846494 0.000000 -0.532399 0.000000
+}
+
+# ------------------------------------------------ RigidBodyElement_50
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_50"
+{
+    [GameElement] "RigidBodyElement_50"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 4
+    "position" 278.677521 0.012118 -91.395027
+    "rotation" 1.000000 -0.000451 -0.000008 -0.000159
+}
+
+# ------------------------------------------------ RigidBodyElement_51
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_51"
+{
+    [GameElement] "RigidBodyElement_51"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 4
+    "position" 294.282715 0.110542 -91.163895
+    "rotation" 1.000000 -0.000000 0.000000 -0.000000
+}
+
+# ------------------------------------------------ RigidBodyElement_52
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_52"
+{
+    [GameElement] "RigidBodyElement_52"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 4
+    "position" 284.504456 0.106764 -87.264221
+    "rotation" 1.000000 -0.000183 0.000002 0.000257
+}
+
+# ------------------------------------------------ RigidBodyElement_53
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_53"
+{
+    [GameElement] "RigidBodyElement_53"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 4
+    "position" 304.182709 0.174166 -87.934113
+    "rotation" 1.000000 0.000000 0.000000 -0.000000
+}
+
+# ------------------------------------------------ RigidBodyElement_54
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_54"
+{
+    [GameElement] "RigidBodyElement_54"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 2
+    "position" 223.987747 0.510691 189.390656
+    "rotation" 0.999934 0.005537 0.001451 -0.010006
+}
+
+# ------------------------------------------------ RigidBodyElement_55
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_55"
+{
+    [GameElement] "RigidBodyElement_55"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 2
+    "position" 215.065506 0.514827 192.637451
+    "rotation" 0.999953 0.007416 0.001489 -0.006104
+}
+
+# ------------------------------------------------ RigidBodyElement_56
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_56"
+{
+    [GameElement] "RigidBodyElement_56"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 2
+    "position" 224.520081 0.511557 190.878784
+    "rotation" 0.999934 0.005534 0.001450 -0.010004
+}
+
+# ------------------------------------------------ RigidBodyElement_57
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_57"
+{
+    [GameElement] "RigidBodyElement_57"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 2
+    "position" 225.399170 0.497052 188.206100
+    "rotation" 1.000000 0.000177 -0.000003 -0.000264
+}
+
+# ------------------------------------------------ RigidBodyElement_58
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_58"
+{
+    [GameElement] "RigidBodyElement_58"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 2
+    "position" 215.453156 0.514823 191.704025
+    "rotation" 0.999953 0.007436 0.001490 -0.006109
+}
+
+# ------------------------------------------------ RigidBodyElement_59
+DYNAMIC OBJECT START
+class type: "class RigidBodyElement"
+[RigidBodyElement] "RigidBodyElement_59"
+{
+    [GameElement] "RigidBodyElement_59"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "type" 2
+    "position" 214.572433 0.514822 191.839951
+    "rotation" 0.999953 0.007440 0.001493 -0.006096
+}
+
+# ------------------------------------------------ RotatedBoxArea_59
+DYNAMIC OBJECT START
+class type: "class RotatedBoxArea"
+[RotatedBoxArea] "RotatedBoxArea_59"
+{
+    [GameElement] "RotatedBoxArea_59"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "position" 67.022255 3.599175 -2.361955
+    "rotation" 0.967985 0.000000 0.251008 0.000000
+    "size" 10.000000 10.000000 1.000000
+    "trigger" 0
+    "message" "respawn"
+    "parameters" "67 0.7 -2.3 -56"
+}
+
+# ------------------------------------------------ RotatedBoxArea_63
+DYNAMIC OBJECT START
+class type: "class RotatedBoxArea"
+[RotatedBoxArea] "RotatedBoxArea_63"
+{
+    [GameElement] "RotatedBoxArea_63"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "position" 286.583588 3.990384 -88.316833
+    "rotation" 0.706586 0.000000 -0.707628 0.000000
+    "size" 15.000000 10.000000 1.000000
+    "trigger" 0
+    "message" "respawn"
+    "parameters" "286 0.3 -90 2"
+}
+
+# ------------------------------------------------ AnimatedClumpElement_60
+DYNAMIC OBJECT START
+class type: "class AnimatedClumpElement"
+[AnimatedClumpElement] "AnimatedClumpElement_60"
+{
+    "alpha clip" 0
+    class type: "class AnimatedClump"
+    [Clump] "clump"
+    {
+        "geometry" "<LP>Objects\Brachio.dff"
+        "textures" "<LP><TP>"
+        "loading hack" 0
+        "Position" 0.000000 0.000000 0.000000
+        "Orientation" 1.000000 0.000000 0.000000 0.000000
+        "Scale" 1.000000 1.000000 1.000000
+    }
+
+    "anim count" 1
+    "animation 00" "<LP>Objects\Brachio_1motion.anm"
+    "start animation" 0
+    "animation mode" 3
+    "animation speed" 1.000000
+    "Actions Count" 0
+    "Create" 0
+}
+
+# ------------------------------------------------ AnimatedClumpElement_61
+DYNAMIC OBJECT START
+class type: "class AnimatedClumpElement"
+[AnimatedClumpElement] "AnimatedClumpElement_61"
+{
+    "alpha clip" 0
+    class type: "class AnimatedClump"
+    [Clump] "clump"
+    {
+        "geometry" "<LP>Objects\Brachio.dff"
+        "textures" "<LP><TP>"
+        "loading hack" 0
+        "Position" 0.000000 0.000000 0.000000
+        "Orientation" 1.000000 0.000000 0.000000 0.000000
+        "Scale" 1.000000 1.000000 1.000000
+    }
+
+    "anim count" 1
+    "animation 00" "<LP>Objects\Brachio_2motion.anm"
+    "start animation" 0
+    "animation mode" 3
+    "animation speed" 1.000000
+    "Actions Count" 0
+    "Create" 0
+}
+
+# ------------------------------------------------ AnimatedClumpElement_62
+DYNAMIC OBJECT START
+class type: "class AnimatedClumpElement"
+[AnimatedClumpElement] "AnimatedClumpElement_62"
+{
+    "alpha clip" 0
+    class type: "class AnimatedClump"
+    [Clump] "clump"
+    {
+        "geometry" "<LP>Objects\Brachio.dff"
+        "textures" "<LP><TP>"
+        "loading hack" 0
+        "Position" 0.000000 0.000000 0.000000
+        "Orientation" 1.000000 0.000000 0.000000 0.000000
+        "Scale" 1.000000 1.000000 1.000000
+    }
+
+    "anim count" 1
+    "animation 00" "<LP>Objects\Brachio_3motion.anm"
+    "start animation" 0
+    "animation mode" 3
+    "animation speed" 1.000000
+    "Actions Count" 0
+    "Create" 0
+}
+
+# ------------------------------------------------ groundparticles_1_0
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "groundparticles_1_0"
+{
+    [GameElement] "groundparticles_1_0"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" -83.629654 10.032204 36.138306
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 0
+    "enable fog" 1
+    "sorting offset" 0.000000
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 0
+        "Max. Particles" 35
+        "Emitter Speed" 30.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+                "maskname" "data\MK2\Items\<TP>\Rauch_Partikel.bmp"
+            }
+
+            "Blend Src" 4
+            "Blend Dest" 5
+            "row count" 1
+            "column count" 1
+            "frames count" 1
+            "Z Write" 0
+            "Z Test" 1
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 2.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 4.363323
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.300000
+                "Variance" 0.200000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 1.500000
+                "Variance" 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 0.874510 0.788235 0.435294 0.682927
+        "End Color" 0.890196 0.803922 0.501961 0.536585
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 1.000000
+            }
+
+        }
+
+        "Actions Count" 2
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 1.000000
+            }
+
+            "Action Type" 1
+            class type: "class ParticleActionFadeIn"
+            [Fade In] "Fade In"
+            {
+                "time" 1.000000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ groundparticles_999_0
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "groundparticles_999_0"
+{
+    [GameElement] "groundparticles_999_0"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" -56.074821 4.083978 208.609344
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 0
+    "enable fog" 0
+    "sorting offset" 0.000000
+    "alpha clip" 0
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 0
+        "Max. Particles" 300
+        "Emitter Speed" 20000.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\spark.bmp"
+                "maskname" "data\MK2\Items\<TP>\spark_alpha.bmp"
+            }
+
+            "Blend Src" 2
+            "Blend Dest" 1
+            "row count" 4
+            "column count" 4
+            "frames count" 16
+            "Z Write" 1
+            "Z Test" 0
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "radius" 0.100000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 2.000000 0.000000
+                "radius" 2.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 2.000000 0.000000
+                "radius" 2.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 10.471974
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 52.359875
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.045000
+                "Variance" 0.030000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.080000
+                "Variance" 0.050000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 1.000000 1.000000 0.976471 1.000000
+        "End Color" 0.901961 0.725490 0.125490 0.560976
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.500000
+            }
+
+        }
+
+        "Actions Count" 1
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 0.050000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ slime
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "slime"
+{
+    [GameElement] "slime"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" 0.000000 0.000000 0.000000
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 0
+    "enable fog" 0
+    "sorting offset" 2.000000
+    "alpha clip" 10
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 0
+        "Max. Particles" 35
+        "Emitter Speed" 40000.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\slimparticle.bmp"
+                "maskname" "data\MK2\Items\<TP>\slimparticle_alpha.bmp"
+            }
+
+            "Blend Src" 4
+            "Blend Dest" 5
+            "row count" 1
+            "column count" 1
+            "frames count" 1
+            "Z Write" 0
+            "Z Test" 1
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "radius" 0.300000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "radius" 5.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 1.000000 0.000000
+                "radius" 3.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 2.617994
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 2.094395
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 3.000000
+                "Variance" 1.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.200000
+                "Variance" 0.200000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 1.000000 1.000000 1.000000 0.756098
+        "End Color" 1.000000 1.000000 1.000000 0.000000
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.500000
+                "Variance" 0.200000
+            }
+
+        }
+
+        "Actions Count" 2
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 0.500000
+            }
+
+            "Action Type" 1
+            class type: "class ParticleActionFadeIn"
+            [Fade In] "Fade In"
+            {
+                "time" 0.500000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ explosion1
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "explosion1"
+{
+    [GameElement] "explosion1"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" 0.000000 0.000000 0.000000
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 0
+    "enable fog" 0
+    "sorting offset" 2.000000
+    "alpha clip" 0
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 0
+        "Max. Particles" 80
+        "Emitter Speed" 80.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\spark.bmp"
+                "maskname" "data\MK2\Items\<TP>\spark_alpha.bmp"
+            }
+
+            "Blend Src" 1
+            "Blend Dest" 1
+            "row count" 4
+            "column count" 4
+            "frames count" 16
+            "Z Write" 0
+            "Z Test" 1
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "radius" 0.800000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "radius" 8.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 10.471974
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 52.359875
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.070000
+                "Variance" 0.030000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.420000
+                "Variance" 0.490000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 1.000000 1.000000 0.976471 1.000000
+        "End Color" 0.901961 0.725490 0.125490 0.560976
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.300000
+                "Variance" 0.100000
+            }
+
+        }
+
+        "Actions Count" 1
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 0.050000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ explosion2
+DYNAMIC OBJECT START
+class type: "class GeParticleSystem"
+[GeParticleSystem] "explosion2"
+{
+    [GameElement] "explosion2"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "Base Position" 0.000000 0.000000 0.000000
+    "Base Rotation" 1.000000 0.000000 0.000000 0.000000
+    "quality" 0
+    "enable fog" 0
+    "sorting offset" 2.000000
+    "alpha clip" 0
+    class type: "class ParticleSystem"
+    [Particle System] "particle system"
+    {
+        "Automatic generate particles" 0
+        "Max. Particles" 140
+        "Emitter Speed" 140.000000
+        class type: "class BillboardParticleFactory"
+        [Billboard Particle Factory] "Particle Factory"
+        {
+            class type: "class Texture"
+            [Texture] "texture"
+            {
+                "filename" "data\MK2\Items\<TP>\explos.bmp"
+                "maskname" "data\MK2\Items\<TP>\explos_alpha.bmp"
+            }
+
+            "Blend Src" 2
+            "Blend Dest" 1
+            "row count" 1
+            "column count" 1
+            "frames count" 1
+            "Z Write" 0
+            "Z Test" 1
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Position"
+        {
+            "Type" 2
+            class type: "class SphereEmitter"
+            [Sphere Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+                "radius" 1.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Velocity"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericVectorEmitter"
+        [Emitter] "Acceleration"
+        {
+            "Type" 0
+            class type: "class PointEmitter"
+            [Point Emitter] ""
+            {
+                "Position" 0.000000 0.000000 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Angle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 0.698132
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "DeltaAngle"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.000000
+                "Variance" 0.000000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.500000
+                "Variance" 0.090000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Delta Size"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.120000
+                "Variance" 0.090000
+            }
+
+        }
+
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Anim Speed"
+        {
+            "Type" 0
+            class type: "class ConstantEmitter"
+            [Constant Emitter] ""
+            {
+                "Value" 0.000000
+            }
+
+        }
+
+        "Start Color" 1.000000 1.000000 0.976471 1.000000
+        "End Color" 0.901961 0.725490 0.125490 0.000000
+        class type: "class GenericFloatEmitter"
+        [Emitter] "Life Time"
+        {
+            "Type" 1
+            class type: "class LinearEmitter"
+            [Linear Emitter] ""
+            {
+                "Base Value" 0.300000
+                "Variance" 0.100000
+            }
+
+        }
+
+        "Actions Count" 1
+        [Actions] ""
+        {
+            "Action Type" 2
+            class type: "class ParticleActionFadeOut"
+            [Fade Out] "Fade Out"
+            {
+                "time" 0.500000
+            }
+
+            "Create" 0
+            "Delete" 0
+        }
+
+        "Reset" 0
+    }
+
+}
+
+# ------------------------------------------------ RotatedBoxArea_68
+DYNAMIC OBJECT START
+class type: "class RotatedBoxArea"
+[RotatedBoxArea] "RotatedBoxArea_68"
+{
+    [GameElement] "RotatedBoxArea_68"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "position" -351.833374 3.444689 192.437210
+    "rotation" 0.875676 0.000000 0.482899 0.000000
+    "size" 50.000000 10.000000 80.000000
+    "trigger" 2
+    "message" "speed limit"
+    "parameters" "15"
+}
+
+# ------------------------------------------------ RotatedBoxArea_69
+DYNAMIC OBJECT START
+class type: "class RotatedBoxArea"
+[RotatedBoxArea] "RotatedBoxArea_69"
+{
+    [GameElement] "RotatedBoxArea_69"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "position" -336.973907 2.995717 43.834908
+    "rotation" -0.103384 -0.672093 -0.029783 -0.732608
+    "size" 30.000000 10.000000 50.000000
+    "trigger" 2
+    "message" "speed limit"
+    "parameters" "15"
+}
+
+# ------------------------------------------------ RotatedBoxArea_216
+DYNAMIC OBJECT START
+class type: "class RotatedBoxArea"
+[RotatedBoxArea] "RotatedBoxArea_216"
+{
+    [GameElement] "RotatedBoxArea_216"
+    {
+        "Enabled" 1
+        "Visible" 1
+        "group" 0
+        "displayDistance" 0
+    }
+
+    "position" 32.819080 4.248118 -2.442829
+    "rotation" 1.000000 0.000000 0.000000 0.000000
+    "size" 30.000000 10.000000 60.000000
+    "trigger" 2
+    "message" "speed limit"
+    "parameters" "20"
+}
+
+# ------------------------------------------------ SfxJungle1
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxJungle1"
+{
+    "position" 270.814209 3.116280 -52.343742
+    "eventName" "LEV_01"
+}
+
+# ------------------------------------------------ SfxWater1
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater1"
+{
+    "position" -4.652838 7.280111 -253.740982
+    "eventName" "LEV_02"
+}
+
+# ------------------------------------------------ SfxWater2
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater2"
+{
+    "position" -61.403851 7.280111 -213.206161
+    "eventName" "LEV_03"
+}
+
+# ------------------------------------------------ SfxWater3
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater3"
+{
+    "position" -80.742264 7.280111 -157.891296
+    "eventName" "LEV_02"
+}
+
+# ------------------------------------------------ SfxWater4
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater4"
+{
+    "position" -381.695923 -0.840856 29.693018
+    "eventName" "LEV_04"
+}
+
+# ------------------------------------------------ SfxWater5
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater5"
+{
+    "position" -240.950500 -0.840856 118.215385
+    "eventName" "LEV_02"
+}
+
+# ------------------------------------------------ SfxWater6
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater6"
+{
+    "position" -401.021667 -0.840856 122.116470
+    "eventName" "LEV_03"
+}
+
+# ------------------------------------------------ SfxWater7
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater7"
+{
+    "position" -125.685837 -1.010274 291.041229
+    "eventName" "LEV_02"
+}
+
+# ------------------------------------------------ SfxWater8
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "SfxWater8"
+{
+    "position" -21.920963 -1.352742 270.037384
+    "eventName" "LEV_02"
+}
+
+# ------------------------------------------------ Sfx_Waterfall
+DYNAMIC OBJECT START
+class type: "class SfxElement"
+[SfxElement] "Sfx_Waterfall"
+{
+    "position" 111.982109 11.226457 -142.691330
+    "eventName" "LEV_05"
+}
+

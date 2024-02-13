@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Texts>
+    <Take id="100">
+		<De>Moorhuhn</De>
+		<En>Moorhuhn</En>
+		<Fr>Moorhuhn</Fr>
+		<Sp>Moorhuhn</Sp>
+		<It>Moorhuhn</It>
+		<Ru>Moorhuhn</Ru>
+    </Take>
+    <Take id="200">
+		<De>Affe</De>
+		<En>Affe</En>
+		<Fr>Affe</Fr>
+		<Sp>Affe</Sp>
+		<It>Affe</It>
+		<Ru>Affe</Ru>
+    </Take>
+    <Take id="300">
+		<De>Alien</De>
+		<En>Alien</En>
+		<Fr>Alien</Fr>
+		<Sp>Alien</Sp>
+		<It>Alien</It>
+		<Ru>Alien</Ru>
+    </Take>
+    <Take id="400">
+		<De>Kröt</De>
+		<En>Kröt</En>
+		<Fr>Kröt</Fr>
+		<Sp>Kröt</Sp>
+		<It>Kröt</It>
+		<Ru>Kröt</Ru>
+    </Take>
+    <Take id="500">
+		<De>Pumpkin</De>
+		<En>Pumpkin</En>
+		<Fr>Pumpkin</Fr>
+		<Sp>Pumpkin</Sp>
+		<It>Pumpkin</It>
+		<Ru>Pumpkin</Ru>
+    </Take>
+    <Take id="600">
+		<De>Tod</De>
+		<En>Tod</En>
+		<Fr>Tod</Fr>
+		<Sp>Tod</Sp>
+		<It>Tod</It>
+		<Ru>Tod</Ru>
+    </Take>
+	<Take id="1000">
+		<De>Kolo</De>
+		<En>Lap</En>
+		<Fr>Tour</Fr>
+		<Sp>Vuelta</Sp>
+		<It>Giro</It>
+		<Ru>Lap</Ru>
+	</Take>    
+	<Take id="1001">
+		<De>Pozícia</De>
+		<En>Position</En>
+		<Fr>Position</Fr>
+		<Sp>Posición</Sp>
+		<It>Posizione</It>
+		<Ru>Position</Ru>
+	</Take>
+	<Take id="1002">
+		<De>Cas</De>
+		<En>Time</En>
+		<Fr>Temps</Fr>
+		<Sp>Tiempo</Sp>
+		<It>Tempo</It>
+		<Ru>Time</Ru>
+	</Take>
+	<Take id="1003">
+		<De>Najlepsí cas</De>
+		<En>Best Lap</En>
+		<Fr>Meilleur tour</Fr>
+		<Sp>Mejor vuelta</Sp>
+		<It>Giro migliore</It>
+		<Ru>Best Lap</Ru>
+	</Take>
+	<Take id="1004">
+		<De>Celkový cas</De>
+		<En>Total Time</En>
+		<Fr>Temps total</Fr>
+		<Sp>Tiempo total</Sp>
+		<It>Tempo totale</It>
+		<Ru>Total Time</Ru>
+	</Take>
+	<Take id="1005">
+		<De>Skóre</De>
+		<En>Score</En>
+		<Fr>Score</Fr>
+		<Sp>Puntos</Sp>
+		<It>Punti</It>
+		<Ru>Score</Ru>
+	</Take>
+	<Take id="1006">
+		<De>Energia</De>
+		<En>Energy</En>
+		<Fr>Énergie</Fr>
+		<Sp>Energía</Sp>
+		<It>Energia</It>
+		<Ru>Energy</Ru>
+	</Take>
+	<Take id="1007">
+		<De>Body</De>
+		<En>Score</En>
+		<Fr>Score</Fr>
+		<Sp>Puntos</Sp>
+		<It>Punti</It>
+		<Ru>Score</Ru>
+	</Take>
+	<Take id="1008">
+		<De>Rank</De>
+		<En>Rank</En>
+		<Fr>Place</Fr>
+		<Sp>Clasificación</Sp>
+		<It>Posizione</It>
+		<Ru>Rank</Ru>
+	</Take>
+	<Take id="1009">
+		<De>Meno</De>
+		<En>Name</En>
+		<Fr>Nom</Fr>
+		<Sp>Nombre</Sp>
+		<It>Nome</It>
+		<Ru>Name</Ru>
+	</Take>
+	<Take id="1010">
+		<De>Casy kôl</De>
+		<En>Lap Times</En>
+		<Fr>Temps au tour</Fr>
+		<Sp>Tiempos de vuelta</Sp>
+		<It>Tempi sul giro</It>
+		<Ru>Rundenzeiten</Ru>
+	</Take>
+	
+	<Take id="1020">
+		<De>Sampionát 1 - Prvé výsledky</De>
+		<En>Championship 1 - First Results</En>
+		<Fr>Championnat 1 - Premiers résultats</Fr>
+		<Sp>Campeonato 1: Primeros resultados</Sp>
+		<It>Campionato 1 - Risultati parziali</It>
+		<Ru>Championship 1 - Zwischenstand</Ru>
+	</Take>
+	<Take id="1021">
+		<De>Sampionát 1 - Záverecné výsledky</De>
+		<En>Championship 1 - Final Results</En>
+		<Fr>Championnat 1 - Résultats définitifs</Fr>
+		<Sp>Campeonato 1: Resultados finales</Sp>
+		<It>Campionato 1 - Risultati finali</It>
+		<Ru>Championship 1 - Endergebnisse</Ru>
+	</Take>
+	<Take id="1030">
+		<De>Sampionát 2 - Záverecné výsledky</De>
+		<En>Championship 2 - First Results</En>
+		<Fr>Championnat 2 - Premiers résultats</Fr>
+		<Sp>Campeonato 2: Primeros resultados</Sp>
+		<It>Campionato 2 - Risultati parziali</It>
+		<Ru>Championship 2 - Zwischenstand</Ru>
+	</Take>
+	<Take id="1031">
+		<De>Sampionát 2 - Záverecné výsledky</De>
+		<En>Championship 2 - Final Results</En>
+		<Fr>Championnat 2 - Résultats définitifs</Fr>
+		<Sp>Campeonato 2: Resultados finales</Sp>
+		<It>Campionato 2 - Risultati finali</It>
+		<Ru>Championship 2 - Endergebnisse</Ru>
+	</Take>
+	<Take id="1040">
+		<De>Výsledky</De>
+		<En>Results</En>
+		<Fr>Résultats</Fr>
+		<Sp>Resultados</Sp>
+		<It>Risultati</It>
+		<Ru>Ergebnisse</Ru>
+	</Take>
+	<Take id="2000">
+		<De>OK</De>
+		<En>OK</En>
+		<Fr>Ok</Fr>
+		<Sp>Aceptar</Sp>
+		<It>OK</It>
+		<Ru>Ok</Ru>
+	</Take>
+	<Take id="2001">
+		<De>Zrusit</De>
+		<En>Cancel</En>
+		<Fr>Annuler</Fr>
+		<Sp>Cancelar</Sp>
+		<It>Annulla</It>
+		<Ru>Cancel</Ru>
+	</Take>
+	<Take id="2002">
+		<De>Pokracovat</De>
+		<En>Continue</En>
+		<Fr>Continuer</Fr>
+		<Sp>Continuar</Sp>
+		<It>Continua</It>
+		<Ru>Continue</Ru>
+	</Take>
+	<Take id="2003">
+		<De>Znovu</De>
+		<En>Retry</En>
+		<Fr>Réessayer</Fr>
+		<Sp>Reintentar</Sp>
+		<It>Riprova</It>
+		<Ru>Try Again</Ru>
+	</Take>
+	<Take id="2004">
+		<De>Áno</De>
+		<En>Yes</En>
+		<Fr>Oui</Fr>
+		<Sp>Sí</Sp>
+		<It>Sì</It>
+		<Ru>Да</Ru>
+	</Take>
+	<Take id="2005">
+		<De>Nie</De>
+		<En>No</En>
+		<Fr>Non</Fr>
+		<Sp>No</Sp>
+		<It>No</It>
+		<Ru>Нет</Ru>
+	</Take>
+	<Take id="2010">
+		<De>Pauza</De>
+		<En>Pause</En>
+		<Fr>Pause</Fr>
+		<Sp>Pausa</Sp>
+		<It>Pausa</It>
+		<Ru>Pause</Ru>
+	</Take>
+	<Take id="3000">
+		<De>Dinosaury</De>
+		<En>Steinzeit</En>
+		<Fr>Steinzeit</Fr>
+		<Sp>Steinzeit</Sp>
+		<It>Steinzeit</It>
+		<Ru>Steinzeit</Ru>
+	</Take>
+	<Take id="3100">
+		<De>Pirátsky Ostrov</De>
+		<En>Pirateninsel</En>
+		<Fr>Pirateninsel</Fr>
+		<Sp>Pirateninsel</Sp>
+		<It>Pirateninsel</It>
+		<Ru>Pirateninsel</Ru>
+	</Take>
+	<Take id="3200">
+		<De>Rím</De>
+		<En>Rom</En>
+		<Fr>Rom</Fr>
+		<Sp>Rom</Sp>
+		<It>Rom</It>
+		<Ru>Rom</Ru>
+	</Take>
+	<Take id="3300">
+		<De>Robin Hood</De>
+		<En>Robin Hood</En>
+		<Fr>Robin Hood</Fr>
+		<Sp>Robin Hood</Sp>
+		<It>Robin Hood</It>
+		<Ru>Robin Hood</Ru>
+	</Take>
+	<Take id="3400">
+		<De>Egypt</De>
+		<En>Ägypten</En>
+		<Fr>Ägypten</Fr>
+		<Sp>Ägypten</Sp>
+		<It>Ägypten</It>
+		<Ru>Ägypten</Ru>
+	</Take>
+	<Take id="3500">
+		<De>Divoký Západ</De>
+		<En>Wilder Westen</En>
+		<Fr>Wilder Westen</Fr>
+		<Sp>Wilder Westen</Sp>
+		<It>Wilder Westen</It>
+		<Ru>Wilder Westen</Ru>
+	</Take>
+	<Take id="3600">
+		<De>Ufo</De>
+		<En>Ufo</En>
+		<Fr>Ufo</Fr>
+		<Sp>Ufo</Sp>
+		<It>Ufo</It>
+		<Ru>Ufo</Ru>
+	</Take>
+	<Take id="3700">
+		<De>Shimalája</De>
+		<En>Shlimalaya</En>
+		<Fr>Shlimalaya</Fr>
+		<Sp>Shlimalaya</Sp>
+		<It>Shlimalaya</It>
+		<Ru>Shlimalaya</Ru>
+	</Take>
+	<Take id="4000">
+		<De>Gratujeme!</De>
+		<En>Congratulations!</En>
+		<Fr>Félicitations !</Fr>
+		<Sp>¡Felicidades!</Sp>
+		<It>Congratulazioni!</It>
+		<Ru>Congratulations!</Ru>
+	</Take>
+	<Take id="4001">
+		<De>Prosím napíste svoje meno:</De>
+		<En>Please enter your name:</En>
+		<Fr>Entrez votre nom :</Fr>
+		<Sp>Escribe tu nombre:</Sp>
+		<It>Inserisci il tuo nome:</It>
+		<Ru>Bitte gib deinen Namen ein:</Ru>
+	</Take>	
+	<Take id="4010">
+		<De>Dosiahli ste rank 1 v najlepsom skóre.</De>
+		<En>You reached rank 1 in the high-scores.</En>
+		<Fr>Vous occupez la 1ère place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 1º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 1 in classifica.</It>
+		<Ru>Du hast den 1. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4011">
+		<De>Dosiahli ste rank 2 v najlepsom skóre.</De>
+		<En>You reached rank 2 in the high-scores.</En>
+		<Fr>Vous occupez la 2e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 2º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 2 in classifica.</It>
+		<Ru>Du hast den 2. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4012">
+		<De>Dosiahli ste rank 3 v najlepsom skóre.</De>
+		<En>You reached rank 3 in the high-scores.</En>
+		<Fr>Vous occupez la 3e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 3º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 3 in classifica.</It>
+		<Ru>Du hast den 3. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4013">
+		<De>Dosiahli ste rank 4 v najlepsom skóre.</De>
+		<En>You reached rank 4 in the high-scores.</En>
+		<Fr>Vous occupez la 4e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 4º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 4 in classifica.</It>
+		<Ru>Du hast den 4. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4014">
+		<De>Dosiahli ste rank 5 v najlepsom skóre.</De>
+		<En>You reached rank 5 in the high-scores.</En>
+		<Fr>Vous occupez la 5e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 5º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 5 in classifica.</It>
+		<Ru>Du hast den 5. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4015">
+		<De>Dosiahli ste rank 6 v najlepsom skóre.</De>
+		<En>You reached rank 6 in the high-scores.</En>
+		<Fr>Vous occupez la 6e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 6º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 6 in classifica.</It>
+		<Ru>Du hast den 6. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4016">
+		<De>Dosiahli ste rank 7 v najlepsom skóre.</De>
+		<En>You reached rank 7 in the high-scores.</En>
+		<Fr>Vous occupez la 7e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 7º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 7 in classifica.</It>
+		<Ru>Du hast den 7. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4017">
+		<De>Dosiahli ste rank 8 v najlepsom skóre.</De>
+		<En>You reached rank 8 in the high-scores.</En>
+		<Fr>Vous occupez la 8e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 8º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 8 in classifica.</It>
+		<Ru>Du hast den 8. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4018">
+		<De>Dosiahli ste rank 9 v najlepsom skóre.</De>
+		<En>You reached rank 9 in the high-scores.</En>
+		<Fr>Vous occupez la 9e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 9º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 9 in classifica.</It>
+		<Ru>Du hast den 9. Platz in der Highscore erreicht.</Ru>
+	</Take>
+	<Take id="4019">
+		<De>Dosiahli ste rank 10 v najlepsom skóre.</De>
+		<En>You reached rank 10 in the high-scores.</En>
+		<Fr>Vous occupez la 10e place dans les meilleurs scores.</Fr>
+		<Sp>Has conseguido el 10º puesto en la clasificación.</Sp>
+		<It>Hai raggiunto la posizione 10 in classifica.</It>
+		<Ru>Du hast den 10. Platz in der Highscore erreicht.</Ru>
+	</Take>	
+	<Take id="4020">
+		<De>Sampionát 2 (50 ccm) bol odomknutý!</De>
+		<En>Championship 2 (50 ccm) unlocked!</En>
+		<Fr>Championnat 2 (50 ccm) débloqué !</Fr>
+		<Sp>¡Desbloqueado el campeonato 2 (50 ccm)!</Sp>
+		<It>Hai sbloccato il Campionato 2 (50 ccm)!</It>
+		<Ru>Meisterschaft 2 (50 ccm) wurde freigeschaltet!</Ru>
+	</Take>
+	
+	<Take id="4021">
+		<De>Sampionát 1 (100 ccm) bol odomknutý!</De>
+		<En>Championship 1 (100 ccm) unlocked!</En>
+		<Fr>Championnat 1 (100 ccm) débloqué !</Fr>
+		<Sp>¡Desbloqueado el campeonato 1 (100 ccm)!</Sp>
+		<It>Hai sbloccato il Campionato 1 (100 ccm)!</It>
+		<Ru>Meisterschaft 1 (100 ccm) wurde freigeschaltet!</Ru>
+	</Take>
+	<Take id="4022">
+		<De>Sampionát 2 (100 ccm) bol odomknutý!</De>
+		<En>Championship 2 (100 ccm) unlocked!</En>
+		<Fr>Championnat 2 (100 ccm) débloqué !</Fr>
+		<Sp>¡Desbloqueado el campeonato 2 (100 ccm)!</Sp>
+		<It>Hai sbloccato il Campionato 2 (100 ccm)!</It>
+		<Ru>Meisterschaft 2 (100 ccm) wurde freigeschaltet!</Ru>
+	</Take>
+	<Take id="4023">
+		<De>Sampionát 1 (150 ccm) bol odomknutý!</De>
+		<En>Championship 1 (150 ccm) unlocked!</En>
+		<Fr>Championnat 1 (150 ccm) débloqué !</Fr>
+		<Sp>¡Desbloqueado el campeonato 1 (150 ccm)!</Sp>
+		<It>Hai sbloccato il Campionato 1 (150 ccm)!</It>
+		<Ru>Meisterschaft 1 (150 ccm) wurde freigeschaltet!</Ru>
+	</Take>
+	<Take id="4024">
+		<De>Sampionát 2 (150 ccm) bol odomknutý!</De>
+		<En>Championship 2 (150 ccm) unlocked!</En>
+		<Fr>Championnat 2 (150 ccm) débloqué !</Fr>
+		<Sp>¡Desbloqueado el campeonato 2 (150 ccm)!</Sp>
+		<It>Hai sbloccato il Campionato 2 (150 ccm)!</It>
+		<Ru>Meisterschaft 2 (150 ccm) wurde freigeschaltet!</Ru>
+	</Take>
+	<Take id="4025">
+		<De>Odomkla sa nová postava!</De>
+		<En>Ein neuer Character wurde freigeschaltet!</En>
+		<Fr>Ein neuer Character wurde freigeschaltet!</Fr>
+		<Sp>Ein neuer Character wurde freigeschaltet!</Sp>
+		<It>Ein neuer Character wurde freigeschaltet!</It>
+		<Ru>Ein neuer Character wurde freigeschaltet!</Ru>
+	</Take>
+	<Take id="4030">
+		<De>[NICKNAME] bol vykopnutý zo závodu!</De>
+		<En>[NICKNAME] was kicked from the race!</En>
+		<Fr>[NICKNAME] a été exclu de la course !</Fr>
+		<Sp>¡[NICKNAME] ha sido expulsado de la carrera!</Sp>
+		<It>[NICKNAME] è stato espulso dalla gara!</It>
+		<Ru>[NICKNAME] wurde aus dem Rennen geworfen!</Ru>
+	</Take>
+	<Take id="4031">
+		<De>[NICKNAME] vyhral hru v case [TIME]!</De>
+		<En>[NICKNAME] hat das Spiel in [TIME] gewonnen!</En>
+		<Fr>[NICKNAME] hat das Spiel in [TIME] gewonnen!</Fr>
+		<Sp>[NICKNAME] hat das Spiel in [TIME] gewonnen!</Sp>
+		<It>[NICKNAME] hat das Spiel in [TIME] gewonnen!</It>
+		<Ru>[NICKNAME] hat das Spiel in [TIME] gewonnen!</Ru>
+	</Take>
+	<Take id="4032">
+		<De>Porazený</De>
+		<En>Loser</En>
+		<Fr>Perdant</Fr>
+		<Sp>Perdedor</Sp>
+		<It>Perdente</It>
+		<Ru>ausgeschieden</Ru>
+	</Take>
+	<Take id="9000">
+		<De>Pokracovat v závode</De>
+		<En>Continue the race</En>
+		<Fr>Poursuivre la course</Fr>
+		<Sp>Continuar la carrera</Sp>
+		<It>Continua la gara</It>
+		<Ru>Rennen fortsetzen</Ru>
+	</Take>
+	<Take id="9010">
+		<De>Restartovat závod</De>
+		<En>Restart the race</En>
+		<Fr>Relancer la course</Fr>
+		<Sp>Reiniciar la carrera</Sp>
+		<It>Ricomincia la gara</It>
+		<Ru>Rennen neu starten</Ru>
+	</Take>
+	<Take id="9020">
+		<De>Zrusit závod</De>
+		<En>Cancel the race</En>
+		<Fr>Annuler la course</Fr>
+		<Sp>Cancelar la carrera</Sp>
+		<It>Annulla la gara</It>
+		<Ru>Rennen abbrechen</Ru>
+	</Take>
+	<Take id="9050">
+		<De>Stlac SPACE pre zahájenie závodu.</De>
+		<En>Press SPACE to start racing.</En>
+		<Fr>Appuyez sur ESPACE pour démarrer la course.</Fr>
+		<Sp>Pulsa ESPACIO para comenzar la carrera.</Sp>
+		<It>Premi SPAZIO per iniziare.</It>
+		<Ru>Drücke SPACE um das Rennen zu starten.</Ru>
+	</Take>
+	<Take id="9100">
+		<De>Spojenie k sieti bolo stratené.</De>
+		<En>The connection to the network was lost.</En>
+		<Fr>La connexion au réseau a été perdue.</Fr>
+		<Sp>Se ha perdido la conexión con la red.</Sp>
+		<It>La connessione alla rete è stata interrotta.</It>
+		<Ru>Die Netzwerkverbindung wurde getrennt.</Ru>
+	</Take>
+	<!--
+	<Take id="9007">
+		<De>Warte ...</De>
+		<En>Waiting ...</En>
+		<Fr>Waiting ...</Fr>
+		<Sp>Waiting ...</Sp>
+		<It>Waiting ...</It>
+		<Ru>Waiting ...</Ru>
+	</Take>
+	-->
+	<Take id="9008">
+		<De>Caká sa na hráca ...</De>
+		<En>Waiting for Player ...</En>
+		<Fr>En attente d'adversaire ...</Fr>
+		<Sp>Esperando al jugador ...</Sp>
+		<It>In attesa del giocatore ...</It>
+		<Ru>Ожидание игрока …</Ru>
+	</Take>
+	<Take id="9110">
+		<De>Závod bol zrusený iným hrácom.</De>
+		<En>Race terminated by another player.</En>
+		<Fr>Un autre joueur a annulé la course.</Fr>
+		<Sp>Otro jugador ha terminado la carrera.</Sp>
+		<It>Gara terminata da un altro giocatore.</It>
+		<Ru>Ein Mitspieler hat das Rennen beendet.</Ru>
+	</Take>
+	<Take id="9120">
+		<De>Nepodarilo sa pripojit na server.</De>
+		<En>Could not connect to server.</En>
+		<Fr>Connexion au serveur impossible</Fr>
+		<Sp>Imposible conectarse al servidor.</Sp>
+		<It>Impossibile connettersi al server.</It>
+		<Ru>Eine Verbindung zum Server konnte nicht aufgebaut werden.</Ru>
+	</Take>
+	<Take id="9130">
+		<De>Pripojenie bolo odmietnuté serverom.</De>
+		<En>Connection refused by server.</En>
+		<Fr>Connexion refusée par le serveur</Fr>
+		<Sp>El servidor ha rechazado la conexión.</Sp>
+		<It>Connessione rifiutata dal server.</It>
+		<Ru>Der Server hat die Teilnahme verweigert.</Ru>
+	</Take>
+	<Take id="9140">
+		<De>Server ukoncil spojenie.</De>
+		<En>Der Server hat die Verbindung beendet.</En>
+		<Fr>Der Server hat die Verbindung beendet.</Fr>
+		<Sp>Der Server hat die Verbindung beendet.</Sp>
+		<It>Der Server hat die Verbindung beendet.</It>
+		<Ru>Der Server hat die Verbindung beendet.</Ru>
+	</Take>
+	<Take id="9999">
+		<De>Naozaj chcete zrusit závod?</De>
+		<En>Do you really want to cancel the race?</En>
+		<Fr>Voulez-vous vraiment annuler la course ?</Fr>
+		<Sp>¿Seguro que quieres cancelar la carrera?</Sp>
+		<It>Sicuro di voler annullare la gara?</It>
+		<Ru>Möchtest Du das Rennen wirklich abbrechen?</Ru>
+	</Take>	
+	<Take id="20000">
+		<De>Cože! Už to skoncilo? Získajte plnú verziu este dnes!</De>
+		<En>Was! Schon vorbei? Hol Dir jetzt die Vollversion!</En>
+		<Fr>Was! Schon vorbei? Hol Dir jetzt die Vollversion!</Fr>
+		<Sp>Was! Schon vorbei? Hol Dir jetzt die Vollversion!</Sp>
+		<It>Was! Schon vorbei? Hol Dir jetzt die Vollversion!</It>
+		<Ru>Was! Schon vorbei? Hol Dir jetzt die Vollversion!</Ru>
+	</Take>
+</Texts>

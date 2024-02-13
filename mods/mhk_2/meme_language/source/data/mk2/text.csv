@@ -1,0 +1,458 @@
+HUD;
+100;<scale 0.75>circle %d/3</scale>
+101;<scale 0.75>wow ur %d</scale>
+102;<scale 0.5>lmao it took u: </scale>
+103;<scale 0.5>lap</scale>
+104;<scale 0.5>ur best attempt</scale>
+
+110;<scale 1.5>lol wtf turn back</scale>
+
+
+120;<font countdown>LEZ GO MA FREN!!!</font>
+121;<font countdown>...almost (perhaps u can hit the forward button now)</font>
+122;<font countdown>2.5</font>
+123;<font countdown>three</font>
+
+130;<font 30px_redoutline>pausen</font>
+131;<font 30px_redoutline>background music volume</font>
+132;%d %%
+133;<font 30px_redoutline>non-music volume</font>
+134;%d %%
+135;ok lets continue
+136;oh no i screwed up
+137;kthxbai
+
+140;<scale 2>You are first!</scale>
+141;<scale 2>You are second!</scale>
+142;<scale 2>You are third!</scale>
+143;<scale 2>You are fourth!</scale>
+144;<scale 2>You are fifth!</scale>
+145;<scale 2>You are sixth!</scale>
+146;<scale 2>You are seventh!</scale>
+147;<scale 2>u won gg</scale>
+
+
+
+Menu;
+200;<font 30px_redoutline>Main Menu</font>
+201;lez go
+202;my best attempts
+203;fixations
+204;who made dis?
+205;HAAA IM OUT!1!!
+
+Options;
+210;<font 30px_redoutline>Settings</font>
+211;<font 30px_redoutline>Music Volume</font>
+212;%d %%
+213;<font 30px_redoutline>SFX Volume </font>
+214;%d %%
+215;Change Resolution
+216;<font 30px_redoutline>Quality</font>
+217;Back
+218;crap
+219;medium
+220;high but actually low
+
+Exit;
+230;<font 30px_redoutline>Really Quit?</font>
+231;yes bye
+232;i changed my mind
+
+
+Credits;
+270;"<font 30px_redoutline><scale 1.5>&lt; Moorhuhn Kart 2 &gt;</scale></font>"
+270;
+270;
+270;
+270;<font 30px_redoutline>PUBLISHING</font>
+270;phenomedia publishing gmbh
+270;
+270;<font 30px_redoutline><scale 0.8>GAME IDEA</scale></font>
+270;<scale 0.8>Frank Ziemlinski</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>CONCEPT</scale></font>
+270;<scale 0.8>Michael Bohne</scale>
+270;<scale 0.8>Frank Ziemlinski</scale>
+270;<scale 0.8>Michael Zoll</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>PROJECT MANAGER</scale></font>
+270;<scale 0.8>Michael Zoll</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>SOUND DEPARTMENT</scale></font>
+270;<scale 0.8>Nils Fritze</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>QA</scale></font>
+270;<scale 0.8>Thorsten Stranegger</scale>
+270;<scale 0.8>Yuro Kataoka</scale>
+270;<scale 0.8>Marc Bethke</scale>
+270;<scale 0.8>Florian B�tzler</scale>
+270;<scale 0.8>David Hopmann</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>ONLINE PROGRAMMING</scale></font>
+270;<scale 0.8>Dirk Schiemann</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>WEB DESIGN</scale></font>
+270;<scale 0.8>Thomas Schuer</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>COVER DESIGN</scale></font>
+270;<scale 0.8>Ernst Weber</scale>
+270;<scale 0.8>Thomas Schuer</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>MANUAL</scale></font>
+270;<scale 0.8>G�tz Neuhaus</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>DTP</scale></font>
+270;<scale 0.8>Erhard Th�ringer</scale>
+270;
+270;
+270;<font 30px_redoutline>DEVELOPMENT</font>
+270;Sproing Interactive
+270;
+270;<font 30px_redoutline><scale 0.8>PROGRAMMING</scale></font>
+270;"<scale 0.8>Gerhard ""3am.exe"" Seiler</scale>"
+270;
+270;<font 30px_redoutline><scale 0.8>LEVEL GRAPHICS</scale></font>
+270;<scale 0.8>Johannes Graf</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>CHARACTER MODELLING AND LEVEL GRAPHICS</scale></font>
+270;<scale 0.8>Mason Doran</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>CHARACTER ANIMATION</scale></font>
+270;<scale 0.8>Tim Meredith</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>GAME AND LEVEL DESIGN</scale></font>
+270;<scale 0.8>Harald Riegler</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>LEVEL DESIGN</scale></font>
+270;<scale 0.8>Georg Heinz</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>PROJECT MANAGEMENT</scale></font>
+270;<scale 0.8>Johanna Schober</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>BETA TESTING</scale></font>
+270;<scale 0.8>Wolfgang Breyha</scale>
+270;<scale 0.8>Reinhard Franz</scale>
+270;<scale 0.8>Manfred Blazek</scale>
+270;"<scale 0.8>Gerd ""Antonio"" Singer</scale>"
+270;"<scale 0.8>Stefan ""Sani"" Wagner</scale>"
+270;
+270;
+270;<font logos>A</logos>
+270;
+270;
+270;;
+270;<font 30px_redoutline>INSTALLER UND MASTERING</font>;
+270;<scale 0.8>Michael Zoll</scale>
+270;;
+270;;
+270;<font 30px_redoutline>ACTORS</font>;
+270;<scale 0.8>(in Order of Appearance)</scale>;
+270;;
+270;<scale 0.8>chicken</scale>;
+270;<scale 0.8>discount chicken</scale>;
+270;<scale 0.8>froggo</scale>;
+270;<scale 0.8>i open mouth</scale>;
+270;<scale 0.8>how tf do i not melt?</scale>;
+270;<scale 0.8>NINJA TURLTA</scale>;
+270;<scale 0.8>who cares?</scale>;
+270;;
+270;
+270;<font 30px_redoutline>CREW</font>
+270;
+270;<font 30px_redoutline><scale 0.8>Manicure Moorhuhn</scale></font>
+270;<scale 0.8>Edward, Sharp Blades</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Hairstyling Lesshuhn</scale></font>
+270;<scale 0.8>Salon "Pretty Chicks"</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Terrarium Moorfrosch</scale></font>
+270;<scale 0.8>Survivals Inc.</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Style Consultation Mr. Pumpkin</scale></font>
+270;<scale 0.8>Georgio Brmani</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Makeup Snowman</scale></font>
+270;<scale 0.8>Arctic Giant</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Mr. Kr�t�s Pit Babe</scale></font>
+270;<scale 0.8>Under Age Morla</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Style Consultation Mr. Hank</scale></font>
+270;<scale 0.8>Georgio Crmani</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Catering</scale></font>
+270;<scale 0.8>Chippy Take Away</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Special Effects</scale></font>
+270;<scale 0.8>Cpt. BLAM</scale>
+270;
+270;<font 30px_redoutline><scale 0.8>Medical Treatment</scale></font>
+270;<scale 0.8>Mr. Medic</scale>
+270;
+270;
+270;
+270;
+270;<scale 0.8>All stunts were accomplished by the original actors under guidance of professional kart drivers.</scale>;;
+270;
+270;
+270;<scale 0.8>During the production of this game no programmer, artist, project manager or gamedesigner took damage.</scale>
+270;
+270;
+270;<scale 0.8>Who can prove something else ...wins a bundle of floating grass.</scale>;
+270;
+270;
+270;
+270;
+270;
+270;
+270;
+270;
+270;
+270;
+270;
+270;
+270;
+270;<scale 0.8>And what happened to...</scale>
+270;
+270;
+270;
+270;
+270;<scale 0.8>Moorhuhn pulled into the wild west and prepared on...</scale>
+270;
+270;
+270;;
+270;<scale 0.8>Lesshuhn moved to the South African jungle and ran a chicken farm. He now is in detention for undisclosed reasons.</scale>
+270;;
+270;;
+270;;
+270;;
+270;<scale 0.8>Moorfrosch works at the German meteorological central office and forecasts the weather.  Sometimes correctly.</scale>;
+270;;
+270;;
+270;;
+270;;
+270;<scale 0.8>Pumpkin hired himself for different Hollywood productions as an amateur actor and now aims for a career as a politician.</scale>;
+270;;
+270;;
+270;;
+270;;
+270;<scale 0.8>Snowman was seen last time on an<br>expedition in the desert Gobi.</scale>;
+270;;
+270;;
+270;;
+270;<scale 0.8>Kr�t is visiting his cousin in the East Australian region.<br>Yo dude!</scale>;
+270;;
+270;;
+270;;
+270;<scale 0.8>Hank became an undercover agent for a secret service - after an eventful, but short career he was fired, because they found out he was a mole.</scale>
+270;;
+270;;
+270;;
+270;;
+270;;
+270;;
+270;;
+270;
+270;
+
+
+Select Mode;
+280;<font 30px_redoutline>Race Mode</font>
+281;<font 30px_redoutline>One Player</font>
+282;Time Trial
+283;Championship
+284;<font 30px_redoutline>Two Players</font>
+285;Challenge
+286;Championship
+287;Back
+
+Select Resolution;
+290;<font 30px_redoutline>Screen Resolution</font>
+291;Back
+292;%d x %d
+
+
+Select Character 1 Player;
+300;<font 30px_redoutline>Select Character</font>
+301;<font 30px_redoutline>Player 1</font>
+302;<font 30px_redoutline>Player 2</font>
+303;Ok
+304;Back
+
+
+
+Characters;
+310;Moorhuhn
+311;Lesshuhn
+312;Moorfrosch
+313;Pumpkin
+314;Snowman
+315;Kr�t
+316;Hank
+
+Select Track;
+320;<font 30px_redoutline>Select Track</font>
+321;Track Records
+322;Start Race
+323;Back
+
+Tracks;
+400;Moorhuhn X
+401;Winter 
+402;Island
+403;Egypt
+404;Factory
+405;Mine
+406;Castle
+407;Swamp
+
+
+
+
+Championships;
+480;User Defined
+481;Random
+482;Championship 1
+483;Championship 2
+
+
+
+Engine;
+330;<font 30px_redoutline>Power Class</font>;
+331;<font 30px_redoutline>Select Power Class</font>;
+332;50 cc;
+333;100 cc;
+334;150 cc;
+335;Back;
+336;<font 30px_redoutline><scale 0.5>You have to win both championships before you can choose a stronger power class!<br></scale></font>
+
+
+Game Finished;;
+340;Example;
+341;Back;
+
+
+Select Championship;
+350;<font 30px_redoutline>Select Championship</font>
+351;<font 30px_redoutline>%s</font>
+352;%s
+353;Start Championship
+354;Back
+
+race result;
+358;<font 30px_redoutline>Player 1</font>
+359;<font 30px_redoutline>Player 2</font>
+360;<font 30px_redoutline>Score</font>
+361;Lap 1: %s
+362;Lap 2: %s
+363;Lap 3: %s
+364;Total: %s
+367;Continue
+368;Winner
+369;
+
+
+Highscore timetrial;
+370;<font 30px_redoutline>Highscore</font>
+371;<font 30px_redoutline><scale 0.5>Player</scale></font>
+372;<font 30px_redoutline><scale 0.5>Total</scale></font>
+373;<font 30px_redoutline><scale 0.5>Character</scale></font>
+374;<font 30px_redoutline><scale 0.5>Phantom Kart</scale></font>
+375;<font 30px_redoutline><scale 0.5>New</scale></font>
+376;Repeat Race
+377;Transfer Phantom Kart
+378;Main Menu
+379;<font 30px_redoutline><scale 0.5>Best Lap</scale></font>
+380;<font 30px_redoutline><scale 0.5>Rank</scale></font>
+381;<font 30px_redoutline><scale 0.5>%s</scale></font>
+382;PHANTOM KART
+383;New
+
+Championship result;
+390;<font 30px_redoutline>Track Result</font>
+391;Restart Race
+392;Continue
+393;<font 30px_redoutline><scale 0.5>%s</scale></font>
+394;<font 30px_redoutline><scale 0.5>Best Lap</scale></font>
+
+
+Championship intermediate/end;
+500;<font 30px_redoutline>Intermediate Score</font>
+501;<font 30px_redoutline>Final Score</font>
+502;Next Track
+503;Main Menu
+504;Continue
+
+
+New Highscore;
+510;<font 30px_redoutline>New Highscore</font>
+511;New Best Lap Time! Please enter your name!<br>
+512;New Best Lap Time! Player 1: Please enter your name!<br>
+513;New Best Lap Time! Player 2: Please enter your name!<br>
+514;Continue
+
+
+Highscore;
+520;<font 30px_redoutline>Highscore</font>
+521;<font 30px_redoutline>Select a Highscore</font>
+522;Time Trial
+523;Championship
+524;Back
+
+Track Highscores;
+530;<font 30px_redoutline>Highscore Time Trial<br></font>
+531;Load Phantom Kart
+532;Back
+533;<font 30px_redoutline><scale 0.5>Points</scale></font>
+534;<font 30px_redoutline>Highscore Championship<br></font>
+
+
+
+540;No Server Connection
+541;<html><body><center><font size=+2>No Server Connection</font></center></body></html>
+542;No Server Answer
+543;<html><body><center><font size=+2>No Server Answer</font></center></body></html>
+544;Welcome!
+545;<html><body><center><font size=+2>Welcome!</font></center></body></html>
+546;http://redirect.phenomedia.com/moorhuhn/mhk2/de/xxl-uplb-startup_redirect.php?from=MHK2_XXL-Ver1.0DE-US
+
+
+
+550;Online-Highscore
+551;http://redirect.phenomedia.com/moorhuhn/mhk2/de/xxl-uplb-high_redirect.php?from=MHK2_XXL-Ver1.0DE-UH
+552;Help
+553;http://redirect.phenomedia.com/moorhuhn/mhk2/de/xxl-uplb-help_redirect.php?from=MHK2_XXL-Ver1.0DE-UF
+554;Register
+555;http://redirect.phenomedia.com/moorhuhn/mhk2/de/xxl-uplb-reg_redirect.php?from=MHK2_XXL-Ver1.0DE-UR
+556;http://redirect.phenomedia.com/moorhuhn/mhk2/de/xxl-phdown_redirect.php?from=MHK2_XXL-Ver1.0DE-DP&track=%d&engine=%d
+
+560;<font 30px_redoutline><scale 2.0>You finished in 1st place!</scale></font>
+561;<font 30px_redoutline><scale 2.0>You finished in 2nd place!</scale></font>
+562;<font 30px_redoutline><scale 2.0>You finished in 3rd place!</scale></font>;
+563;<font 30px_redoutline><scale 2.0>You finished in 4th place!</scale></font>;
+564;<font 30px_redoutline><scale 2.0>You finished in 5th place!</scale></font>;
+565;<font 30px_redoutline><scale 2.0>You finished in 6th place!</scale></font>;
+566;<font 30px_redoutline><scale 2.0>You finished in 7th place!</scale></font>;
+567;<font 30px_redoutline>You gained access to the 100cc Kart Class!</font>;
+568;<font 30px_redoutline>You gained access to the 150cc Kart Class!</font>;
+569;Continue;
+570;You are the master of kart driving!;
+571;Amazing Result!;
+572;Superb!;
+573;Not bad!;
+574;You could be better!;
+575;Is that all you can achieve?;
+576;No comment...;
+
+580;You gained access to the second championship in the 50cc Kart Class!<br>
+581;You gained access to the second championship in the 100cc Kart Class!<br>
+582;You gained access to the second championship in the 150cc Kart Class!<br>
+583;
+584;You gained access to the first championship in the 100cc Kart Class!<br>
+585;You gained access to the first championship in the 150cc Kart Class!<br>
+
+
+590;440 410 310 70
+591;680 520 115 75
+592;http://www.moorhuhn.com

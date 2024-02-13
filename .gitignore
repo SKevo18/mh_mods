@@ -5,3 +5,5 @@
 
 /unpacked/*
 !/unpacked/unpack_all.sh
+
+/webserver/.venv/
