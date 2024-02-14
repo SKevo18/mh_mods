@@ -68,7 +68,7 @@ func packMhk4(dataFileLocation string, inputFolder string) error {
 	dataFile.Write([]byte{0x1, 0x1})
 
 	// file count
-	filesCount := uint32(len(fileEntries))
+	filesCount := uint32(len(fileEntries) + 5) // duplicates
 	binary.Write(dataFile, binary.LittleEndian, filesCount)
 	// write file entries count
 	binary.Write(dataFile, binary.LittleEndian, uint32(fileEntriesBegin))
@@ -80,6 +80,14 @@ func packMhk4(dataFileLocation string, inputFolder string) error {
 // Unpacks MHK 4 (Thunder) data files.
 // MHK 4 has 2 data files in the installation directory: `data.sar` (main one),
 // and `data.s01` (whose purpose is unknown, but it might be some demo data?).
+/*
+Note: For some reason, the following files are present twice in the original datafile index:
+	"unpacked/mhk_4/D/Mhkart4/3dobjects_extras/hammer_addon.lwo"
+	"unpacked/mhk_4/D/Mhkart4/3dobjects_extras/health_addon.lwo"
+	"unpacked/mhk_4/D/Mhkart4/3dobjects_extras/quaddamage_addon.lwo"
+	"unpacked/mhk_4/D/Mhkart4/textures_cars/kart_blau_0001.bmp.dds"
+	"unpacked/mhk_4/D/Mhkart4/textures_cars/kartlogo_01.png.dds"
+*/
 func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 	dataFile, err := os.Open(dataFileLocation)
 	if err != nil {
@@ -109,8 +117,8 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 	binary.Read(dataFile, binary.LittleEndian, &fileEntriesBegin)
 
 	// read file entries
-	// note: these are listed at end of file
-	unpackedFileCount := 0
+	// note: these are listed at end of the data file
+	unpackedFilesCount := 0
 	log.Printf("Reading file entries from offset %d...", fileEntriesBegin)
 	dataFile.Seek(int64(fileEntriesBegin), io.SeekStart)
 	for i := 0; i < int(fileCount); i++ {
@@ -147,14 +155,14 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 		}
 		io.CopyN(outputFile, dataFile, int64(fileLength))
 		outputFile.Close()
-		unpackedFileCount++
+		unpackedFilesCount++
 
 		// go to next file
 		dataFile.Seek(nextOffset, io.SeekStart)
 		log.Printf("Filename: %s; Offset: %d; Size: %d", filename, fileOffset, fileLength)
 	}
 
-	log.Printf("Unpack complete: %d/%d.", unpackedFileCount, fileCount)
+	log.Printf("Unpack complete: %d/%d.", unpackedFilesCount, fileCount)
 	return nil
 }
 

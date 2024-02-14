@@ -4,6 +4,6 @@
 !/data/README.md
 
 /unpacked/*
-!/unpacked/unpack_all.sh
+!/unpacked/*.sh
 
 /webserver/.venv/
