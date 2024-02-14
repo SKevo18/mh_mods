@@ -68,11 +68,12 @@ func packMhk4(dataFileLocation string, inputFolder string) error {
 	dataFile.Write([]byte{0x1, 0x1})
 
 	// file count
-	binary.Write(dataFile, binary.LittleEndian, uint32(len(fileEntries)))
+	filesCount := uint32(len(fileEntries))
+	binary.Write(dataFile, binary.LittleEndian, filesCount)
 	// write file entries count
 	binary.Write(dataFile, binary.LittleEndian, uint32(fileEntriesBegin))
 
-	log.Printf("Pack complete: File entries begin at `%d`.", fileEntriesBegin)
+	log.Printf("Pack complete: %d files packed. File entries begin at `%d`.", filesCount, fileEntriesBegin)
 	return nil
 }
 
@@ -87,7 +88,7 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 	defer dataFile.Close()
 
 	// header
-	dataFileType := make([]byte, 0x4)
+	dataFileType := make([]byte, 0x6)
 	dataFile.Read(dataFileType)
 	fileInfo, err := dataFile.Stat()
 	if err != nil {
@@ -96,6 +97,12 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 	dataSize := fileInfo.Size()
 	log.Printf("Data file type: %s; Data size: %d", dataFileType, dataSize)
 
+	// read file count
+	var fileCount uint32
+	dataFile.Seek(0x8, io.SeekStart)
+	binary.Read(dataFile, binary.LittleEndian, &fileCount)
+	log.Printf("File count: %d", fileCount)
+
 	// read file entries offset
 	var fileEntriesBegin uint32
 	dataFile.Seek(0xC, io.SeekStart)
@@ -103,14 +110,10 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 
 	// read file entries
 	// note: these are listed at end of file
+	unpackedFileCount := 0
 	log.Printf("Reading file entries from offset %d...", fileEntriesBegin)
 	dataFile.Seek(int64(fileEntriesBegin), io.SeekStart)
-	for {
-		// if at end of file
-		if currentOffset, _ := dataFile.Seek(0x0, io.SeekCurrent); currentOffset >= dataSize {
-			break
-		}
-
+	for i := 0; i < int(fileCount); i++ {
 		// read filename
 		var filenameLength uint8
 		binary.Read(dataFile, binary.LittleEndian, &filenameLength)
@@ -144,12 +147,14 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 		}
 		io.CopyN(outputFile, dataFile, int64(fileLength))
 		outputFile.Close()
+		unpackedFileCount++
 
 		// go to next file
 		dataFile.Seek(nextOffset, io.SeekStart)
 		log.Printf("Filename: %s; Offset: %d; Size: %d", filename, fileOffset, fileLength)
 	}
 
+	log.Printf("Unpack complete: %d/%d.", unpackedFileCount, fileCount)
 	return nil
 }
 
