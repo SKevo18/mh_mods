@@ -54,24 +54,25 @@ func packMhk4(dataFileLocation string, inputFolder string) error {
 		dataFile.Write([]byte{0x0})
 
 		binary.Write(dataFile, binary.LittleEndian, uint32(entry.ContentOffset))
-		dataFile.Write([]byte{0x0})
 
+		// written twice
 		binary.Write(dataFile, binary.LittleEndian, uint32(entry.FileSize))
-		dataFile.Seek(0x5, io.SeekCurrent)
+		binary.Write(dataFile, binary.LittleEndian, uint32(entry.FileSize))
 
 		log.Printf("Wrote file entry `%s`: offset=%d; size=%d", filename, entry.ContentOffset, entry.FileSize)
 	}
 
 	// write header
 	dataFile.Seek(0x0, io.SeekStart)
-	dataFile.Write([]byte("SARC"))
+	dataFile.Write([]byte("SARCFV"))
+	dataFile.Write([]byte{0x1, 0x1})
 
-	// write file entries
-	dataFile.Seek(0x8, io.SeekCurrent)
+	// file count
+	binary.Write(dataFile, binary.LittleEndian, uint32(len(fileEntries)))
+	// write file entries count
 	binary.Write(dataFile, binary.LittleEndian, uint32(fileEntriesBegin))
 
 	log.Printf("Pack complete: File entries begin at `%d`.", fileEntriesBegin)
-
 	return nil
 }
 

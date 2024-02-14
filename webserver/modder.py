@@ -1,4 +1,5 @@
 from __future__ import annotations
+import typing as t
 import aiofiles
 
 from os import name as os_name
@@ -33,14 +34,20 @@ class Mod(BaseModel):
     id: str
     game: Game
     path: Path
+    _readme: t.Optional[str] = None
 
-    async def get_readme(self) -> str:
+    async def fetch_readme(self) -> t.Optional[str]:
+        if self._readme:
+            return self._readme
+
         try:
             async with aiofiles.open(MODS_ROOT / self.id / "README.md", "r") as f:
-                return await f.read()
+                self._readme = await f.read()
 
         except FileNotFoundError:
-            return "No README."
+            pass
+    
+        return self._readme
 
     def mod(self, output_path: Path, mods: list[Mod] = []):
         run(
