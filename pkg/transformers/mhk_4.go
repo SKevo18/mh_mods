@@ -68,7 +68,7 @@ func packMhk4(dataFileLocation string, inputFolder string) error {
 	dataFile.Write([]byte{0x1, 0x1})
 
 	// file count
-	filesCount := uint32(len(fileEntries) + 5) // duplicates
+	filesCount := uint32(len(fileEntries))
 	binary.Write(dataFile, binary.LittleEndian, filesCount)
 	// write file entries count
 	binary.Write(dataFile, binary.LittleEndian, uint32(fileEntriesBegin))
