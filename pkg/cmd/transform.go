@@ -16,7 +16,7 @@ func genericTransform(action string) func(cmd *cobra.Command, args []string) {
 		folderPath := args[2]
 
 		// go!
-		log.Printf("Beginning the %sing of files from data file `%s` into output folder `%s` for game `%s`...\n", action, dataFileLocation, folderPath, gameID)
+		log.Printf("Beginning the %sing of files from data file `%s` (in/out folder `%s`) for game `%s`...\n", action, dataFileLocation, folderPath, gameID)
 		if err := transformers.Transform(action, gameID, dataFileLocation, folderPath); err != nil {
 			log.Fatal("Fatal error: ", err.Error())
 		}
