@@ -11,7 +11,6 @@ import (
 )
 
 // Packs MHK 4 (Thunder) data files.
-// Unpacks MHK 4 (Thunder) data files.
 // MHK 4 has 2 data files in the installation directory: `data.sar` (main one),
 // and `data.s01` (whose purpose is unknown, but it might be some demo data?).
 func packMhk4(dataFileLocation string, inputFolder string) error {
