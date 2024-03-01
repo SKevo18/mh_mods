@@ -1,9 +1,9 @@
 /build/
+__pycache__/
+.venv/
+*.sock
 
 /data/*
 !/data/README.md
-
 /unpacked/*
 !/unpacked/*.sh
-
-/webserver/.venv/
