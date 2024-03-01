@@ -2,7 +2,8 @@ package cmd
 
 import (
 	"bufio"
-	"errors"
+	"fmt"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -35,12 +36,14 @@ func PackmodCmd() *cobra.Command {
 			if err := transformers.Transform("unpack", gameID, originalDataFile, tempDir); err != nil {
 				log.Fatalf("Fatal error during unpacking: %s", err)
 			}
-			if err := mergeRecursively(tempDir, false, modPaths...); err != nil {
+			if err := mergeRecursively(tempDir, true, modPaths...); err != nil {
 				log.Fatalf("Fatal error during merging: %s", err)
 			}
 			if err := transformers.Transform("pack", gameID, outputDataFile, tempDir); err != nil {
 				log.Fatalf("Fatal error during repacking: %s", err)
 			}
+
+			log.Printf("Packed modded data file: %s (paths: %v)", outputDataFile, modPaths)
 		},
 	}
 }
@@ -65,8 +68,23 @@ func mergeRecursively(dest string, ignoreConflicts bool, srcs ...string) error {
 				return os.MkdirAll(destPath, info.Mode())
 			}
 
+			// copy destPath file into temporary file to use for merge
+			tempOriginal, err := os.CreateTemp("", fmt.Sprintf("mhmods_temp_%s", filepath.Base(destPath)))
+			if err != nil {
+				return err
+			}
+			defer os.Remove(tempOriginal.Name())
+
+			original, err := os.Open(destPath)
+			if err != nil {
+				return err
+			}
+			defer original.Close()
+
+			io.Copy(tempOriginal, original)
+
 			// merge
-			return mergeFileContents(destPath, path, destPath, ignoreConflicts)
+			return mergeFileContents(destPath, path, tempOriginal.Name(), ignoreConflicts)
 		})
 		if err != nil {
 			return err
@@ -100,9 +118,17 @@ func mergeFileContents(destFile string, srcFile1 string, srcFile2 string, ignore
 	// scan
 	scanner1 := bufio.NewScanner(file1)
 	scanner2 := bufio.NewScanner(file2)
+
 	for scanner1.Scan() && scanner2.Scan() {
 		line1 := scanner1.Text()
 		line2 := scanner2.Text()
+
+		if err := scanner1.Err(); err != nil {
+			return err
+		}
+		if err := scanner2.Err(); err != nil {
+			return err
+		}
 
 		// equal, write first
 		if line1 == line2 {
@@ -117,9 +143,9 @@ func mergeFileContents(destFile string, srcFile1 string, srcFile2 string, ignore
 				if err != nil {
 					return err
 				}
-				// error, if not ignored
 			} else {
-				return errors.New("conflict detected and `ignoreConflicts` is false")
+				// error, if not ignored (currently unused)
+				return fmt.Errorf("conflict detected and `ignoreConflicts` is false: `%s` vs `%s`", line1, line2)
 			}
 		}
 	}

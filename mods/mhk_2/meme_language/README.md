@@ -1,4 +1,4 @@
-# Example Mod
+# Meme Language
 
 > An example Moorhuhn Kart 2 mod that replaces some text with meme language.
 

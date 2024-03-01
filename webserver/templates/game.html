@@ -36,6 +36,10 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/lib/marked.min.js"></script>
 <script type="text/javascript">
     window.selectedMods = [];
+    /**
+        * @param {HTMLButtonElement} buttonElement
+        * @param {string} modId
+    **/
     function selectMod(buttonElement, modId) {
         const index = window.selectedMods.indexOf(modId);
         if (index === -1) {
@@ -49,7 +53,8 @@
         let modElement = buttonElement.parentElement.parentElement;
         modElement.classList.toggle("outline-double");
         modElement.classList.toggle("outline-2");
-        modElement.classList.toggle("outline-indigo-500");
+        modElement.classList.toggle("outline-offset-8");
+        modElement.classList.toggle("outline-indigo-300");
     }
 
     function packSelectedMods() {

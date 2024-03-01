@@ -37,18 +37,13 @@ async def packmods(game_id: str):
 
     with NamedTemporaryFile(suffix=game.original_datafile.suffix, delete=False) as f:
         out, err, code = await pack(game, f.name, mods_to_pack)
- 
+        if out is not None:
+            out = out.decode("utf-8")
         if err is not None:
             err = err.decode("utf-8")
-            print("bin error:", err)
-        else:
-            err = "no stderr"
-
+        
         if code != 0:
-            return await abort(
-                500,
-                f"An error occurred while packing the mod (shell status code: {code}).\n\n{err}",
-            )
+            return await abort(500, f"Failed to pack mods: {err}")
 
         return await send_file(
             f.name,
