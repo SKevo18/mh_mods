@@ -2,39 +2,37 @@
 {% set title="Mods for " + game.name %}
 
 {% block content %}
-<div class="bg-white dark:bg-gray-800 dark:text-gray-300">
-    <div class="container mx-auto py-8">
-        <h1 class="text-2xl font-bold mb-4">{{ game.name }}</h1>
+<div class="container mx-auto py-8">
+    <h1 class="text-2xl font-bold mb-4">{{ game.name }}</h1>
+    <a href="{{ url_for('index') }}" class="text-indigo-500 hover:text-indigo-400 font-bold">&larr; Back to mods list</a>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {% for mod in mods %}
-                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
-                    <h2 class="text-lg font-semibold mb-2">{{ mod.name }}</h2>
-
-                    <div class="my-6">
-                        <h3 class="text-xl font-bold mb-2">README</h3>
-                        <div class=".markdown">{{ mod.readme()|default("No README.") }}</div>
-                    </div>
-
-                    <div>
-                        <a href="{{ url_for('packmod', game_id=game.id) }}?mods={{ mod.id }}" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">
-                            Download this mod
-                        </a>
-                    </div>
+    <div class="grid grid-cols-1 gap-4">
+        {% for mod in game.mods %}
+            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md my-4">
+                {% if not mod.readme %}
+                    <h2 class="text-lg font-semibold mb-2">{{ mod.id }}</h2>
+                {% else %}
+                    <div class="mb-6 markdown-body" data-content="{{ mod.readme|e }}"></div>
+                {% endif %}
+                <div class="flex flex-row gap-4">
+                    <a href="{{ url_for('packmods', game_id=game.id) }}?mod={{ mod.id }}" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
+                        Select this mod
+                    </a>
+                    <a href="{{ url_for('packmods', game_id=game.id) }}?mod={{ mod.id }}" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">
+                        Download just this mod
+                    </a>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 
-<script type="module">
-    import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/lib/marked.min.js"></script>
+<script type="text/javascript">
     window.addEventListener("load", () => {
-        const markdownElements = document.querySelectorAll(".markdown");
+        const markdownElements = document.querySelectorAll(".markdown-body");
         markdownElements.forEach(function (element) {
-            let markdown = element.innerText;
-            element.innerHTML = marked.parse(markdown);
+            element.innerHTML = marked.parse(element.dataset.content);
         });
     });
 </script>
