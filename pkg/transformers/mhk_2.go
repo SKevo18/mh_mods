@@ -58,7 +58,7 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 		// encrypt, if necessary
 		if filepath.Ext(file.FilePath) == ".txt" {
 			log.Printf("Encrypting `%s`...", file.FilePath)
-			encryptDecryptConfig(fileData)
+			encryptConfig(fileData)
 		}
 
 		// write data
@@ -130,7 +130,8 @@ func unpackMhk2(dataFileLocation string, outputPath string) error {
 
 		// decrypt, if necessary
 		if filepath.Ext(fileName) == ".txt" {
-			encryptDecryptConfig(fileData)
+			log.Printf("Decrypting `%s`...", fileName)
+			decryptConfig(fileData)
 		}
 
 		// create output directory
@@ -193,19 +194,39 @@ func readHeader(header [0x40]byte) (string, uint32) {
 	return name, numFiles
 }
 
-// Encrypts/decrypts MHK2 `.txt` config files.
-func encryptDecryptConfig(data []byte) {
-	key := uint(0x1234)
+// Encrypts MHK2 `.txt` config files.
+func encryptConfig(data []byte) {
+    key := 0x1234
 
-	for i := range data {
-		uVar2 := data[i] & 0x55
-		cVar1 := data[i] & 0xAA
-		cVar1 >>= 1
-		uVar2 <<= 1
-		data[i] = (uVar2 ^ cVar1) ^ byte(key & 0xFF)
-		key = key * 3 + 2 & 0xffff
-	}
+    for i := range data {
+        oddBits := data[i] & 0x55
+        evenBits := data[i] & 0xAA
+        evenBits >>= 1
+        oddBits <<= 1
+
+        data[i] = (oddBits ^ evenBits) ^ byte(key & 0xFF)
+        key = key * 3 + 2 & 0xffff
+    }
 }
+
+
+// Decrypts MHK2 `.txt` config files.
+func decryptConfig(data []byte) {
+    key := 0x1234
+
+    for i := range data {
+        temp := data[i] ^ byte(key & 0xFF)
+
+        evenBits := temp & 0xAA
+        oddBits := temp & 0x55
+        evenBits <<= 1
+        oddBits >>= 1
+
+        data[i] = evenBits | oddBits
+        key = key * 3 + 2 & 0xffff
+    }
+}
+
 
 // Generic function to pack or unpack MHK2 data files.
 func transformMhk2(action string, dataFileLocation string, rootFolder string) error {

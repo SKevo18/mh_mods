@@ -26,8 +26,8 @@
         {% endfor %}
     </div>
 
-    <div id="packModal" class="fixed bottom-0 right-0 p-4 shadow-lg rounded-lg">
-        <button onclick="javascript:packSelectedMods();" id="packButton" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
+    <div id="packModal" class="fixed bottom-0 p-4 shadow-lg rounded-lg" style="display: none; left: 50%; transform: translateX(-50%);">
+        <button onclick="javascript:packSelectedMods();" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
             Pack selected mods
         </button>
     </div>
@@ -36,6 +36,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/lib/marked.min.js"></script>
 <script type="text/javascript">
     window.selectedMods = [];
+    const packModal = document.getElementById("packModal");
+
     /**
         * @param {HTMLButtonElement} buttonElement
         * @param {string} modId
@@ -48,6 +50,12 @@
         } else {
             window.selectedMods.splice(index, 1);
             buttonElement.innerText = "Select this mod";
+        }
+
+        if (window.selectedMods.length > 0) {
+            packModal.style.display = "block";
+        } else {
+            packModal.style.display = "none";
         }
 
         let modElement = buttonElement.parentElement.parentElement;
