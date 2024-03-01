@@ -14,11 +14,8 @@ if [ ! -d .venv ]; then
 fi
 
 export PYTHONPATH=$(pwd)
-../.venv/bin/gunicorn flask_app:MHMODS_FLASK_APP --bind=unix:./mhmods_flask.sock -k sync -m 007 -w 4 --timeout=300 &
+../.venv/bin/hypercorn app:WEBSERVER --bind=unix:./mhmods_flask.sock -k uvloop -m 007 -w 4 --timeout=300 &
 pid1=$!
-
-../.venv/bin/gunicorn fastapi_app:MHMODS_FASTAPI_APP --bind=unix:./mhmods_fastapi.sock -k uvicorn.workers.UvicornWorker -m 007 -w 4 --timeout=300 &
-pid2=$!
 
 
 wait $pid1 $pid2

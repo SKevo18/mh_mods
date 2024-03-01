@@ -1,14 +1,14 @@
-# Place in `/etc/systemd/system/mhkmods.service`
+# Place in `/etc/systemd/system/mhmods.service`
 #
 # `systemctl daemon-reload`
-# `systemctl enable mhkmods.service`
-# `systemctl start mhkmods.service`
+# `systemctl enable mhmods.service`
+# `systemctl start mhmods.service`
 # Update `ExecStart` with the correct path to `start.sh`
 [Install]
 WantedBy=multi-user.target
 
 [Unit]
-Description=MHK Mods daemon
+Description=MH Mods daemon
 After=network.target
 
 [Service]

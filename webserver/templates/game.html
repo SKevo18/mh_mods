@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+{% set title="Mods for " + game.name %}
+
+{% block content %}
+<div class="bg-white dark:bg-gray-800 dark:text-gray-300">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-bold mb-4">{{ game.name }}</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for mod in mods %}
+                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+                    <h2 class="text-lg font-semibold mb-2">{{ mod.name }}</h2>
+
+                    <div class="my-6">
+                        <h3 class="text-xl font-bold mb-2">README</h3>
+                        <div class=".markdown">{{ mod.readme()|default("No README.") }}</div>
+                    </div>
+
+                    <div>
+                        <a href="{{ url_for('packmod', game_id=game.id) }}?mods={{ mod.id }}" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">
+                            Download this mod
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
+    window.addEventListener("load", () => {
+        const markdownElements = document.querySelectorAll(".markdown");
+        markdownElements.forEach(function (element) {
+            let markdown = element.innerText;
+            element.innerHTML = marked.parse(markdown);
+        });
+    });
+</script>
+{% endblock %}

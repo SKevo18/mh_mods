@@ -6,16 +6,16 @@ An all-in-one experimental Go command-line tool for patching Moorhuhn data files
 
 - [x] Unpacking data files;
 - [x] Repacking data files;
-- [ ] Packing and merging multiple mods into unified data file;
-- [ ] A Python webserver, to patch and download modded data files on the fly;
+- [x] Packing and merging multiple mods into unified data file;
+- [x] A Python webserver, to patch and download modded data files on the fly;
 
 ## Supported games
 
-- [x] Moorhuhn Kart Extra XXL (game ID: `mhk_1`/`mhk_extra`)
-- [x] Moorhuhn Kart 2 (game ID: `mhk_2`)
-  - [ ] Schatzjäger (untested) (game ID: `schatzjaeger`)
-- [ ] Moorhuhn Kart 3 (game ID: `mhk_3`)
-- [ ] Moorhuhn Kart 4 (Thunder) (game ID: `mhk_4`/`mhk_thunder`)
+- [x] Moorhuhn Kart Extra XXL (game ID: `mhk_1`/`mhk_extra`) - untested!;
+- [x] Moorhuhn Kart 2 (game ID: `mhk_2`);
+  - [ ] Schatzjäger (untested) (game ID: `schatzjaeger`) - note: this uses the exact same algorithm as MHK2;
+- [ ] Moorhuhn Kart 3 (game ID: `mhk_3`);
+- [x] Moorhuhn Kart 4 (Thunder) (game ID: `mhk_4`/`mhk_thunder`);
 
 ## Wait, what?
 
@@ -29,6 +29,10 @@ By exchanging knowledge and helpful tips, I've been able to understand how the d
 
 ## Usage
 
+### Download existing mods
+
+The [webserver](./webserver/) is a simple Python webserver, which can be used to build and download modded data files on the fly, without the need for end-users to use the command-line tool at all. See it live at [https://mhmods.svit.ac/](https://mhmods.svit.ac/).
+
 ### Download
 
 You can obtain the latest version of the tool for your operating system from the [releases](https://github.com/SKevo18/mh_mods/releases) page. They are cross-compiled for Windows, Linux and MacOS (GitHub Actions).
@@ -38,9 +42,11 @@ You can obtain the latest version of the tool for your operating system from the
 If you want to compile the tool yourself, you must have Go 1.22.0 installed on your system. Then, you can run the following command to compile the tool:
 
 ```bash
-# Clone the repository and CD to repo root, then:
+# clone the repository and `cd` to repo root, then:
 go build -o build/
 ```
+
+The binary for your OS will be available in the `build/` directory. You can also compile the tool and run it right away by using `go run .` in the repository root.
 
 ## FaQ
 
@@ -57,16 +63,6 @@ While this tool is not a full-fledged modding suite, it provides the basic funct
 You can't use the tool to create new assets, such as models or textures, but you can modify existing ones. For example, you can replace the textures of the game characters, modify existing levels/tracks or modify the configuration files to change the game behavior.
 
 The tools aims to simplify this process as much as possible, and to provide a simple way to share mods with others. It also includes a webserver, which can be used to build and download modded data files on the fly, without the need for end-users to use the command-line tool at all.
-
-### What games are supported?
-
-Currently, the tool supports the following games:
-
-- Moorhuhn Kart Extra XXL
-- Moorhuhn Kart 2
-  - The same format seems to be used by Schatzjäger, however that game wasn't tested yet
-- Moorhuhn Kart 3
-- Moorhuhn Kart 4 (Thunder)
 
 ## Credits
 

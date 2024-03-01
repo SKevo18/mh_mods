@@ -64,9 +64,6 @@ func mergeRecursively(dest string, ignoreConflicts bool, srcs ...string) error {
 			if info.IsDir() {
 				return os.MkdirAll(destPath, info.Mode())
 			}
-			/*if _, err := os.Stat(destPath); os.IsNotExist(err) {
-				return copyFile(path, destPath)
-			}*/
 
 			// merge
 			return mergeFileContents(destPath, path, destPath, ignoreConflicts)
@@ -129,22 +126,3 @@ func mergeFileContents(destFile string, srcFile1 string, srcFile2 string, ignore
 
 	return nil
 }
-
-// Copies a file from `src` to `dst`, creating it if necessary.
-// If the destination file already exists, it will be overwritten
-/*func copyFile(src, dst string) error {
-	in, err := os.Open(src)
-	if err != nil {
-		return err
-	}
-	defer in.Close()
-
-	out, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-	defer out.Close()
-
-	_, err = io.Copy(out, in)
-	return err
-}*/

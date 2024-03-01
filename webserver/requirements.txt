@@ -1,7 +1,2 @@
-flask
-fastapi
-
-aiofiles
-
-gunicorn
-uvicorn
+quart
+hypercorn[uvloop]
