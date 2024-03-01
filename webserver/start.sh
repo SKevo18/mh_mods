@@ -7,4 +7,4 @@ if [ ! -d ../.venv ]; then
 fi
 
 export PYTHONPATH=$(pwd)
-../.venv/bin/hypercorn app:WEBSERVER --bind=unix:server.sock -k uvloop -m 007 -w 2 &
+../.venv/bin/hypercorn app:WEBSERVER --bind=unix:server.sock -k uvloop -m 007 -w 2
