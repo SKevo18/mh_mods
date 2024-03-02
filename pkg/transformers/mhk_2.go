@@ -34,7 +34,7 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 	// save file entry data
 	log.Println("Saving file entries data...")
-	offset := int64(0x40 + len(files) * 0x80)
+	offset := int64(0x40 + len(files)*0x80)
 	for _, file := range files {
 		fileEntry := make([]byte, 0x80)
 		copy(fileEntry, strings.ReplaceAll(file.FilePath, "/", "\\"))
@@ -63,7 +63,7 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 		// write data
 		log.Printf("Writing `%s`...", file.FilePath)
-		padding := make([]byte, file.FileSize % 0x100)
+		padding := make([]byte, file.FileSize%0x100)
 		if _, err := outFile.Write(append(fileData, padding...)); err != nil {
 			return err
 		}
@@ -196,37 +196,35 @@ func readHeader(header [0x40]byte) (string, uint32) {
 
 // Encrypts MHK2 `.txt` config files.
 func encryptConfig(data []byte) {
-    key := 0x1234
+	key := 0x1234
 
-    for i := range data {
-        oddBits := data[i] & 0x55
-        evenBits := data[i] & 0xAA
-        evenBits >>= 1
-        oddBits <<= 1
+	for i := range data {
+		oddBits := data[i] & 0x55
+		evenBits := data[i] & 0xAA
+		evenBits >>= 1
+		oddBits <<= 1
 
-        data[i] = (oddBits ^ evenBits) ^ byte(key & 0xFF)
-        key = key * 3 + 2 & 0xffff
-    }
+		data[i] = (oddBits ^ evenBits) ^ byte(key&0xFF)
+		key = key*3 + 2&0xffff
+	}
 }
-
 
 // Decrypts MHK2 `.txt` config files.
 func decryptConfig(data []byte) {
-    key := 0x1234
+	key := 0x1234
 
-    for i := range data {
-        temp := data[i] ^ byte(key & 0xFF)
+	for i := range data {
+		temp := data[i] ^ byte(key&0xFF)
 
-        evenBits := temp & 0xAA
-        oddBits := temp & 0x55
-        evenBits <<= 1
-        oddBits >>= 1
+		evenBits := temp & 0xAA
+		oddBits := temp & 0x55
+		evenBits <<= 1
+		oddBits >>= 1
 
-        data[i] = evenBits | oddBits
-        key = key * 3 + 2 & 0xffff
-    }
+		data[i] = evenBits | oddBits
+		key = key*3 + 2&0xffff
+	}
 }
-
 
 // Generic function to pack or unpack MHK2 data files.
 func transformMhk2(action string, dataFileLocation string, rootFolder string) error {
