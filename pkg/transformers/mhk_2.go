@@ -196,7 +196,7 @@ func readHeader(header [0x40]byte) (string, uint32) {
 
 // Encrypts MHK2 `.txt` config files.
 func encryptConfig(data []byte) {
-	key := 0x1234
+	key := uint16(0x1234)
 
 	for i := range data {
 		oddBits := data[i] & 0x55
@@ -211,7 +211,7 @@ func encryptConfig(data []byte) {
 
 // Decrypts MHK2 `.txt` config files.
 func decryptConfig(data []byte) {
-	key := 0x1234
+	key := uint16(0x1234)
 
 	for i := range data {
 		temp := data[i] ^ byte(key&0xFF)
