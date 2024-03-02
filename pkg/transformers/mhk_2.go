@@ -34,7 +34,7 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 	// save file entry data
 	log.Println("Saving file entries data...")
-	offset := int64(0x40 + len(files)*0x80)
+	offset := int64(0x40 + len(files) * 0x80)
 	for _, file := range files {
 		fileEntry := make([]byte, 0x80)
 		copy(fileEntry, strings.ReplaceAll(file.FilePath, "/", "\\"))
@@ -63,12 +63,12 @@ func packMhk2(dataFileLocation string, inputPath string) error {
 
 		// write data
 		log.Printf("Writing `%s`...", file.FilePath)
-		padding := make([]byte, file.FileSize%0x100)
+		padding := make([]byte, file.FileSize % 0x100)
 		if _, err := outFile.Write(append(fileData, padding...)); err != nil {
 			return err
 		}
 	}
-
+ 
 	return nil
 }
 
@@ -130,7 +130,6 @@ func unpackMhk2(dataFileLocation string, outputPath string) error {
 
 		// decrypt, if necessary
 		if filepath.Ext(fileName) == ".txt" {
-			log.Printf("Decrypting `%s`...", fileName)
 			decryptConfig(fileData)
 		}
 
@@ -196,37 +195,34 @@ func readHeader(header [0x40]byte) (string, uint32) {
 
 // Encrypts MHK2 `.txt` config files.
 func encryptConfig(data []byte) {
-    key := 0x1234
+	key := uint(0x1234)
 
-    for i := range data {
-        oddBits := data[i] & 0x55
-        evenBits := data[i] & 0xAA
-        evenBits >>= 1
-        oddBits <<= 1
-
-        data[i] = (oddBits ^ evenBits) ^ byte(key & 0xFF)
-        key = key * 3 + 2 & 0xffff
-    }
+	for i := range data {
+		uVar2 := data[i] & 0x55
+		cVar1 := data[i] & 0xAA
+		cVar1 >>= 0x1
+		uVar2 <<= 0x1
+		data[i] = (uVar2 ^ cVar1) ^ byte(key&0xFF)
+		key = (key * 0x3) + (0x2 & 0xffff)
+	}
 }
-
 
 // Decrypts MHK2 `.txt` config files.
-func decryptConfig(data []byte) {
-    key := 0x1234
+func decryptConfig(data []byte) []byte {
+	var uVar3 uint16 = 0x1234
 
-    for i := range data {
-        temp := data[i] ^ byte(key & 0xFF)
+	for i := range data {
+		uVar2 := (uVar3 & 0xFF) ^ uint16(data[i])
+		cVar1 := uVar2 & 0xFF
+		uVar3 = ((uVar3 * 0x3) + 0x2) & 0xFFFF
 
-        evenBits := temp & 0xAA
-        oddBits := temp & 0x55
-        evenBits <<= 1
-        oddBits >>= 1
+		data[i] = byte(((uVar2 >> 0x1) ^ (cVar1 << 0x1)) & 0xFF)
+		data[i] &= 0x55
+		data[i] ^= byte((cVar1 << 0x1) & 0xFF)
+	}
 
-        data[i] = evenBits | oddBits
-        key = key * 3 + 2 & 0xffff
-    }
+	return data
 }
-
 
 // Generic function to pack or unpack MHK2 data files.
 func transformMhk2(action string, dataFileLocation string, rootFolder string) error {
