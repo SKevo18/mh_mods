@@ -2,8 +2,7 @@ package cmd
 
 import (
 	"bufio"
-	"fmt"
-	"io"
+	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
@@ -36,7 +35,7 @@ func PackmodCmd() *cobra.Command {
 			if err := transformers.Transform("unpack", gameID, originalDataFile, tempDir); err != nil {
 				log.Fatalf("Fatal error during unpacking: %s", err)
 			}
-			if err := mergeRecursively(tempDir, true, modPaths...); err != nil {
+			if err := mergeRecursively(tempDir, modPaths...); err != nil {
 				log.Fatalf("Fatal error during merging: %s", err)
 			}
 			if err := transformers.Transform("pack", gameID, outputDataFile, tempDir); err != nil {
@@ -48,45 +47,55 @@ func PackmodCmd() *cobra.Command {
 	}
 }
 
-// Merges directories and file contents recursively
-func mergeRecursively(dest string, ignoreConflicts bool, srcs ...string) error {
+// Merges directories and their file contents recursively.
+func mergeRecursively(dest string, srcs ...string) error {
+	// key		= relative path
+	// value 	= set of unique lines
+	allUniqueLines := make(map[string]map[string]struct{})
+
 	for _, src := range srcs {
-		err := filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+		err := filepath.Walk(src, func(path string, info fs.FileInfo, err error) error {
 			if err != nil {
 				return err
 			}
-
-			// get relative path, to create the same structure in the destination
-			relativePath, err := filepath.Rel(src, path)
-			if err != nil {
-				return err
-			}
-			destPath := filepath.Join(dest, relativePath)
-
-			// copy
 			if info.IsDir() {
-				return os.MkdirAll(destPath, info.Mode())
+				return nil
 			}
 
-			// copy destPath file into temporary file to use for merge
-			tempOriginal, err := os.CreateTemp("", fmt.Sprintf("mhmods_temp_%s", filepath.Base(destPath)))
+			relPath, err := filepath.Rel(src, path)
 			if err != nil {
 				return err
 			}
-			defer os.Remove(tempOriginal.Name())
 
-			original, err := os.Open(destPath)
+			lines, err := readLines(path)
 			if err != nil {
 				return err
 			}
-			defer original.Close()
 
-			io.Copy(tempOriginal, original)
+			// setup struct
+			if allUniqueLines[relPath] == nil {
+				allUniqueLines[relPath] = make(map[string]struct{})
+			}
+			for _, line := range lines {
+				allUniqueLines[relPath][line] = struct{}{}
+			}
 
-			// merge
-			return mergeFileContents(destPath, path, tempOriginal.Name(), ignoreConflicts)
+			return nil
 		})
 		if err != nil {
+			return err
+		}
+	}
+
+	// create/update files with merged content
+	for relPath, linesSet := range allUniqueLines {
+		var lines []string
+		for line := range linesSet {
+			lines = append(lines, line)
+		}
+
+		destPath := filepath.Join(dest, relPath)
+		if err := writeLines(destPath, lines); err != nil {
 			return err
 		}
 	}
@@ -94,61 +103,38 @@ func mergeRecursively(dest string, ignoreConflicts bool, srcs ...string) error {
 	return nil
 }
 
-// Merges the contents of two files into the destination file line by line.
-func mergeFileContents(destFile string, srcFile1 string, srcFile2 string, ignoreConflicts bool) error {
-	// open files
-	file1, err := os.Open(srcFile1)
+func readLines(path string) ([]string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+	return lines, scanner.Err()
+}
+
+func writeLines(path string, lines []string) error {
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		return err
+	}
+
+	file, err := os.Create(path)
 	if err != nil {
 		return err
 	}
-	defer file1.Close()
-	file2, err := os.Open(srcFile2)
-	if err != nil {
-		return err
-	}
-	defer file2.Close()
+	defer file.Close()
 
-	// create destination file
-	dest, err := os.Create(destFile)
-	if err != nil {
-		return err
-	}
-	defer dest.Close()
-
-	// scan
-	scanner1 := bufio.NewScanner(file1)
-	scanner2 := bufio.NewScanner(file2)
-
-	for scanner1.Scan() && scanner2.Scan() {
-		line1 := scanner1.Text()
-		line2 := scanner2.Text()
-
-		if err := scanner1.Err(); err != nil {
+	writer := bufio.NewWriter(file)
+	for _, line := range lines {
+		_, err := writer.WriteString(line + "\n")
+		if err != nil {
 			return err
 		}
-		if err := scanner2.Err(); err != nil {
-			return err
-		}
-
-		// equal, write first
-		if line1 == line2 {
-			_, err := dest.WriteString(line1 + "\n")
-			if err != nil {
-				return err
-			}
-		} else {
-			// ignore conflict, choose first
-			if ignoreConflicts {
-				_, err := dest.WriteString(line1 + "\n")
-				if err != nil {
-					return err
-				}
-			} else {
-				// error, if not ignored (currently unused)
-				return fmt.Errorf("conflict detected and `ignoreConflicts` is false: `%s` vs `%s`", line1, line2)
-			}
-		}
 	}
-
-	return nil
+	return writer.Flush()
 }
