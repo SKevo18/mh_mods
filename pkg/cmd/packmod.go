@@ -1,13 +1,11 @@
 package cmd
 
 import (
-	"bufio"
-	"io/fs"
 	"log"
 	"os"
-	"path/filepath"
 
 	"mhmods/pkg/transformers"
+    "mhmods/pkg/util"
 
 	"github.com/spf13/cobra"
 )
@@ -24,117 +22,33 @@ func PackmodCmd() *cobra.Command {
 			outputDataFile := args[2]
 			modPaths := args[3:]
 
-			// create temp dir
-			tempDir, err := os.MkdirTemp("", "mhmods_temp")
+			// create temp dirs
+			tempDirUnpacked, err := os.MkdirTemp("", "mhmods_temp_unpacked")
 			if err != nil {
 				log.Fatalf("Fatal error: %s", err)
 			}
-			defer os.RemoveAll(tempDir)
+			defer os.RemoveAll(tempDirUnpacked)
+			tempDirMerged, err := os.MkdirTemp("", "mhmods_temp_merged")
+			if err != nil {
+				log.Fatalf("Fatal error: %s", err)
+			}
+			defer os.RemoveAll(tempDirMerged)
 
-			// unpack, merge and repack
-			if err := transformers.Transform("unpack", gameID, originalDataFile, tempDir); err != nil {
+			// unpack
+			if err := transformers.Transform("unpack", gameID, originalDataFile, tempDirUnpacked); err != nil {
 				log.Fatalf("Fatal error during unpacking: %s", err)
 			}
-			if err := mergeRecursively(tempDir, modPaths...); err != nil {
+
+			// merge and repack
+			modPaths = append(modPaths, tempDirUnpacked)
+			if err := util.MergeRecursively(tempDirMerged, modPaths); err != nil {
 				log.Fatalf("Fatal error during merging: %s", err)
 			}
-			if err := transformers.Transform("pack", gameID, outputDataFile, tempDir); err != nil {
+			if err := transformers.Transform("pack", gameID, outputDataFile, tempDirMerged); err != nil {
 				log.Fatalf("Fatal error during repacking: %s", err)
 			}
 
 			log.Printf("Packed modded data file: %s (paths: %v)", outputDataFile, modPaths)
 		},
 	}
-}
-
-// Merges directories and their file contents recursively.
-func mergeRecursively(dest string, srcs ...string) error {
-	// key		= relative path
-	// value 	= set of unique lines
-	allUniqueLines := make(map[string]map[string]struct{})
-
-	for _, src := range srcs {
-		err := filepath.Walk(src, func(path string, info fs.FileInfo, err error) error {
-			if err != nil {
-				return err
-			}
-			if info.IsDir() {
-				return nil
-			}
-
-			relPath, err := filepath.Rel(src, path)
-			if err != nil {
-				return err
-			}
-
-			lines, err := readLines(path)
-			if err != nil {
-				return err
-			}
-
-			// setup struct
-			if allUniqueLines[relPath] == nil {
-				allUniqueLines[relPath] = make(map[string]struct{})
-			}
-			for _, line := range lines {
-				allUniqueLines[relPath][line] = struct{}{}
-			}
-
-			return nil
-		})
-		if err != nil {
-			return err
-		}
-	}
-
-	// create/update files with merged content
-	for relPath, linesSet := range allUniqueLines {
-		var lines []string
-		for line := range linesSet {
-			lines = append(lines, line)
-		}
-
-		destPath := filepath.Join(dest, relPath)
-		if err := writeLines(destPath, lines); err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
-
-func readLines(path string) ([]string, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	var lines []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
-}
-
-func writeLines(path string, lines []string) error {
-	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
-		return err
-	}
-
-	file, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	writer := bufio.NewWriter(file)
-	for _, line := range lines {
-		_, err := writer.WriteString(line + "\n")
-		if err != nil {
-			return err
-		}
-	}
-	return writer.Flush()
 }

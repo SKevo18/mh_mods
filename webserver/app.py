@@ -36,7 +36,7 @@ async def packmods(game_id: str):
         return await abort(400, "No valid mods selected to pack.")
 
     with NamedTemporaryFile(suffix=game.original_datafile.suffix, delete=False) as f:
-        out, err, code = await pack(game, f.name, mods_to_pack)
+        cmd, out, err, code = await pack(game, f.name, mods_to_pack)
         if out is not None:
             out = out.decode("utf-8")
         if err is not None:

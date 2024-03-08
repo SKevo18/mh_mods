@@ -7,3 +7,5 @@ __pycache__/
 !/data/README.md
 /unpacked/*
 !/unpacked/*.sh
+
+**/merge/out.txt
