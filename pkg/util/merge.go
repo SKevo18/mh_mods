@@ -1,9 +1,13 @@
 package util
 
 import (
+	"context"
 	"fmt"
+	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"strings"
 
 	gitadd "github.com/ldez/go-git-cmd-wrapper/v2/add"
 	gitcheckout "github.com/ldez/go-git-cmd-wrapper/v2/checkout"
@@ -11,91 +15,97 @@ import (
 	"github.com/ldez/go-git-cmd-wrapper/v2/git"
 	gitinit "github.com/ldez/go-git-cmd-wrapper/v2/init"
 	gitmerge "github.com/ldez/go-git-cmd-wrapper/v2/merge"
+	"github.com/ldez/go-git-cmd-wrapper/v2/types"
 	cp "github.com/otiai10/copy"
 )
 
-// Merges two directories together using git as a middleman
-func MergeRecursively(dest string, srcs []string) error {
-	// create `dest`
-	if _, err := os.Stat(dest); !os.IsNotExist(err) {
+func MergeModsRecursivelyGit(dest string, srcs []string, debug bool) error {
+	if _, err := git.Init(gitinit.Directory(dest)); err != nil {
 		return err
 	}
-	if err := os.Mkdir(dest, 0o755); err != nil {
-		return err
-	}
+    log.Printf("Initialized empty git repository in `%s`...", dest)
 
-	// init
-	if _, err := git.Init(
-		gitinit.Bare, gitinit.Quiet,
-		gitinit.Directory(dest),
+    runGitInOpt := runGitIn(dest, debug)
+	if _, err := git.Checkout(gitcheckout.NewBranch("main"), runGitInOpt); err != nil {
+		log.Printf("Main branch already exists or error creating it: %v", err)
+	}
+	if _, err := git.Commit(
+		gitcommit.Message("Initial commit"),
+		gitcommit.AllowEmpty,
+		runGitInOpt,
 	); err != nil {
-		return err
+		log.Printf("Error creating initial commit: %v", err)
 	}
 
-	// create main branch
-	if _, err := git.Checkout(
-		gitcheckout.NewBranchForce("main"),
-	); err != nil {
-		return err
-	}
+	for i, src := range srcs {
+		branchName := fmt.Sprintf("src-%d", i + 1)
 
-	// merge
-	for _, src := range srcs {
-		// copy branch
-		branchName := fmt.Sprintf("src-%s", filepath.Base(src))
-		if err := copyAsBranch(src, dest, branchName); err != nil {
+		// new branch for each modified src
+		if _, err := git.Checkout(
+			gitcheckout.NewBranch(branchName),
+			runGitInOpt,
+		); err != nil {
+			return err
+		}
+
+		// copy mod files
+		if err := cp.Copy(src, dest); err != nil {
+			return err
+		}
+
+		// add & commit mod
+		if _, err := git.Add(gitadd.All, runGitInOpt); err != nil {
+			return err
+		}
+		if _, err := git.Commit(
+			gitcommit.Message(fmt.Sprintf("Apply changes from path `%s`", src)),
+			runGitInOpt,
+		); err != nil {
 			return err
 		}
 
 		// checkout main
 		if _, err := git.Checkout(
 			gitcheckout.Branch("main"),
+			runGitInOpt,
 		); err != nil {
 			return err
 		}
 
 		// merge
 		if _, err := git.Merge(
+			gitmerge.Commits(branchName),
 			gitmerge.StrategyOption("theirs"),
+			gitmerge.NoFf,
 			gitmerge.AllowUnrelatedHistories,
+			runGitInOpt,
 		); err != nil {
 			return err
 		}
 	}
 
-	// cleanup `.git` repo
 	if err := os.RemoveAll(filepath.Join(dest, ".git")); err != nil {
-		return err
+		return fmt.Errorf("failed to remove `.git` directory: %v", err)
 	}
 
 	return nil
 }
 
-// Copies all files from `src` to `dest` as a new branch and commit them.
-func copyAsBranch(src string, dest string, branchName string) error {
-	// create branch
-	if _, err := git.Checkout(
-		gitcheckout.NewBranchForce(branchName),
-	); err != nil {
-		return err
-	}
+func runGitIn(path string, debug bool) types.Option {
+	return git.CmdExecutor(
+		func(ctx context.Context, name string, _ bool, args ...string) (string, error) {
+			if debug {
+				log.Printf("(%s) git %s", path, strings.Join(args, " "))
+			}
 
-	// copy
-	if err := cp.Copy(src, dest); err != nil {
-		return err
-	}
+			cmd := exec.CommandContext(ctx, name, args...)
+			cmd.Dir = path
+			output, err := cmd.CombinedOutput()
 
-	// add & commit
-	if _, err := git.Add(
-		gitadd.All,
-	); err != nil {
-		return err
-	}
-	if _, err := git.Commit(
-		gitcommit.Message(fmt.Sprintf("merge `%s`", branchName)),
-	); err != nil {
-		return err
-	}
-
-	return nil
+			if debug {
+				log.Printf("git output: %s", output)
+			}
+			return string(output), err
+		},
+	)
 }
