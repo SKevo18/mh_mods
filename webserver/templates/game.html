@@ -6,6 +6,23 @@
     <h1 class="text-2xl font-bold mb-4">{{ game.name }}</h1>
     <a href="{{ url_for('index') }}" class="text-indigo-500 hover:text-indigo-400 font-bold">&larr; Back to mods list</a>
 
+    <!-- instructions -->
+    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md my-4 space-y-2">
+        <h2 class="text-lg font-semibold mb-2 text-indigo-700 dark:text-indigo-300">Instructions</h2>
+        <ul class="list-decimal ml-4">
+            <li>Select the mods you want to pack together and click the "Pack all mods" button at the bottom of the page.</li>
+            <li>If you want to download just one mod, click the "Download just this mod" button.</li>
+            <li>Mod files are merged together by finding unique modifications the mods make.</li>
+            <ul class="list-disc ml-4">
+                <li>Mods that you chose later have priority (they overwrite previous ones, if a conflicting change is detected) - so, order matters.</li>
+            </ul>
+            <li>Mods are packed into a single file, which you can then install into your game folder.</li>
+            <ul class="list-disc ml-4">
+                <li>It is recommended that you rename or backup your original data file, so you don't nuke it, just in case.</li>
+            </ul>
+        </ul>
+    </div>
+
     <div class="grid grid-cols-1 gap-4">
         {% for mod in game.mods %}
             <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md my-4">
@@ -26,7 +43,13 @@
         {% endfor %}
     </div>
 
-    <div id="packModal" class="fixed bottom-0 p-4 shadow-lg rounded-lg" style="display: none; left: 50%; transform: translateX(-50%);">
+    <div id="packModal" class="fixed bottom-0 p-4 shadow-lg rounded-lg bg-white-200 dark:bg-gray-800" style="display: none; left: 50%; transform: translateX(-50%);">
+        <h2 class="text-lg font-semibold mb-2">Create Modpack</h2>
+        <p class="mb-4 italic text-sm text-gray-500">Higher number means higher priority, and will overwrite earlier mods, if they make the same change (conflict).</p>
+        <table id="modList" class="table-fixed w-full my-2">
+            <tbody></tbody>
+        </table>
+
         <button onclick="javascript:packSelectedMods();" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
             Pack selected mods
         </button>
@@ -38,31 +61,81 @@
     window.selectedMods = [];
     const packModal = document.getElementById("packModal");
 
-    /**
-        * @param {HTMLButtonElement} buttonElement
-        * @param {string} modId
-    **/
+    function updateModListDisplay() {
+        const modList = document.getElementById("modList").querySelector('tbody');
+        modList.innerHTML = ''; // Clear current list
+        window.selectedMods.forEach((modId, index) => {
+            addModToTable(modId, index + 1);
+        });
+    }
+
+    function addModToTable(modId, index) {
+        const modList = document.getElementById("modList").querySelector('tbody');
+        let tr = document.createElement("tr");
+        tr.id = "mod-" + modId;
+        tr.className = "hover:bg-blue-200 dark:hover:bg-blue-700";
+
+        let tdIndex = document.createElement("td");
+        tdIndex.textContent = index;
+        tr.appendChild(tdIndex);
+
+        let tdMod = document.createElement("td");
+        tdMod.textContent = modId;
+        tdMod.className = "w-3/4";
+        tr.appendChild(tdMod);
+
+        // Add control buttons (Up, Down, Remove)
+        tr.appendChild(createControlButton("⬆️", () => moveMod(modId, -1)));
+        tr.appendChild(createControlButton("⬇️", () => moveMod(modId, 1)));
+        tr.appendChild(createControlButton("X", () => deselectMod(modId)));
+
+        modList.appendChild(tr);
+    }
+
+    function createControlButton(text, action) {
+        let td = document.createElement("td");
+        let button = document.createElement("button");
+        button.textContent = text;
+        button.style.cursor = "pointer";
+        button.addEventListener("click", action);
+        td.appendChild(button);
+        return td;
+    }
+
+    function deselectMod(modId) {
+        const buttonElement = document.querySelector(`button[onclick*="'${modId}'"]`);
+        selectMod(buttonElement, modId);
+    }
+
+    function moveMod(modId, direction) {
+        const index = window.selectedMods.indexOf(modId);
+        const newIndex = index + direction;
+
+        if (newIndex >= 0 && newIndex < window.selectedMods.length) {
+            // Swap elements
+            [window.selectedMods[index], window.selectedMods[newIndex]] = [window.selectedMods[newIndex], window.selectedMods[index]];
+            updateModListDisplay(); // Re-render the mod list with new order
+        }
+    }
+
     function selectMod(buttonElement, modId) {
         const index = window.selectedMods.indexOf(modId);
+        const modElement = buttonElement.parentElement.parentElement;
+        const selectedClasses = ["outline-4", "outline-double", "outline-offset-4", "outline-green-500"]
+
         if (index === -1) {
             window.selectedMods.push(modId);
+            modElement.classList.add(...selectedClasses);
             buttonElement.innerText = "Deselect this mod";
         } else {
             window.selectedMods.splice(index, 1);
+            modElement.classList.remove(...selectedClasses);
             buttonElement.innerText = "Select this mod";
         }
 
-        if (window.selectedMods.length > 0) {
-            packModal.style.display = "block";
-        } else {
-            packModal.style.display = "none";
-        }
-
-        let modElement = buttonElement.parentElement.parentElement;
-        modElement.classList.toggle("outline-double");
-        modElement.classList.toggle("outline-2");
-        modElement.classList.toggle("outline-offset-8");
-        modElement.classList.toggle("outline-indigo-300");
+        // Toggle visibility of pack modal based on selected mods
+        packModal.style.display = window.selectedMods.length > 0 ? "block" : "none";
+        updateModListDisplay(); // Update the display of mods in the table
     }
 
     function packSelectedMods() {
@@ -79,7 +152,6 @@
         });
         window.location.href = url + "?" + params.toString();
     }
-    
 
     window.addEventListener("load", () => {
         const markdownElements = document.querySelectorAll(".markdown-body");
@@ -88,4 +160,5 @@
         });
     });
 </script>
+
 {% endblock %}

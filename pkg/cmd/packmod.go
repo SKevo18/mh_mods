@@ -39,16 +39,12 @@ func PackmodCmd() *cobra.Command {
 				log.Fatalf("Fatal error during unpacking: %s", err)
 			}
 
-			// prepend `modPaths` with `tempDirUnpacked`
-			modPaths = append(modPaths, "")
-			copy(modPaths[1:], modPaths)
-			modPaths[0] = tempDirUnpacked
-
-			// merge and repack
-			log.Print("Merging mod paths via git...")
-			if err := util.MergeModsRecursivelyGit(tempDirMerged, modPaths, true); err != nil {
+			// merge
+			if err := util.MergeModFilesRecursively(tempDirUnpacked, modPaths, tempDirMerged); err != nil {
 				log.Fatalf("Fatal error during merging: %s", err)
 			}
+
+			// repack
 			if err := transformers.Transform("pack", gameID, outputDataFile, tempDirMerged); err != nil {
 				log.Fatalf("Fatal error during repacking: %s", err)
 			}

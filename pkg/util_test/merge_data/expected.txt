@@ -1,0 +1,30 @@
+# ------------------------------------------------ Game Settings
+OBJECT START
+class type: "class GameSettings"
+[GameSettings] "Game Settings"
+{
+    class type: "class GameSettings::PowerUpInfo"
+    [PowerUpInfo] "power up"
+    {
+        "respawn delay" 0.750000
+        "homing missile speed" 70.000000
+        "homing missile arm delay" 2.000000
+        "homing missile life time" 15.000000
+        "homing missile activation distance" 100.000000
+        "homing missile lock distance" 20.000000
+        "homing missile locked speed" 90.000000
+        "glibber ball move time" 50.000000
+        "glibber ball timeout" 20.000000
+        "blue light time" 15.000000
+        "blue light accel factor" 5.000000
+        "blue light max. speed factor" 1.100000
+        "shield time" 30.000000
+        "black hole throwingTimer" 5.000000
+        "black hole gravity" 40.000000
+        "black hole size" 2.500000
+        "turbo can time" 50.000000
+        "turbo can accel factor" 20.000000
+        "turbo can max. speed factor" 2.000000
+    }
+
+}
