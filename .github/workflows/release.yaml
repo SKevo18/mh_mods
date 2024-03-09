@@ -35,6 +35,9 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
 
+      - name: Run Tests
+        run: go test ./...
+
       - name: Build
         env:
           GOOS: ${{ matrix.os }}
