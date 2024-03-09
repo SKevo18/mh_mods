@@ -67,7 +67,7 @@
 
     function updateModListDisplay() {
         const modList = document.getElementById("modList").querySelector('tbody');
-        modList.innerHTML = ''; // Clear current list
+        modList.innerHTML = '';
         window.selectedMods.forEach((modId, index) => {
             addModToTable(modId, index + 1);
         });
@@ -88,7 +88,6 @@
         tdMod.className = "w-3/4";
         tr.appendChild(tdMod);
 
-        // Add control buttons (Up, Down, Remove)
         tr.appendChild(createControlButton("⬆️", () => moveMod(modId, -1)));
         tr.appendChild(createControlButton("⬇️", () => moveMod(modId, 1)));
         tr.appendChild(createControlButton("X", () => deselectMod(modId)));
@@ -116,9 +115,8 @@
         const newIndex = index + direction;
 
         if (newIndex >= 0 && newIndex < window.selectedMods.length) {
-            // Swap elements
             [window.selectedMods[index], window.selectedMods[newIndex]] = [window.selectedMods[newIndex], window.selectedMods[index]];
-            updateModListDisplay(); // Re-render the mod list with new order
+            updateModListDisplay();
         }
     }
 
@@ -137,9 +135,8 @@
             buttonElement.innerText = "Select this mod";
         }
 
-        // Toggle visibility of pack modal based on selected mods
         packModal.style.display = window.selectedMods.length > 0 ? "block" : "none";
-        updateModListDisplay(); // Update the display of mods in the table
+        updateModListDisplay();
     }
 
     function packSelectedMods() {
