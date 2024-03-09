@@ -6,7 +6,7 @@ class type: "class GameSettings"
     class type: "class GameSettings::PowerUpInfo"
     [PowerUpInfo] "power up"
     {
-        "respawn delay" 0.750000
+        "respawn delay" 0.40000
         "homing missile speed" 70.000000
         "homing missile arm delay" 2.000000
         "homing missile life time" 15.000000

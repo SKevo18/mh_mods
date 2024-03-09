@@ -1,6 +1,6 @@
 # Faster Itembox Respawn Moorhuhn Kart 2 (en)
 
-> Makes item boxes appear faster after being picked up.
+> Makes item boxes appear way faster after being picked up (3 seconds -> 0.4 seconds)
 
 ## Installation instructions
 

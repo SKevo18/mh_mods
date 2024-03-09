@@ -106,8 +106,8 @@ class type: "class Car"
 
     [misc] ""
     {
-        "steering washout" 0.030000
-        "steering washout power" 1.600000
+        "steering washout" 0.000000
+        "steering washout power" 2.000000
         "drag coefficient" 0.000000
         "downforce coefficient" 0.000100
         "steering speed" 170.000000

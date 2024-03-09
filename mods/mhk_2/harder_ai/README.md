@@ -1,6 +1,6 @@
 # Harder AI for Moorhuhn Kart 2 (en)
 
-> Makes 150cc AI opponents more faster and harder to beat.
+> Makes 150cc AI opponents rubberband more.
 
 ## Installation instructions
 
