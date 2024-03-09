@@ -37,7 +37,7 @@ async def packmods(game_id: str):
     if not mods_to_pack:
         return await abort(400, "No valid mods selected to pack.")
 
-    async with NamedTemporaryFile(dir=TEMPDIR, suffix=game.original_datafile.suffix, prefix=game.original_datafile.stem, delete=False) as f:
+    async with NamedTemporaryFile(dir=TEMPDIR, suffix=game.original_datafile.suffix, prefix=game.original_datafile.stem + ".", delete=False) as f:
         name = str(f.name)
         _, out, err, code = await pack(game, name, mods_to_pack)
         if out is not None:
