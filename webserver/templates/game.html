@@ -24,23 +24,27 @@
     </div>
 
     <div class="grid grid-cols-1 gap-4">
-        {% for mod in game.mods %}
-            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md my-4">
-                {% if not mod.readme %}
-                    <h2 class="text-lg font-semibold mb-2">{{ mod.id }}</h2>
-                {% else %}
-                    <div class="mb-6 markdown-body" data-content="{{ mod.readme|e }}"></div>
-                {% endif %}
-                <div class="flex flex-row gap-4">
-                    <button onclick="javascript:selectMod(this, '{{ mod.id}}');" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
-                        Select this mod
-                    </button>
-                    <a href="{{ url_for('packmods', game_id=game.id) }}?mod={{ mod.id }}" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">
-                        Download just this mod
-                    </a>
+        {% if game.mods|length > 0 %}
+            {% for mod in game.mods %}
+                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md my-4">
+                    {% if not mod.readme %}
+                        <h2 class="text-lg font-semibold mb-2">{{ mod.id }}</h2>
+                    {% else %}
+                        <div class="mb-6 markdown-body" data-content="{{ mod.readme|e }}"></div>
+                    {% endif %}
+                    <div class="flex flex-row gap-4">
+                        <button onclick="javascript:selectMod(this, '{{ mod.id}}');" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
+                            Select this mod
+                        </button>
+                        <a href="{{ url_for('packmods', game_id=game.id) }}?mod={{ mod.id }}" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">
+                            Download just this mod
+                        </a>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            <p class="text-gray-500 dark:text-gray-400">There are no mods available for this game (yet).</p>
+        {% endif %}
     </div>
 
     <div id="packModal" class="fixed bottom-0 p-4 shadow-lg rounded-lg bg-white-200 dark:bg-gray-800" style="display: none; left: 50%; transform: translateX(-50%);">

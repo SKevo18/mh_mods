@@ -26,9 +26,16 @@
         </style>
         <script src="https://cdn.tailwindcss.com/"></script>
     </head>
-    <body>
-        <main class="min-h-screen bg-white dark:bg-gray-800 dark:text-gray-300">
+    <body class="min-h-screen bg-white dark:bg-gray-800 dark:text-gray-300">
+        <main>
             {% block content %}{% endblock %}
         </main>
+
+        <footer class="">
+            <div class="container mx-auto py-8 text-center text-gray-500 dark:text-gray-400">
+                <p>Moorhuhn Mods &copy; Made by SKevo18</p>
+                <p>This project is <a href="https://github.com/SKevo18/mh_mods/" class="text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400">open source</a>.</p>
+            </div>
+        </footer>
     </body>
 </html>
