@@ -1,0 +1,2461 @@
+# ------------------------------------------------ Debug Display
+OBJECT START
+class type: "class DebugDisplay"
+[Debug Display] "Debug Display"
+{
+    "z-test" 1
+    "count" 11
+    "name_0000" "Areas"
+    "name_0001" "Car AI"
+    "name_0002" "computer car"
+    "name_0003" "ground normals"
+    "name_0004" "ground polys"
+    "name_0005" "invalid respawn areas"
+    "name_0006" "obstacles on track"
+    "name_0007" "track boundaries"
+    "name_0008" "track lines"
+    "name_0009" "track poly sides"
+    "name_0010" "wheels"
+    "Areas" 1
+    "Car AI" 1
+    "computer car" 1
+    "ground normals" 1
+    "ground polys" 1
+    "invalid respawn areas" 1
+    "obstacles on track" 1
+    "track boundaries" 1
+    "track lines" 1
+    "track poly sides" 1
+    "wheels" 1
+}
+
+
+
+# ------------------------------------------------ Sample Manager
+OBJECT START
+class type: "class SampleManager"
+[Sample Manager] "Sample Manager"
+{
+    "Count" 58
+    "sample 0" "CAL_BRAKE"
+    "0000 CAL_BRAKE" "data\MK2\SFX\Kart\CAL_BRAKE.wav"
+    "sample flags 0" 3
+    "sample 1" "CAL_CRASH"
+    "0001 CAL_CRASH" "data\MK2\SFX\Kart\CAL_CRASH.wav"
+    "sample flags 1" 3
+    "sample 2" "CAL_DROP"
+    "0002 CAL_DROP" "data\MK2\SFX\kart\CAL_DROP.wav"
+    "sample flags 2" 3
+    "sample 3" "CAL_ENGINE100"
+    "0003 CAL_ENGINE100" "data\MK2\SFX\kart\CAL_ENGINE100.wav"
+    "sample flags 3" 3
+    "sample 4" "CAL_ENGINE150"
+    "0004 CAL_ENGINE150" "data\MK2\SFX\kart\CAL_ENGINE150.wav"
+    "sample flags 4" 3
+    "sample 5" "CAL_ENGINE50"
+    "0005 CAL_ENGINE50" "data\MK2\SFX\kart\CAL_ENGINE50.wav"
+    "sample flags 5" 3
+    "sample 6" "CAL_JUMPLANDING"
+    "0006 CAL_JUMPLANDING" "data\MK2\SFX\kart\CAL_JUMPLANDING.wav"
+    "sample flags 6" 3
+    "sample 7" "CAL_POWERFAIL"
+    "0007 CAL_POWERFAIL" "data\MK2\SFX\kart\CAL_POWERFAIL.wav"
+    "sample flags 7" 3
+    "sample 8" "CAL_POWERSTART"
+    "0008 CAL_POWERSTART" "data\MK2\SFX\kart\CAL_POWERSTART.wav"
+    "sample flags 8" 3
+    "sample 9" "CAL_PUSH"
+    "0009 CAL_PUSH" "data\MK2\SFX\Kart\CAL_PUSH.wav"
+    "sample flags 9" 3
+    "sample 10" "CAL_RESPAWN"
+    "0010 CAL_RESPAWN" "data\MK2\SFX\kart\CAL_RESPAWN.wav"
+    "sample flags 10" 3
+    "sample 11" "CAL_SCRATCH"
+    "0011 CAL_SCRATCH" "data\MK2\SFX\kart\CAL_SCRATCH.wav"
+    "sample flags 11" 3
+    "sample 12" "CLH_SHOUT"
+    "0012 CLH_SHOUT" "data\MK2\SFX\kart\CLH_SHOUT.wav"
+    "sample flags 12" 3
+    "sample 13" "CMF_SHOUT"
+    "0013 CMF_SHOUT" "data\MK2\SFX\kart\CMF_SHOUT.wav"
+    "sample flags 13" 3
+    "sample 14" "CMH_SHOUT"
+    "0014 CMH_SHOUT" "data\MK2\SFX\kart\CMH_SHOUT.wav"
+    "sample flags 14" 3
+    "sample 15" "CML_SHOUT"
+    "0015 CML_SHOUT" "data\MK2\SFX\kart\CML_SHOUT.wav"
+    "sample flags 15" 3
+    "sample 16" "CPK_SHOUT"
+    "0016 CPK_SHOUT" "data\MK2\SFX\kart\CPK_SHOUT.wav"
+    "sample flags 16" 3
+    "sample 17" "CSM_SHOUT"
+    "0017 CSM_SHOUT" "data\MK2\SFX\Kart\CSM_SHOUT.wav"
+    "sample flags 17" 3
+    "sample 18" "CTL_SHOUT"
+    "0018 CTL_SHOUT" "data\MK2\SFX\kart\CTL_SHOUT.wav"
+    "sample flags 18" 3
+    "sample 19" "MENU_click"
+    "0019 MENU_click" "data\MK2\SFX\Menu\MENU_CLICK.wav"
+    "sample flags 19" 3
+    "sample 20" "MENU_preselect"
+    "0020 MENU_preselect" "data\MK2\SFX\Menu\MENU_PRESELECT.wav"
+    "sample flags 20" 3
+    "sample 21" "MENU_toggle"
+    "0021 MENU_toggle" "data\MK2\SFX\Menu\MENU_TOGGLE.wav"
+    "sample flags 21" 3
+    "sample 22" "PBH_ACTIVATE"
+    "0022 PBH_ACTIVATE" "data\MK2\SFX\PU\PBH_ACTIVATE.wav"
+    "sample flags 22" 3
+    "sample 23" "PBH_CLOSE"
+    "0023 PBH_CLOSE" "data\MK2\SFX\PU\PBH_CLOSE.wav"
+    "sample flags 23" 3
+    "sample 24" "PBH_HIT"
+    "0024 PBH_HIT" "data\MK2\SFX\PU\PBH_HIT.wav"
+    "sample flags 24" 3
+    "sample 25" "PBH_OPEN"
+    "0025 PBH_OPEN" "data\MK2\SFX\PU\PBH_OPEN.wav"
+    "sample flags 25" 3
+    "sample 26" "PFL_ACTIVE"
+    "0026 PFL_ACTIVE" "data\MK2\SFX\PU\PFL_ACTIVE.wav"
+    "sample flags 26" 3
+    "sample 27" "PFP_ACTIVATE"
+    "0027 PFP_ACTIVATE" "data\MK2\SFX\PU\PFP_ACTIVATE.wav"
+    "sample flags 27" 3
+    "sample 28" "PFP_DISSPOLVE"
+    "0028 PFP_DISSPOLVE" "data\MK2\SFX\PU\PFP_DISSOLVE.wav"
+    "sample flags 28" 3
+    "sample 29" "PFP_HIT"
+    "0029 PFP_HIT" "data\MK2\SFX\PU\PFP_HIT.wav"
+    "sample flags 29" 3
+    "sample 30" "PGB_ACTIVATE"
+    "0030 PGB_ACTIVATE" "data\MK2\SFX\PU\PGB_ACTIVATE.wav"
+    "sample flags 30" 3
+    "sample 31" "PGB_FAIL"
+    "0031 PGB_FAIL" "data\MK2\SFX\PU\PGB_FAIL.wav"
+    "sample flags 31" 3
+    "sample 32" "PGB_HIT"
+    "0032 PGB_HIT" "data\MK2\SFX\PU\PGB_HIT.wav"
+    "sample flags 32" 3
+    "sample 33" "PPS_ACTIVATE"
+    "0033 PPS_ACTIVATE" "data\MK2\SFX\PU\PPS_ACTIVATE.wav"
+    "sample flags 33" 3
+    "sample 34" "PPS_ACTIVE"
+    "0034 PPS_ACTIVE" "data\MK2\SFX\PU\PPS_ACTIVE.wav"
+    "sample flags 34" 3
+    "sample 35" "PPS_DISSOLVE"
+    "0035 PPS_DISSOLVE" "data\MK2\SFX\PU\PPS_DISSOLVE.wav"
+    "sample flags 35" 3
+    "sample 36" "PPS_END"
+    "0036 PPS_END" "data\MK2\SFX\PU\PPS_END.wav"
+    "sample flags 36" 3
+    "sample 37" "PSR_ACTIVATE"
+    "0037 PSR_ACTIVATE" "data\MK2\SFX\PU\PSR_ACTIVATE.wav"
+    "sample flags 37" 3
+    "sample 38" "PSR_FAIL"
+    "0038 PSR_FAIL" "data\MK2\SFX\PU\PSR_FAIL.wav"
+    "sample flags 38" 3
+    "sample 39" "PSR_HIT"
+    "0039 PSR_HIT" "data\MK2\SFX\PU\PSR_HIT.wav"
+    "sample flags 39" 3
+    "sample 40" "PSR_MOVE"
+    "0040 PSR_MOVE" "data\MK2\SFX\PU\PSR_MOVE.wav"
+    "sample flags 40" 3
+    "sample 41" "PSR_TARGETLOCKED"
+    "0041 PSR_TARGETLOCKED" "data\MK2\SFX\PU\PSR_TARGETSEARCH.wav"
+    "sample flags 41" 3
+    "sample 42" "PSR_TARGETSEARCH"
+    "0042 PSR_TARGETSEARCH" "data\MK2\SFX\PU\PSR_TARGETLOCKED.wav"
+    "sample flags 42" 3
+    "sample 43" "PTC_ACTIVATE"
+    "0043 PTC_ACTIVATE" "data\MK2\SFX\PU\PTC_ACTIVATE.wav"
+    "sample flags 43" 3
+    "sample 44" "PTC_ACTIVE"
+    "0044 PTC_ACTIVE" "data\MK2\SFX\PU\PTC_ACTIVE.wav"
+    "sample flags 44" 3
+    "sample 45" "PU_COLLECT"
+    "0045 PU_COLLECT" "data\MK2\SFX\PU\PU_COLLECT.wav"
+    "sample flags 45" 3
+    "sample 46" "PU_RESPAWN"
+    "0046 PU_RESPAWN" "data\MK2\SFX\PU\PU_RESPAWN.wav"
+    "sample flags 46" 3
+    "sample 47" "PXF_ACTIVATE"
+    "0047 PXF_ACTIVATE" "data\MK2\SFX\PU\PXF_ACTIVATE.wav"
+    "sample flags 47" 3
+    "sample 48" "PXF_HIT"
+    "0048 PXF_HIT" "data\MK2\SFX\PU\PXF_HIT.wav"
+    "sample flags 48" 3
+    "sample 49" "PXF_SCRATCH"
+    "0049 PXF_SCRATCH" "data\MK2\SFX\PU\PXF_SCRATCH.wav"
+    "sample flags 49" 3
+    "sample 50" "RACE_FAILURE"
+    "0050 RACE_FAILURE" "data\MK2\SFX\Menu\RACE_FAILURE.wav"
+    "sample flags 50" 3
+    "sample 51" "RACE_FINISH"
+    "0051 RACE_FINISH" "data\MK2\SFX\Menu\RACE_FINISH.wav"
+    "sample flags 51" 3
+    "sample 52" "RACE_START"
+    "0052 RACE_START" "data\MK2\SFX\Menu\RACE_START.wav"
+    "sample flags 52" 3
+    "sample 53" "RACE_START2"
+    "0053 RACE_START2" "data\MK2\SFX\Menu\RACE_START2.wav"
+    "sample flags 53" 3
+    "sample 54" "UGBUMPYSTONE"
+    "0054 UGBUMPYSTONE" "data\MK2\SFX\Track\UGBUMPYSTONE.wav"
+    "sample flags 54" 3
+    "sample 55" "UGSAND"
+    "0055 UGSAND" "data\MK2\SFX\Track\UGSAND.wav"
+    "sample flags 55" 3
+    "sample 56" "Z_Birds"
+    "0056 Z_Birds" "data\MK2\SFX\Track\TIS_BIRDS.wav"
+    "sample flags 56" 3
+    "sample 57" "Z_COW"
+    "0057 Z_COW" "data\MK2\SFX\Track\COW.wav"
+    "sample flags 57" 3
+    "Create" ""
+    "Delete" ""
+}
+
+# ------------------------------------------------ Sound Engine
+OBJECT START
+class type: "class SoundEngine"
+[SoundEngine] "Sound Engine"
+{
+    [AudioEvents] "Sound Engine"
+    {
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_brake"
+        {
+            "sample name" "CAL_BRAKE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 0.300000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_crash"
+        {
+            "sample name" "CAL_CRASH"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 0.300000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_drop"
+        {
+            "sample name" "CAL_DROP"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_engine100"
+        {
+            "sample name" "CAL_ENGINE100"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 0.600000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.300000
+            "priority" 0.500000
+            "minDistance" 10.000000
+            "maxDistance" 40.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_engine150"
+        {
+            "sample name" "CAL_ENGINE150"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 0.600000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.300000
+            "priority" 0.500000
+            "minDistance" 10.000000
+            "maxDistance" 40.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_engine50"
+        {
+            "sample name" "CAL_ENGINE50"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 0.500000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.300000
+            "priority" 0.500000
+            "minDistance" 10.000000
+            "maxDistance" 40.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_jumplanding"
+        {
+            "sample name" "CAL_JUMPLANDING"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 0.500000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_powerfail"
+        {
+            "sample name" "CAL_POWERFAIL"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 0.800000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 15.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_powerstart"
+        {
+            "sample name" "CAL_POWERSTART"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 15.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_push"
+        {
+            "sample name" "CAL_PUSH"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 0.700000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_respawn"
+        {
+            "sample name" "CAL_RESPAWN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_scratch"
+        {
+            "sample name" "CAL_SCRATCH"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 0.300000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CAL_slide"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CLH_horn"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CLH_idle"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CLH_loose"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CLH_shout"
+        {
+            "sample name" "CLH_SHOUT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CLH_win"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMF_horn"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMF_idle"
+        {
+            "sample name" "CMF_IDLE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMF_loose"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMF_shout"
+        {
+            "sample name" "CMF_SHOUT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMF_win"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMH_horn"
+        {
+            "sample name" "CMH_HORN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMH_idle"
+        {
+            "sample name" "CHM_IDLE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMH_loose"
+        {
+            "sample name" "CMH_LOOSE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMH_shout"
+        {
+            "sample name" "CMH_SHOUT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CMH_win"
+        {
+            "sample name" "CMH_WIN"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CML_horn"
+        {
+            "sample name" "CML_HORN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CML_idle"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CML_loose"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CML_shout"
+        {
+            "sample name" "CML_SHOUT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CML_win"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CPK_horn"
+        {
+            "sample name" "CPK_HORN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CPK_idle"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CPK_loose"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CPK_shout"
+        {
+            "sample name" "CPK_SHOUT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CPK_win"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CSM_horn"
+        {
+            "sample name" "CSM_HORN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CSM_idle"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CSM_loose"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CSM_shout"
+        {
+            "sample name" "CSM_SHOUT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CSM_win"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CTL_horn"
+        {
+            "sample name" "CTL_HORN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CTL_idle"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CTL_loose"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CTL_shout"
+        {
+            "sample name" "CTL_SHOUT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "CTL_win"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_01"
+        {
+            "sample name" "Z_BIRDS"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 50.000000
+            "maxDistance" 250.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_02"
+        {
+            "sample name" "Z_COW"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_03"
+        {
+            "sample name" "Z_COW"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.300000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_04"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_05"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_06"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_07"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_08"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_09"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_10"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_11"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_12"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_13"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_14"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_15"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_16"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_17"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_18"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_19"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "LEV_20"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "MENU_click"
+        {
+            "sample name" "MENU_click"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "MENU_preselect"
+        {
+            "sample name" "MENU_preselect"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "MENU_toggle"
+        {
+            "sample name" "MENU_toggle"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PBH_activate"
+        {
+            "sample name" "PBH_ACTIVATE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PBH_active"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PBH_close"
+        {
+            "sample name" "PBH_CLOSE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PBH_hit"
+        {
+            "sample name" "PBH_HIT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 200.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PBH_open"
+        {
+            "sample name" "PBH_OPEN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 60.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PFL_activate"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PFL_active"
+        {
+            "sample name" "PFL_ACTIVE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PFL_dissolve"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PFL_end"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PFP_activate"
+        {
+            "sample name" "PFP_ACTIVATE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 100.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PFP_dissolve"
+        {
+            "sample name" "PFP_DISSLOVE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PFP_hit"
+        {
+            "sample name" "PFP_HIT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PGB_activate"
+        {
+            "sample name" "PGB_ACTIVATE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PGB_fail"
+        {
+            "sample name" "PGB_FAIL"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 150.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PGB_hit"
+        {
+            "sample name" "PGB_HIT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 100.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PGB_move"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 300.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PPS_activate"
+        {
+            "sample name" "PPS_ACTIVATE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PPS_active"
+        {
+            "sample name" "PPS_ACTIVE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PPS_dissolve"
+        {
+            "sample name" "PPS_DISSOLVE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PPS_end"
+        {
+            "sample name" "PPS_END"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 70.000000
+            "maxDistance" 70.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PSR_activate"
+        {
+            "sample name" "PSR_ACTIVATE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PSR_fail"
+        {
+            "sample name" "PSR_FAIL"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 0.800000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 400.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PSR_hit"
+        {
+            "sample name" "PSR_HIT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 200.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PSR_move"
+        {
+            "sample name" "PSR_MOVE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 150.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PSR_targetlocked"
+        {
+            "sample name" "PSR_TARGETLOCKED"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PSR_targetsearch"
+        {
+            "sample name" "PSR_TARGETSEARCH"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PTC_activate"
+        {
+            "sample name" "PTC_ACTIVATE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PTC_active"
+        {
+            "sample name" "PTC_ACTIVE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 0.500000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PU_collect"
+        {
+            "sample name" "PU_COLLECT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PU_respawn"
+        {
+            "sample name" "PU_RESPAWN"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 10.000000
+            "maxDistance" 50.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PXF_activate"
+        {
+            "sample name" "PXF_ACTIVATE"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 60.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PXF_dissolve"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PXF_hit"
+        {
+            "sample name" "PXF_HIT"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "PXF_scratch"
+        {
+            "sample name" "PXF_SCRATCH"
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_countdown1"
+        {
+            "sample name" "RACE_START"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_countdown2"
+        {
+            "sample name" "RACE_START"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_countdown3"
+        {
+            "sample name" "RACE_START"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_countdownGO"
+        {
+            "sample name" "RACE_START2"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_failure"
+        {
+            "sample name" "RACE_FAILURE"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_finish"
+        {
+            "sample name" "RACE_FINISH"
+            "is 3d" 0
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_newlap"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "RACE_start"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_01"
+        {
+            "sample name" "UGSAND"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 0.600000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_02"
+        {
+            "sample name" "UGBUMPYSTONE"
+            "is 3d" 1
+            "is looping" 1
+            "volume" 0.500000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_03"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_04"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_05"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_06"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_07"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_08"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_09"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+        class type: "class AudioEvent"
+        [AudioEvent] "UG_10"
+        {
+            "sample name" ""
+            "is 3d" 1
+            "is looping" 0
+            "volume" 1.000000
+            "volume variation" 0.000000
+            "pitch" 1.000000
+            "pitch variation" 0.000000
+            "priority" 0.500000
+            "minDistance" 1.000000
+            "maxDistance" 20.000000
+            "soundGroup" 1
+        }
+
+    }
+
+}
+
+
+# ------------------------------------------------ Position Editor
+OBJECT START
+class type: "class PositionEditor"
+[Position Editor] "Position Editor"
+{
+    "Move Speed" 6.000000
+    "Rotate Speed" 1.200000
+    "moveXAxis" 1
+    "moveYAxis" 1
+    "moveZAxis" 1
+}
+
+# ------------------------------------------------ Cameras|Free Camera
+OBJECT START
+class type: "class FreeCameraControl"
+[Free Camera] "Cameras|Free Camera"
+{
+    "Position" 192.078964 22.137011 17.548199
+    "Angle X" -5.768829
+    "Angle Y" -3.865356
+    "Move Speed" 100.000000
+    "Rotation Speed" 0.500000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 1
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 1"
+{
+    "Position" -33.149761 7.460719 223.406845
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.030000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 2
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 2"
+{
+    "Position" -173.156921 11.290235 232.598740
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.050000
+    "End Track Position" 0.115000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 3
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 3"
+{
+    "Position" -207.164719 6.042787 134.450378
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.140000
+    "End Track Position" 0.170000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 4
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 4"
+{
+    "Position" -151.002960 7.007395 115.813202
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.170000
+    "End Track Position" 0.200000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 5
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 5"
+{
+    "Position" 36.175133 14.609472 127.220093
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.250000
+    "End Track Position" 0.300000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 6
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 6"
+{
+    "Position" 10.251578 14.245781 48.004246
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.350000
+    "End Track Position" 0.420000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 7
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 7"
+{
+    "Position" -144.424301 7.271665 69.375267
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.450000
+    "End Track Position" 0.490000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 8
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 8"
+{
+    "Position" -118.677437 5.644733 -87.865623
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.600000
+    "End Track Position" 0.650000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 9
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 9"
+{
+    "Position" -85.955399 5.715127 -88.475128
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.650000
+    "End Track Position" 0.665000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 10
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 10"
+{
+    "Position" -33.752060 5.452899 -105.359772
+    "Rotation Speed" 2.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.665000
+    "End Track Position" 0.700000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 11
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 11"
+{
+    "Position" 20.624239 3.910017 -59.453171
+    "Rotation Speed" 4.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.700000
+    "End Track Position" 0.730000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 12
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 12"
+{
+    "Position" 98.674751 6.021608 -28.299564
+    "Rotation Speed" 3.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.730000
+    "End Track Position" 0.800000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 13
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 13"
+{
+    "Position" 89.028374 8.999782 195.145081
+    "Rotation Speed" 3.000000
+    "Orientation Smoothing" 0.000000
+    "Start Track Position" 0.920000
+    "End Track Position" 0.980000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 14
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 14"
+{
+    "Position" 0.000000 20.000000 0.000000
+    "Rotation Speed" 1.000000
+    "Orientation Smoothing" 0.800000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.000000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 15
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 15"
+{
+    "Position" 0.000000 20.000000 0.000000
+    "Rotation Speed" 1.000000
+    "Orientation Smoothing" 0.800000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.000000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 16
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 16"
+{
+    "Position" 0.000000 20.000000 0.000000
+    "Rotation Speed" 1.000000
+    "Orientation Smoothing" 0.800000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.000000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 17
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 17"
+{
+    "Position" 0.000000 20.000000 0.000000
+    "Rotation Speed" 1.000000
+    "Orientation Smoothing" 0.800000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.000000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 18
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 18"
+{
+    "Position" 0.000000 20.000000 0.000000
+    "Rotation Speed" 1.000000
+    "Orientation Smoothing" 0.800000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.000000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 19
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 19"
+{
+    "Position" 0.000000 20.000000 0.000000
+    "Rotation Speed" 1.000000
+    "Orientation Smoothing" 0.800000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.000000
+}
+
+# ------------------------------------------------ Replay Cameras|Replay Camera 20
+OBJECT START
+class type: "class CarTargetCameraControl"
+[Car Target Camera] "Replay Cameras|Replay Camera 20"
+{
+    "Position" 0.000000 20.000000 0.000000
+    "Rotation Speed" 1.000000
+    "Orientation Smoothing" 0.800000
+    "Start Track Position" 0.000000
+    "End Track Position" 0.000000
+}
+
