@@ -4,9 +4,12 @@
 # are expected to be in the unpacked directory are actually there.
 #
 # Context: MHK 4 has five files in the data index that are present twice, this script
-# aided in identifying which were the duplicated files.
+# aided in identifying which were the duplicate files.
+# 
+# You will likely never use this script, but I kept it just in case.
 
 if [ "$#" -ne 2 ]; then
+    echo "Compares "
     echo "Usage: $0 <expected_file> <actual_file>"
     echo "Both files should contain a list of paths to files, one per line."
     exit 1

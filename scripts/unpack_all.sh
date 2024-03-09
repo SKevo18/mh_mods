@@ -12,7 +12,15 @@
 
 cd "$(dirname "$0")/../"
 
-echo "Unpacking data files..."
+echo "This will unpack all data files under the 'data' directory into 'unpacked' directory."
+echo "Type 'y' to continue:"
+read -r confirm
+if [ "$confirm" != "y" ]; then
+    echo "Aborted."
+    exit 1
+fi
+
+echo "Unpacking all data files..."
 for file in data/*; do
     game_id=$(basename "$file" | cut -d '.' -f 1)
     if [ "$game_id" = "README" ]; then
