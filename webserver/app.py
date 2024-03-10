@@ -52,6 +52,7 @@ async def packmods(game_id: str):
             name,
             as_attachment=True,
             add_etags=True,
+            mimetype="application/octet-stream",
             cache_timeout=300,
             attachment_filename=f"{game.out_filename}",
         )
