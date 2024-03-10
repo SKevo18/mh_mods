@@ -1,6 +1,6 @@
-# Max's Retexture for Moorhuhn Kart: Extra
+# Max's MHK2 Retexture for Moorhuhn Kart: Extra
 
-> A retexture of the game's textures to make them look better.
+> A retexture of the game's assets to make them look like Moorhuhn Kart: 2
 
 **Made by:** MoorBOOST (therealmaxboost)
 

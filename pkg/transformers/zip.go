@@ -50,57 +50,60 @@ func unzipFile(zipFile string, outputFolder string) error {
 	return nil
 }
 
-// Zips a folder into a file.
+// Zips a folder into a zip file.
 func zipFolder(folder string, zipFile string) error {
-	// open
+	// create
 	outFile, err := os.Create(zipFile)
 	if err != nil {
-		return fmt.Errorf("error creating ZIP file: %s", err)
+		return err
 	}
 	defer outFile.Close()
+
+	// zip writer
 	zipWriter := zip.NewWriter(outFile)
 	defer zipWriter.Close()
 
-	err = filepath.Walk(folder, func(path string, info os.FileInfo, err error) error {
+	// walk
+	filepath.Walk(folder, func(filePath string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
-
-		// only files can be zipped
 		if info.IsDir() {
 			return nil
 		}
 
-		// header
-		header, err := zip.FileInfoHeader(info)
+		// create zip file
+		zipFile, err := zipWriter.Create(filePath)
 		if err != nil {
 			return err
 		}
 
-		// read path is absolute, convert to relative
-		header.Name = filepath.ToSlash(filepath.Base(path))
-		writer, err := zipWriter.CreateHeader(header)
-		if err != nil {
-			return err
-		}
-
-		// file
-		file, err := os.Open(path)
+		// read
+		file, err := os.Open(filePath)
 		if err != nil {
 			return err
 		}
 		defer file.Close()
 
-		_, err = io.Copy(writer, file)
-		if err != nil {
-			return err
+		// write
+		buf := make([]byte, 1024 * 1024) // 1 MB
+		for {
+			n, err := file.Read(buf)
+			if err != nil && err != io.EOF {
+				return err
+			}
+			if n == 0 {
+				break
+			}
+
+			_, err = zipFile.Write(buf[:n])
+			if err != nil {
+				return err
+			}
 		}
 
 		return nil
 	})
-	if err != nil {
-		return fmt.Errorf("error while walking through files: %s", err)
-	}
 
 	return nil
 }
