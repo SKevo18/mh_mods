@@ -54,7 +54,7 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 func xorData(data []byte, key []byte) []byte {
 	keyLength := len(key)
 	for i := range data {
-		data[i] ^= key[i%keyLength]
+		data[i] ^= key[i % keyLength]
 	}
 	return data
 }

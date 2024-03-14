@@ -1,7 +1,9 @@
 package transformers
 
 import (
+	"crypto/sha256"
 	"errors"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -24,6 +26,12 @@ func packMhk1(dataFileLocation string, inputPath string) error {
 	// xor
 	log.Printf("Applying XOR to `%s`...\n", zipLocation)
 	if err := xorMhk1File(zipLocation, dataFileLocation); err != nil {
+		return err
+	}
+
+	// add checksum of zip to end of data file
+	log.Printf("Adding checksum to `%s`...\n", dataFileLocation)
+	if err := addChecksum(dataFileLocation, zipLocation); err != nil {
 		return err
 	}
 
@@ -76,6 +84,33 @@ func xorMhk1File(toXorPath string, outputPath string) error {
 		return err
 	}
 	if err = os.WriteFile(outputPath, dataBytes, os.ModePerm); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func addChecksum(appendToFile string, checksumOfPath string) error {
+	// open zip
+	zipFile, err := os.Open(checksumOfPath)
+	if err != nil {
+		return err
+	}
+	defer zipFile.Close()
+
+	// calculate checksum
+	checksum := sha256.New()
+	if _, err := io.Copy(checksum, zipFile); err != nil {
+		return err
+	}
+
+	// append checksum to data file
+	dataFile, err := os.OpenFile(appendToFile, os.O_APPEND|os.O_WRONLY, os.ModePerm)
+	if err != nil {
+		return err
+	}
+	defer dataFile.Close()
+	if _, err := dataFile.Write(checksum.Sum(nil)); err != nil {
 		return err
 	}
 
