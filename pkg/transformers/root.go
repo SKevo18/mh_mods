@@ -48,24 +48,13 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 	return files, nil
 }
 
-// A simple XOR function that applies a key to the data (used in MHK Extra).
-//
-// https://www.101computing.net/xor-encryption-algorithm/
-func xorData(data []byte, key []byte) []byte {
-	keyLength := len(key)
-	for i := range data {
-		data[i] ^= key[i % keyLength]
-	}
-	return data
-}
-
 // Dynamically determines the appropriate transform function based on the game ID.
 // Action can either be `pack` or `unpack`.
 func Transform(action string, gameId string, dataFileLocation string, rootFolder string) error {
 	var transformFunction func(string, string, string) error
 
 	switch gameId {
-	case "mhk_extra", "mhk_1":
+	case "mhk_extra", "mhk_1", "mhke":
 		transformFunction = transformMhk1
 	case "mhk_2", "schatzjaeger": // should also work on Schatzjäger (Jump and Run), but untested
 		transformFunction = transformMhk2

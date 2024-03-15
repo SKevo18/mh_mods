@@ -1,9 +1,8 @@
 package transformers
 
 import (
-	"crypto/sha256"
+	"encoding/binary"
 	"errors"
-	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -25,13 +24,14 @@ func packMhk1(dataFileLocation string, inputPath string) error {
 
 	// xor
 	log.Printf("Applying XOR to `%s`...\n", zipLocation)
-	if err := xorMhk1File(zipLocation, dataFileLocation); err != nil {
+	checksum, err := xorMhk1File(zipLocation, dataFileLocation)
+	if err != nil {
 		return err
 	}
 
-	// add checksum of zip to end of data file
-	log.Printf("Adding checksum to `%s`...\n", dataFileLocation)
-	if err := addChecksum(dataFileLocation, zipLocation); err != nil {
+	// append checksum to data file
+	log.Printf("Appending checksum `%d` to `%s`...\n", checksum, dataFileLocation)
+	if err := appendChecksum(dataFileLocation, checksum); err != nil {
 		return err
 	}
 
@@ -49,9 +49,11 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 
 	// xor
 	log.Printf("Applying XOR to `%s`...\n", dataFileLocation)
-	if err := xorMhk1File(dataFileLocation, zipLocation); err != nil {
+	checksum, err := xorMhk1File(dataFileLocation, zipLocation)
+	if err != nil {
 		return err
 	}
+	log.Printf("Checksum: %d\n", checksum)
 
 	// unzip
 	log.Printf("Unzipping `%s`...\n", zipLocation)
@@ -69,48 +71,54 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 
 // Applies XOR operation on MHK 1 file at `toXorPath` and writes result to `outputPath`.
 // XOR is symmetric, so this function can be used for both packing and unpacking.
-func xorMhk1File(toXorPath string, outputPath string) error {
+func xorMhk1File(toXorPath string, outputPath string) (uint32, error) {
 	// read
 	dataBytes, err := os.ReadFile(toXorPath)
 	if err != nil {
-		return err
+		return 0, err
 	}
 
-	// xor
-	dataBytes = xorData(dataBytes, xorKey)
+	// xor and uint32 checksum
+	checksum := uint32(0)
+	keyLength := len(xorKey)
+	for i := range dataBytes {
+		dataBytes[i] ^= xorKey[i%keyLength]
+
+		signedByte := int8(dataBytes[i])
+		if signedByte < 0 {
+			checksum -= uint32(signedByte * -1)
+		} else {
+			checksum += uint32(signedByte)
+		}
+	}
 
 	// write
 	if err = os.MkdirAll(filepath.Dir(outputPath), os.ModePerm); err != nil {
-		return err
+		return 0, err
 	}
 	if err = os.WriteFile(outputPath, dataBytes, os.ModePerm); err != nil {
-		return err
+		return 0, err
 	}
 
-	return nil
+	return checksum, nil
 }
 
-func addChecksum(appendToFile string, checksumOfPath string) error {
-	// open zip
-	zipFile, err := os.Open(checksumOfPath)
-	if err != nil {
-		return err
-	}
-	defer zipFile.Close()
-
-	// calculate checksum
-	checksum := sha256.New()
-	if _, err := io.Copy(checksum, zipFile); err != nil {
-		return err
-	}
-
-	// append checksum to data file
-	dataFile, err := os.OpenFile(appendToFile, os.O_APPEND|os.O_WRONLY, os.ModePerm)
+func appendChecksum(dataFileLocation string, checksum uint32) error {
+	dataFile, err := os.OpenFile(dataFileLocation, os.O_APPEND|os.O_WRONLY, os.ModePerm)
 	if err != nil {
 		return err
 	}
 	defer dataFile.Close()
-	if _, err := dataFile.Write(checksum.Sum(nil)); err != nil {
+
+	dataFile, err = os.OpenFile(dataFileLocation, os.O_APPEND|os.O_WRONLY, os.ModePerm)
+	if err != nil {
+		return err
+	}
+	defer dataFile.Close()
+
+	buf := make([]byte, 4)
+	binary.LittleEndian.PutUint32(buf, checksum)
+	if _, err = dataFile.Write(buf); err != nil {
 		return err
 	}
 
