@@ -2,6 +2,7 @@ package transformers
 
 import (
 	"archive/zip"
+	"compress/flate"
 	"fmt"
 	"io"
 	"os"
@@ -62,6 +63,11 @@ func zipFolder(folderPath string, zipFilePath string) error {
 	// create zip writer
 	zipWriter := zip.NewWriter(outFile)
 	defer zipWriter.Close()
+
+	// register compressor
+	zipWriter.RegisterCompressor(zip.Deflate, func(out io.Writer) (io.WriteCloser, error) {
+		return flate.NewWriter(out, flate.BestCompression)
+	})
 
 	err = filepath.Walk(folderPath, func(filePath string, info os.FileInfo, err error) error {
 		if err != nil {

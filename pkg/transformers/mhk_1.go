@@ -24,7 +24,11 @@ func packMhk1(dataFileLocation string, inputPath string) error {
 
 	// xor
 	log.Printf("Applying XOR to `%s`...\n", zipLocation)
-	checksum, err := xorMhk1File(zipLocation, dataFileLocation)
+	zipData, err := os.ReadFile(zipLocation)
+	if err != nil {
+		return err
+	}
+	checksum, err := xorData(zipData, dataFileLocation)
 	if err != nil {
 		return err
 	}
@@ -49,7 +53,11 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 
 	// xor
 	log.Printf("Applying XOR to `%s`...\n", dataFileLocation)
-	_, err := xorMhk1File(dataFileLocation, zipLocation)
+	data, err := os.ReadFile(dataFileLocation)
+	if err != nil {
+		return err
+	}
+	_, err = xorData(data[:len(data)-4], zipLocation) // minus checksum at end
 	if err != nil {
 		return err
 	}
@@ -70,13 +78,7 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 
 // Applies XOR operation on MHK 1 file at `toXorPath` and writes result to `outputPath`.
 // XOR is symmetric, so this function can be used for both packing and unpacking.
-func xorMhk1File(toXorPath string, outputPath string) (uint32, error) {
-	// read
-	dataBytes, err := os.ReadFile(toXorPath)
-	if err != nil {
-		return 0, err
-	}
-
+func xorData(dataBytes []byte, outputPath string) (uint32, error) {
 	// xor and uint32 checksum
 	checksum := uint32(0)
 	keyLength := len(xorKey)
@@ -92,10 +94,10 @@ func xorMhk1File(toXorPath string, outputPath string) (uint32, error) {
 	}
 
 	// write
-	if err = os.MkdirAll(filepath.Dir(outputPath), os.ModePerm); err != nil {
+	if err := os.MkdirAll(filepath.Dir(outputPath), os.ModePerm); err != nil {
 		return 0, err
 	}
-	if err = os.WriteFile(outputPath, dataBytes, os.ModePerm); err != nil {
+	if err := os.WriteFile(outputPath, dataBytes, os.ModePerm); err != nil {
 		return 0, err
 	}
 
