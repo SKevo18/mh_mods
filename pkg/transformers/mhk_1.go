@@ -103,6 +103,7 @@ func xorMhk1File(toXorPath string, outputPath string) (uint32, error) {
 	return checksum, nil
 }
 
+// Appends checksum to the end of a file.
 func appendChecksum(dataFileLocation string, checksum uint32) error {
 	dataFile, err := os.OpenFile(dataFileLocation, os.O_APPEND|os.O_WRONLY, os.ModePerm)
 	if err != nil {
