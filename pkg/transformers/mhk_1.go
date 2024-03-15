@@ -49,11 +49,10 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 
 	// xor
 	log.Printf("Applying XOR to `%s`...\n", dataFileLocation)
-	checksum, err := xorMhk1File(dataFileLocation, zipLocation)
+	_, err := xorMhk1File(dataFileLocation, zipLocation)
 	if err != nil {
 		return err
 	}
-	log.Printf("Checksum: %d\n", checksum)
 
 	// unzip
 	log.Printf("Unzipping `%s`...\n", zipLocation)
