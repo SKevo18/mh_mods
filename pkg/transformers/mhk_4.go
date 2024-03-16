@@ -66,10 +66,9 @@ func packMhk4(dataFileLocation string, inputFolder string) error {
 	dataFile.Write([]byte("SARCFV"))
 	dataFile.Write([]byte{0x1, 0x1})
 
-	// file count
+	// file count and begin
 	filesCount := uint32(len(fileEntries))
 	binary.Write(dataFile, binary.LittleEndian, filesCount)
-	// write file entries count
 	binary.Write(dataFile, binary.LittleEndian, uint32(fileEntriesBegin))
 
 	log.Printf("Pack complete: %d files packed. File entries begin at `%d`.", filesCount, fileEntriesBegin)

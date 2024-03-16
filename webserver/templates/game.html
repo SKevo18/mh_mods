@@ -6,13 +6,12 @@
     <h1 class="text-2xl font-bold mb-4">{{ game.name }}</h1>
     <a href="{{ url_for('index') }}" class="text-indigo-500 hover:text-indigo-400 font-bold">&larr; Back to mods list</a>
 
-    <!-- instructions -->
     <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md my-4 space-y-2">
         <h2 class="text-lg font-semibold mb-2 text-indigo-700 dark:text-indigo-300">Instructions</h2>
         <ul class="list-decimal ml-4">
             <li>Select the mods you want to pack together and click the "Pack all mods" button at the bottom of the page.</li>
             <li>If you want to download just one mod, click the "Download just this mod" button.</li>
-            <li>Mod files are merged together by finding unique modifications the mods make.</li>
+            <li>Mod files are merged together by finding unique modifications the mods make (unless <code>noMerge</code> is set in that mod's config).</li>
             <ul class="list-disc ml-4">
                 <li>Mods that you chose later have priority (they overwrite previous ones, if a conflicting change is detected) - so, order matters.</li>
             </ul>
@@ -33,6 +32,9 @@
                         <div class="mb-6 markdown-body" data-content="{{ mod.readme|e }}"></div>
                     {% endif %}
                     <div class="flex flex-row gap-4">
+                        {% if mod.config and mod.config.noMerge %}
+                            <span class="text-xl ml-2 font-bold self-center text-yellow-500" title="This mod has `noMerge` set in its config, so it can't be merged properly with other mods, and should be used as standalone mod. Using it with other mods might make the game not behave properly.">⚠️</span>
+                        {% endif %}
                         <button onclick="javascript:selectMod(this, '{{ mod.id}}');" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
                             Select this mod
                         </button>

@@ -3,6 +3,7 @@ from __future__ import annotations
 import typing as t
 import asyncio
 import uvloop
+import orjson
 
 from asyncio.subprocess import create_subprocess_shell
 from dataclasses import dataclass, field
@@ -56,19 +57,22 @@ class Mod:
     game: Game
     path: Path
     readme: t.Optional[str] = None
+    config: t.Optional[dict[str, t.Any]] = None
 
     def __post_init__(self):
-        self.get_readme()
+        self.readme = self.__get_file("README.md")
 
-    def get_readme(self) -> t.Optional[str]:
-        if not self.readme:
-            try:
-                with open(self.path / "README.md", "r") as f:
-                    self.readme = f.read()
-            except FileNotFoundError:
-                pass
+        _config = self.__get_file("config.json")
+        self.config = orjson.loads(_config) if _config else None
 
-        return self.readme
+    def __get_file(self, name: str) -> t.Optional[str]:
+        try:
+            with open(self.path / name, "r") as f:
+                return f.read()
+        except FileNotFoundError:
+            pass
+
+        return None
 
 
 async def pack(
@@ -76,6 +80,11 @@ async def pack(
 ) -> tuple[str, bytes, bytes, t.Optional[int]]:
     """mhmods packmod <game ID> <original data file> <output modded data file> <mod paths>... [flags]"""
     cmd = f""""{MHMODS_BINARY}" packmod {game.id.split('.', 2)[0]} "{game.original_datafile}" "{output_path}" {' '.join(f'"{mod.path / 'source'}"' for mod in mods)}"""
+
+    for mod in mods:
+        if mod.config and mod.config.get("noMerge", False):
+            cmd += " --no-merge"
+            break
 
     process = await create_subprocess_shell(
         cmd,

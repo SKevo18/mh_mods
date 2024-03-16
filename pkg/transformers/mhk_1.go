@@ -1,8 +1,11 @@
 package transformers
 
 import (
+	"archive/zip"
 	"encoding/binary"
 	"errors"
+	"fmt"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -34,6 +37,8 @@ func packMhk1(dataFileLocation string, inputPath string) error {
 	}
 
 	// append checksum to data file
+	// should be `4103943099`
+	//           `4235642555`
 	log.Printf("Appending checksum `%d` to `%s`...\n", checksum, dataFileLocation)
 	if err := appendChecksum(dataFileLocation, checksum); err != nil {
 		return err
@@ -79,17 +84,16 @@ func unpackMhk1(dataFileLocation string, outputPath string) error {
 // Applies XOR operation on MHK 1 file at `toXorPath` and writes result to `outputPath`.
 // XOR is symmetric, so this function can be used for both packing and unpacking.
 func xorData(dataBytes []byte, outputPath string) (uint32, error) {
-	// xor and uint32 checksum
+	// xor and checksum
 	checksum := uint32(0)
 	keyLength := len(xorKey)
 	for i := range dataBytes {
 		dataBytes[i] ^= xorKey[i%keyLength]
 
-		signedByte := int8(dataBytes[i])
-		if signedByte < 0 {
-			checksum -= uint32(signedByte * -1)
+		if int8(dataBytes[i]) < 0 {
+			checksum -= uint32(-dataBytes[i])
 		} else {
-			checksum += uint32(signedByte)
+			checksum += uint32(dataBytes[i])
 		}
 	}
 
@@ -125,6 +129,91 @@ func appendChecksum(dataFileLocation string, checksum uint32) error {
 	}
 
 	return nil
+}
+
+// Unzip a file into a folder.
+func unzipFile(zipFilePath string, outputFolder string) error {
+	if err := os.MkdirAll(outputFolder, os.ModePerm); err != nil {
+		return fmt.Errorf("error creating output folder: %s", err)
+	}
+
+	// unzip
+	zipReader, err := zip.OpenReader(zipFilePath)
+	if err != nil {
+		return fmt.Errorf("error opening ZIP file: %s", err)
+	}
+	defer zipReader.Close()
+
+	for _, file := range zipReader.File {
+		filePath := filepath.Join(outputFolder, file.Name)
+
+		// read
+		fileReader, err := file.Open()
+		if err != nil {
+			return fmt.Errorf("error opening file: %s", err)
+		}
+		defer fileReader.Close()
+
+		if err = os.MkdirAll(filepath.Dir(filePath), os.ModePerm); err != nil {
+			return fmt.Errorf("error creating directory: %s", err)
+		}
+
+		// write
+		outFile, err := os.Create(filePath)
+		if err != nil {
+			return fmt.Errorf("error creating file: %s", err)
+		}
+		defer outFile.Close()
+
+		if _, err = io.Copy(outFile, fileReader); err != nil {
+			return fmt.Errorf("error copying file: %s", err)
+		}
+	}
+
+	return nil
+}
+
+// Zips a folder into a zip file.
+func zipFolder(folderPath string, zipFilePath string) error {
+	// create output
+	outFile, err := os.Create(zipFilePath)
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
+
+	// create zip writer
+	zipWriter := zip.NewWriter(outFile)
+	defer zipWriter.Close()
+
+	err = filepath.Walk(folderPath, func(filePath string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			return nil
+		}
+
+		// open file to zip
+		file, err := os.Open(filePath)
+		if err != nil {
+			return err
+		}
+		defer file.Close()
+
+		// use base path, to keep files at root
+		zipPath := filepath.Base(filePath)
+		zipFile, err := zipWriter.Create(zipPath)
+		if err != nil {
+			return err
+		}
+
+		// write file to zip
+		_, err = io.Copy(zipFile, file)
+		return err
+	})
+
+	return err
 }
 
 func transformMhk1(action string, dataFileLocation string, rootFolder string) error {
