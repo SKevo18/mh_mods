@@ -1,6 +1,8 @@
 package main
 
-import "mhmods/src/cmd"
+import (
+	"mhmods/src/cmd"
+)
 
 func main() {
 	cmd.EntryPoint()

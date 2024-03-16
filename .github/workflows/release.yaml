@@ -1,62 +1,93 @@
 name: Release Builds
 
 on:
-  release:
-    types: [created]
+    release:
+        types: [created]
 
 permissions: write-all
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go-version: [1.22]
-        os: [linux, windows, darwin]
-        arch: [amd64, arm64]
-        include:
-          - os: windows
-            extension: .exe
-          - os: linux
-            extension: ''
-          - os: darwin
-            extension: ''
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                go-version: [1.22]
+                os: [linux, windows, darwin]
+                arch: [amd64, arm64]
+                include:
+                    - os: windows
+                      extension: .exe
+                    - os: linux
+                      extension: ""
+                    - os: darwin
+                      extension: ""
 
-    name: Build for ${{ matrix.os }}/${{ matrix.arch }}
-    steps:
-      - name: Set Swap Space
-        uses: pierotofy/set-swap-space@master
-        with:
-          swap-size-gb: 10
+        name: Build for ${{ matrix.os }}/${{ matrix.arch }}
+        steps:
+            - name: Set Swap Space
+              uses: pierotofy/set-swap-space@master
+              with:
+                  swap-size-gb: 10
 
-      - uses: actions/checkout@v3
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: ${{ matrix.go-version }}
+            - uses: actions/checkout@v3
+            - name: Set up Go
+              uses: actions/setup-go@v3
+              with:
+                  go-version: ${{ matrix.go-version }}
 
-      - name: Run Tests
-        run: go test ./...
+            - name: Install dependencies for GUI
+              run: |
+                  sudo apt install -y gcc pkg-config libwayland-dev libx11-dev libx11-xcb-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev libxcursor-dev libvulkan-dev
 
-      - name: Build
-        env:
-          GOOS: ${{ matrix.os }}
-          GOARCH: ${{ matrix.arch }}
-        run: |
-          go build -o mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
+            - name: Run Tests
+              run: go test ./...
 
-      - name: Compress binary
-        run: |
-          FILES="mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
-          [ -f LICENSE ] && FILES="$FILES LICENSE"
-          [ -f README.md ] && FILES="$FILES README.md"
-          tar -czvf mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
+            - name: Build CLI
+              env:
+                  GOOS: ${{ matrix.os }}
+                  GOARCH: ${{ matrix.arch }}
+              run: |
+                  cd cli/
+                  go build -o mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
 
-      - uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
-          asset_name: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
-          asset_content_type: application/gzip
+            - name: Build GUI
+              env:
+                  GOOS: ${{ matrix.os }}
+                  GOARCH: ${{ matrix.arch }}
+              run: |
+                  cd gui/
+                  go build -o mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
+
+            - name: Compress CLI binary
+              run: |
+                  FILES="mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
+                  [ -f LICENSE ] && FILES="$FILES LICENSE"
+                  [ -f README.md ] && FILES="$FILES README.md"
+                  tar -czvf mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
+
+            - name: Compress GUI binary
+              run: |
+                  FILES="mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
+                  [ -f LICENSE ] && FILES="$FILES LICENSE"
+                  [ -f README.md ] && FILES="$FILES README.md"
+                  tar -czvf mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
+
+            - name: Upload CLI binary
+              uses: actions/upload-release-asset@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  upload_url: ${{ github.event.release.upload_url }}
+                  asset_path: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+                  asset_name: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+                  asset_content_type: application/gzip
+
+            - name: Upload GUI binary
+              uses: actions/upload-release-asset@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  upload_url: ${{ github.event.release.upload_url }}
+                  asset_path: mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+                  asset_name: mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+                  asset_content_type: application/gzip
