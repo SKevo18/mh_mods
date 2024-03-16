@@ -5,10 +5,10 @@ import (
 	"os"
 
 	"mhmods/pkg/transformers"
-    "mhmods/pkg/util"
+	"mhmods/pkg/util"
 
-	"github.com/spf13/cobra"
 	cp "github.com/otiai10/copy"
+	"github.com/spf13/cobra"
 )
 
 func PackmodCmd() *cobra.Command {
@@ -72,6 +72,6 @@ func PackmodCmd() *cobra.Command {
 	}
 
 	packmodCmd.Flags().BoolVarP(&noMerge, "no-merge", "n", false, "Do not merge mod files by comparing unique lines, just overwrite original files in the data file.")
-	
+
 	return packmodCmd
 }

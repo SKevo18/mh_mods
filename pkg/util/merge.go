@@ -28,7 +28,7 @@ func MergeModFilesRecursively(originalDir string, modDirs []string, destDir stri
 			return err
 		}
 		destPath := filepath.Join(destDir, relPath)
-		
+
 		// copy file, so it's always present regardless if modified or not
 		if err := os.MkdirAll(filepath.Dir(destPath), 0755); err != nil {
 			return err
@@ -158,7 +158,7 @@ func isUTF8File(filePath string) bool {
 	}
 	defer file.Close()
 
-	buf := make([]byte, 1024 * 10)
+	buf := make([]byte, 1024*10)
 	_, err = file.Read(buf)
 	return err == nil && utf8.Valid(buf)
 }
