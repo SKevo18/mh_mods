@@ -15,6 +15,7 @@ import (
 func main() {
 	go func() {
 		w := app.NewWindow()
+		w.Option(app.Title("mhmods"))
 		err := run(w)
 		if err != nil {
 			if strings.Contains(err.Error(), "wl_display_connect failed") {
@@ -36,23 +37,14 @@ func run(w *app.Window) error {
 		case app.DestroyEvent:
 			return e.Err
 		case app.FrameEvent:
-			// This graphics context is used for managing the rendering state.
 			gtx := app.NewContext(&ops, e)
 
-			// Define an large label with an appropriate text:
-			title := material.H1(th, "Hello, Gio")
-
-			// Change the color of the label.
+			title := material.Body1(th, "todo")
 			maroon := color.NRGBA{R: 127, G: 0, B: 0, A: 255}
 			title.Color = maroon
-
-			// Change the position of the label.
 			title.Alignment = text.Middle
 
-			// Draw the label to the graphics context.
 			title.Layout(gtx)
-
-			// Pass the drawing operations to the GPU.
 			e.Frame(gtx.Ops)
 		}
 	}
