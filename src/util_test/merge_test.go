@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"mhmods/pkg/util"
+	"mhmods/src/util"
 )
 
 const (

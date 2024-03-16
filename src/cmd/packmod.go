@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"mhmods/pkg/transformers"
-	"mhmods/pkg/util"
+	"mhmods/src/transformers"
+	"mhmods/src/util"
 
 	cp "github.com/otiai10/copy"
 	"github.com/spf13/cobra"

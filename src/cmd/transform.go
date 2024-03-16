@@ -5,7 +5,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"mhmods/pkg/transformers"
+	"mhmods/src/transformers"
 )
 
 // Returns a function that can be used to pack or unpack files.
