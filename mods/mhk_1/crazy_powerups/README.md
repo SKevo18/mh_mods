@@ -6,7 +6,6 @@
 
 - Hammer:
   - Has 5 uses;
-  - Instantenous;
 - Gum:
   - Has 5 uses;
 - Rocket:
@@ -14,10 +13,10 @@
   - Homes towards first place a bit, hitting anyone in the way;
 - 16-Ton Weight:
   - 3 times more range;
-  - Instantenous drop;
+  - Almost instantenous drop;
 - Waterbomb:
   - Has 3 uses;
-  - Goes higher in the air/further;
+  - Tweaked physics;
 - Beacon:
   - Lasts twice as long;
   - Gives slightly more speed;
