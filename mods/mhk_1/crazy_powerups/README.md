@@ -4,7 +4,6 @@
 
 ## Changes
 
-- All unused powerups unlocked;
 - Hammer:
   - Has 5 uses;
 - Rocket:
@@ -31,7 +30,6 @@
 - Seeking spike boil-bomb thingy:
   - 3 uses;
   - No longer homes towards first place;
-
 
 ## Installation instructions
 
