@@ -1,6 +1,6 @@
 # No Rubber-Banding for Moorhuhn Kart 4
 
-> Removes rubber-banding of AI opponents in Moorhuhn Kart 4.
+> Removes speedmaps for AI opponents in Moorhuhn Kart 4, effectively removing rubber-banding.
 
 ## Installation instructions
 

@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mhk4>
+   <game>
+      <cameraDistance>6.0</cameraDistance>
+      <cameraHeight>0.5</cameraHeight>
+      <cameraFov>2.0</cameraFov>
+      <kartERP>0.1</kartERP>
+      <kartCFM>0.005</kartCFM>
+      <wheelsERP>0.1</wheelsERP>
+      <wheelsCFM>0.005</wheelsCFM>
+      <upgrades>
+         <spoiler speed="1.02" price="60" />
+         <spoiler speed="1.04" price="100" />
+         <spoiler speed="1.06" price="200" />
+         <spoiler speed="1.08" price="280" />
+         <spoiler speed="1.10" price="360" />
+         <sideskirts speed="1.01" drift="0.99" price="20" />
+         <sideskirts speed="1.02" drift="0.98" price="40" />
+         <sideskirts speed="1.03" drift="0.97" price="70" />
+         <sideskirts speed="1.04" drift="0.96" price="110" />
+         <sideskirts speed="1.05" drift="0.95" price="160" />
+         <engine speed="1.01" acceleration="1.02" price="100" />
+         <engine speed="1.02" acceleration="1.04" price="180" />
+         <engine speed="1.03" acceleration="1.06" price="260" />
+         <engine speed="1.04" acceleration="1.08" price="340" />
+         <engine speed="1.05" acceleration="1.10" price="420" />
+         <tires drift="0.98" price="50" />
+         <tires drift="0.96" price="80" />
+         <tires drift="0.94" price="125" />
+         <tires drift="0.92" price="185" />
+         <tires drift="0.90" price="260" />
+         <logo price="10" />
+         <logo price="10" />
+         <logo price="10" />
+         <logo price="10" />
+         <logo price="10" />
+         <logo price="10" />
+         <logo price="10" />
+         <color price="5" />
+         <color price="5" />
+         <color price="5" />
+         <color price="5" />
+         <color price="5" />
+         <color price="5" />
+         <color price="5" />
+      </upgrades>
+   </game>
+   <karts>
+      <kart name="moorhuhn" kart="D:\Mhkart4\3dobjects_cars\kart_01.lws" character="D:\Mhkart4\3dobjects_cars\moorhuhn.lws">
+         <kartObject>D:\Mhkart4/3dobjects_cars/kart_01.lwo</kartObject>
+         <characterObject>D:\Mhkart4/3dobjects_cars/moorhuhn.lwo</characterObject>
+         <menuscene>D:\Mhkart4\menu\choose_moorhuhn.lws</menuscene>
+         <menutext>10000</menutext>
+         <menuimage>Moorhuhn</menuimage>
+         <jointFL>jointFL</jointFL>
+         <jointFR>jointFR</jointFR>
+         <jointBL>jointBL</jointBL>
+         <jointBR>jointBR</jointBR>
+         <wheelFL>wheelFL</wheelFL>
+         <wheelFR>wheelFR</wheelFR>
+         <wheelBL>wheelBL</wheelBL>
+         <wheelBR>wheelBR</wheelBR>
+         <special>9</special>
+         <!-- kart settings -->
+         <forwardSpeed>135.0</forwardSpeed>
+         <forwardForce>0.75</forwardForce>
+         <backwardSpeed>50.0</backwardSpeed>
+         <backwardForce>2.0</backwardForce>
+         <brakeForce>1.5</brakeForce>
+         <idleForce>0.5</idleForce>
+         <directionTreshold>0.05</directionTreshold>
+         <mu>5.0</mu>
+         <slip>0.300</slip>
+         <drift>0.022</drift>
+         <driftexp>1.0</driftexp>
+         <spring>225</spring>
+         <damper>7.5</damper>
+         <mass>1.2</mass>
+         <masssuspensions>0.025</masssuspensions>
+         <masswheels>0.04</masswheels>
+         <steeranglemin>23</steeranglemin>
+         <steerangle>45</steerangle>
+         <steerspeed>0.12</steerspeed>
+         <turbotime>8</turbotime>
+      </kart>
+      <kart name="alien" kart="D:\Mhkart4\3dobjects_cars\kart_01.lws" character="D:\Mhkart4\3dobjects_cars\alien.lws">
+         <kartObject>D:\Mhkart4/3dobjects_cars/kart_01.lwo</kartObject>
+         <characterObject>D:\Mhkart4/3dobjects_cars/alien.lwo</characterObject>
+         <menuscene>D:\Mhkart4\menu\choose_alien.lws</menuscene>
+         <menutext>10050</menutext>
+         <menuimage>Alien</menuimage>
+         <jointFL>jointFL</jointFL>
+         <jointFR>jointFR</jointFR>
+         <jointBL>jointBL</jointBL>
+         <jointBR>jointBR</jointBR>
+         <wheelFL>wheelFL</wheelFL>
+         <wheelFR>wheelFR</wheelFR>
+         <wheelBL>wheelBL</wheelBL>
+         <wheelBR>wheelBR</wheelBR>
+         <special>16</special>
+         <!-- kart settings -->
+         <forwardSpeed>140.0</forwardSpeed>
+         <forwardForce>0.55</forwardForce>
+         <backwardSpeed>50.0</backwardSpeed>
+         <backwardForce>2.0</backwardForce>
+         <brakeForce>2.1</brakeForce>
+         <idleForce>0.5</idleForce>
+         <directionTreshold>0.05</directionTreshold>
+         <mu>5.0</mu>
+         <slip>0.375</slip>
+         <drift>0.0260</drift>
+         <driftexp>1.30</driftexp>
+         <spring>225</spring>
+         <damper>7.5</damper>
+         <mass>1.2</mass>
+         <masssuspensions>0.025</masssuspensions>
+         <masswheels>0.04</masswheels>
+         <steeranglemin>23</steeranglemin>
+         <steerangle>45</steerangle>
+         <steerspeed>0.12</steerspeed>
+         <turbotime>3</turbotime>
+      </kart>
+	 <kart name="pumpkin" kart="D:\Mhkart4\3dobjects_cars\kart_01.lws" character="D:\Mhkart4\3dobjects_cars\pumpkin.lws">
+         <kartObject>D:\Mhkart4/3dobjects_cars/kart_01.lwo</kartObject>
+		 <characterObject>D:\Mhkart4/3dobjects_cars/pumpkin.lwo</characterObject>
+         <menuscene>D:\Mhkart4\menu\choose_pumpkin.lws</menuscene>
+         <menutext>10040</menutext>
+         <menuimage>Pumpkin</menuimage>
+         <jointFL>jointFL</jointFL>
+         <jointFR>jointFR</jointFR>
+         <jointBL>jointBL</jointBL>
+         <jointBR>jointBR</jointBR>
+         <wheelFL>wheelFL</wheelFL>
+         <wheelFR>wheelFR</wheelFR>
+         <wheelBL>wheelBL</wheelBL>
+         <wheelBR>wheelBR</wheelBR>
+         <special>15</special>
+         <!-- kart settings -->
+         <forwardSpeed>139.5</forwardSpeed>
+         <forwardForce>0.55</forwardForce>
+         <backwardSpeed>50.0</backwardSpeed>
+         <backwardForce>2.0</backwardForce>
+         <brakeForce>0.9</brakeForce>
+         <idleForce>0.5</idleForce>
+         <directionTreshold>0.05</directionTreshold>
+         <mu>5.0</mu>
+         <slip>0.275</slip>
+         <drift>0.0276</drift>
+         <driftexp>0.9</driftexp>
+         <spring>225</spring>
+         <damper>7.5</damper>
+         <mass>1.4</mass>
+         <masssuspensions>0.025</masssuspensions>
+         <masswheels>0.04</masswheels>
+         <steeranglemin>23</steeranglemin>
+         <steerangle>45</steerangle>
+         <steerspeed>0.12</steerspeed>
+         <turbotime>7</turbotime>
+      </kart>
+	  
+	  <kart name="ape" kart="D:\Mhkart4\3dobjects_cars\kart_01.lws" character="D:\Mhkart4\3dobjects_cars\affe.lws">
+         <kartObject>D:\Mhkart4/3dobjects_cars/kart_01.lwo</kartObject>
+		 <characterObject>D:\Mhkart4/3dobjects_cars/affe.lwo</characterObject>
+         <menuscene>D:\Mhkart4\menu\choose_affe.lws</menuscene>
+         <menutext>10010</menutext>
+         <menuimage>Affe</menuimage>
+         <jointFL>jointFL</jointFL>
+         <jointFR>jointFR</jointFR>
+         <jointBL>jointBL</jointBL>
+         <jointBR>jointBR</jointBR>
+         <wheelFL>wheelFL</wheelFL>
+         <wheelFR>wheelFR</wheelFR>
+         <wheelBL>wheelBL</wheelBL>
+         <wheelBR>wheelBR</wheelBR>
+         <special>10</special>
+         <!-- kart settings -->
+         <forwardSpeed>139.38</forwardSpeed>
+         <forwardForce>0.725</forwardForce>
+         <backwardSpeed>55.0</backwardSpeed>
+         <backwardForce>2.0</backwardForce>
+         <brakeForce>1.5</brakeForce>
+         <idleForce>0.5</idleForce>
+         <directionTreshold>0.05</directionTreshold>
+         <mu>5.0</mu>
+         <slip>0.275</slip>
+         <drift>0.0290</drift>
+         <driftexp>1.15</driftexp>
+         <spring>225</spring>
+         <damper>7.5</damper>
+         <mass>1.65</mass>
+         <masssuspensions>0.025</masssuspensions>
+         <masswheels>0.04</masswheels>
+         <steeranglemin>23</steeranglemin>
+         <steerangle>45</steerangle>
+         <steerspeed>0.12</steerspeed>
+         <turbotime>11</turbotime>
+      </kart> 
+      <kart name="hank" kart="D:\Mhkart4\3dobjects_cars\kart_01.lws" character="D:\Mhkart4\3dobjects_cars\hank.lws">
+         <kartObject>D:\Mhkart4/3dobjects_cars/kart_01.lwo</kartObject>
+         <characterObject>D:\Mhkart4/3dobjects_cars/hank.lwo</characterObject>
+         <menuscene>D:\Mhkart4\menu\choose_hank.lws</menuscene>
+         <menutext>10060</menutext>
+         <menuimage>Hank</menuimage>
+         <jointFL>jointFL</jointFL>
+         <jointFR>jointFR</jointFR>
+         <jointBL>jointBL</jointBL>
+         <jointBR>jointBR</jointBR>
+         <wheelFL>wheelFL</wheelFL>
+         <wheelFR>wheelFR</wheelFR>
+         <wheelBL>wheelBL</wheelBL>
+         <wheelBR>wheelBR</wheelBR>
+         <special>17</special>
+         <!-- kart settings -->
+         <forwardSpeed>136.5</forwardSpeed>
+         <forwardForce>0.9</forwardForce>
+         <backwardSpeed>50.0</backwardSpeed>
+         <backwardForce>2.0</backwardForce>
+         <brakeForce>1.2</brakeForce>
+         <idleForce>0.5</idleForce>
+         <directionTreshold>0.05</directionTreshold>
+         <mu>5.0</mu>
+         <slip>0.350</slip>
+         <drift>0.0299</drift>
+         <driftexp>1.1</driftexp>
+         <spring>225</spring>
+         <damper>7.5</damper>
+         <mass>1.6</mass>
+         <masssuspensions>0.025</masssuspensions>
+         <masswheels>0.04</masswheels>
+         <steeranglemin>23</steeranglemin>
+         <steerangle>45</steerangle>
+         <steerspeed>0.12</steerspeed>
+         <turbotime>12</turbotime>
+      </kart>
+      <kart name="kroet" kart="D:\Mhkart4\3dobjects_cars\kart_01.lws" character="D:\Mhkart4\3dobjects_cars\kroet.lws">
+         <kartObject>D:\Mhkart4/3dobjects_cars/kart_01.lwo</kartObject>
+         <characterObject>D:\Mhkart4/3dobjects_cars/kroet.lwo</characterObject>
+         <menuscene>D:\Mhkart4\menu\choose_kroet.lws</menuscene>
+         <menutext>10030</menutext>
+         <menuimage>Kroet</menuimage>
+         <jointFL>jointFL</jointFL>
+         <jointFR>jointFR</jointFR>
+         <jointBL>jointBL</jointBL>
+         <jointBR>jointBR</jointBR>
+         <wheelFL>wheelFL</wheelFL>
+         <wheelFR>wheelFR</wheelFR>
+         <wheelBL>wheelBL</wheelBL>
+         <wheelBR>wheelBR</wheelBR>
+         <special>14</special>
+         <!-- kart settings -->
+         <forwardSpeed>136.25</forwardSpeed>
+         <forwardForce>0.6</forwardForce>
+         <backwardSpeed>50.0</backwardSpeed>
+         <backwardForce>2.0</backwardForce>
+         <brakeForce>1.2</brakeForce>
+         <idleForce>0.5</idleForce>
+         <directionTreshold>0.05</directionTreshold>
+         <mu>5.0</mu>
+         <slip>0.375</slip>
+         <drift>0.022</drift>
+         <driftexp>1.05</driftexp>
+         <spring>225</spring>
+         <damper>7.5</damper>
+         <mass>1.5</mass>
+         <masssuspensions>0.025</masssuspensions>
+         <masswheels>0.04</masswheels>
+         <steeranglemin>23</steeranglemin>
+         <steerangle>45</steerangle>
+         <steerspeed>0.12</steerspeed>
+         <turbotime>12</turbotime>
+      </kart>
+      <kart name="frog" kart="D:\Mhkart4\3dobjects_cars\kart_01.lws" character="D:\Mhkart4\3dobjects_cars\frog.lws">
+         <kartObject>D:\Mhkart4/3dobjects_cars/kart_01.lwo</kartObject>
+         <characterObject>D:\Mhkart4/3dobjects_cars/frog.lwo</characterObject>
+         <menuscene>D:\Mhkart4\menu\choose_frog.lws</menuscene>
+         <menutext>10020</menutext>
+         <menuimage>Frog</menuimage>
+         <jointFL>jointFL</jointFL>
+         <jointFR>jointFR</jointFR>
+         <jointBL>jointBL</jointBL>
+         <jointBR>jointBR</jointBR>
+         <wheelFL>wheelFL</wheelFL>
+         <wheelFR>wheelFR</wheelFR>
+         <wheelBL>wheelBL</wheelBL>
+         <wheelBR>wheelBR</wheelBR>
+         <special>11</special>
+         <!-- kart settings -->
+         <forwardSpeed>133.75</forwardSpeed>
+         <forwardForce>0.975</forwardForce>
+         <backwardSpeed>50.0</backwardSpeed>
+         <backwardForce>2.0</backwardForce>
+         <brakeForce>1.5</brakeForce>
+         <idleForce>0.5</idleForce>
+         <directionTreshold>0.05</directionTreshold>
+         <mu>5.0</mu>
+         <slip>0.400</slip>
+         <drift>0.0176</drift>
+         <driftexp>1.2</driftexp>
+         <spring>225</spring>
+         <damper>7.5</damper>
+         <mass>1.05</mass>
+         <masssuspensions>0.025</masssuspensions>
+         <masswheels>0.04</masswheels>
+         <steeranglemin>23</steeranglemin>
+         <steerangle>45</steerangle>
+         <steerspeed>0.12</steerspeed>
+         <turbotime>12</turbotime>
+      </kart>
+   </karts>
+   <levels>
+      <level name="test" filename="D:\Mhkart4\3dobjects_tracks\track00_test.lws">
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track_lms01.pcx" xmin="-100" xmax="100" zmin="-160"
+            zmax="160" />
+         <minimap filename="MinimapTest.png" xmin="-250" xmax="250" zmin="-250" zmax="250" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track00.bmp" xmin="-100" xmax="100" zmin="-160"
+            zmax="160" />
+         <menutext>10100</menutext>
+         <menuimage>Test</menuimage>
+         <loadingscreen>LoadingScreen_00.png</loadingscreen>
+         <music>0</music>
+      </level>
+      <level name="dubai" filename="D:\Mhkart4\3dobjects_tracks\track01_dubai.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track01_dubai\" lanes="3">
+            <maps xmin="-250" xmax="250" zmin="-250" zmax="250">
+               <speed>speedmap_track01.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track01_dubai/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track01.pcx" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <minimap filename="MinimapDubai.png" xmin="-250" xmax="250" zmin="-250" zmax="250" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track01.bmp" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <menutext>10110</menutext>
+         <menuimage>Dubai</menuimage>
+         <loadingscreen>track01_dubai.png</loadingscreen>
+         <music>0</music>
+      </level>
+      <level name="peking" filename="D:\Mhkart4\3dobjects_tracks\track02_peking.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track02_peking\" lanes="3">
+            <maps xmin="-225" xmax="225" zmin="-225" zmax="225">
+               <speed>speedmap_track02.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track02_peking/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track02.pcx" xmin="-225" xmax="225" zmin="-225"
+            zmax="225" />
+         <minimap filename="MinimapPeking.png" xmin="-225" xmax="225" zmin="-225" zmax="225" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track02.bmp" xmin="-225" xmax="225" zmin="-225"
+            zmax="225" />
+         <menutext>10120</menutext>
+         <menuimage>Peking</menuimage>
+         <loadingscreen>track02_peking.png</loadingscreen>
+         <music>1</music>
+      </level>
+      <level name="vegas" filename="D:\Mhkart4\3dobjects_tracks\track03_las_vegas.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track03_las_vegas\" lanes="3">
+            <maps xmin="-250" xmax="250" zmin="-250" zmax="250">
+               <speed>speedmap_track03.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track03_las_vegas/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track03.pcx" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <minimap filename="MinimapLasVegas.png" xmin="-250" xmax="250" zmin="-250" zmax="250" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track03.bmp" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <menutext>10130</menutext>
+         <menuimage>LasVegas</menuimage>
+         <loadingscreen>track03_las_vegas.png</loadingscreen>
+         <music>2</music>
+      </level>
+      <level name="stpetersburg" filename="D:\Mhkart4\3dobjects_tracks\track04_st_petersburg.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track04_st_petersburg\" lanes="3">
+            <maps xmin="-250" xmax="250" zmin="-250" zmax="250">
+               <speed>speedmap_track04.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track04_st_petersburg/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track04.pcx" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <minimap filename="MinimapStPetersburg.png" xmin="-250" xmax="250" zmin="-250" zmax="250" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track04.bmp" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <menutext>10140</menutext>
+         <menuimage>StPetersburg</menuimage>
+         <loadingscreen>track04_st_petersburg.png</loadingscreen>
+         <music>3</music>
+      </level>
+      <level name="macao" filename="D:\Mhkart4\3dobjects_tracks\track05_macao.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track05_macao\" lanes="3">
+            <maps xmin="-300" xmax="300" zmin="-300" zmax="300">
+               <speed>speedmap_track05.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track05_macao/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track05.pcx" xmin="-300" xmax="300" zmin="-300"
+            zmax="300" />
+         <minimap filename="MinimapMacao.png" xmin="-300" xmax="300" zmin="-300" zmax="300" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track05.bmp" xmin="-300" xmax="300" zmin="-300"
+            zmax="300" />
+         <menutext>10150</menutext>
+         <menuimage>Macao</menuimage>
+         <loadingscreen>track05_macao.png</loadingscreen>
+         <music>4</music>
+      </level>
+      <level name="mexico" filename="D:\Mhkart4\3dobjects_tracks\track06_mexico_city.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track06_mexico_city\" lanes="3">
+            <maps xmin="-245" xmax="245" zmin="-245" zmax="245">
+               <speed>speedmap_track06.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track06_mexico_city/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track06.pcx" xmin="-245" xmax="245" zmin="-245"
+            zmax="245" />
+         <minimap filename="MinimapMexicoCity.png" xmin="-245" xmax="245" zmin="-245" zmax="245" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track06.bmp" xmin="-245" xmax="245" zmin="-245"
+            zmax="245" />
+         <menutext>10160</menutext>
+         <menuimage>MexicoCity</menuimage>
+         <loadingscreen>track06_mexico_city.png</loadingscreen>
+         <music>5</music>
+      </level>
+      <level name="berlin" filename="D:\Mhkart4\3dobjects_tracks\track07_berlin.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track07_berlin\" lanes="3">
+            <maps xmin="-250" xmax="250" zmin="-250" zmax="250">
+               <speed>speedmap_track07.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track07_berlin/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track07.pcx" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <minimap filename="MinimapBerlin.png" xmin="-250" xmax="250" zmin="-250" zmax="250" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track07.bmp" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <menutext>10170</menutext>
+         <menuimage>Berlin</menuimage>
+         <loadingscreen>track07_berlin.png</loadingscreen>
+         <music>6</music>
+      </level>
+      <level name="sydney" filename="D:\Mhkart4\3dobjects_tracks\track08_sydney.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track08_sydney\" lanes="3">
+            <maps xmin="-250" xmax="250" zmin="-250" zmax="250">
+               <speed>speedmap_track08.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track08_sydney/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track08.pcx" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <minimap filename="MinimapSydney.png" xmin="-250" xmax="250" zmin="-250" zmax="250" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track08.bmp" xmin="-250" xmax="250" zmin="-250"
+            zmax="250" />
+         <menutext>10180</menutext>
+         <menuimage>Sydney</menuimage>
+         <loadingscreen>track08_sydney.png</loadingscreen>
+         <music>7</music>
+      </level>
+      <level name="paris" filename="D:\Mhkart4\3dobjects_tracks\track_lms01_frankreich.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track_lms01_frankreich\" lanes="9">
+            <maps xmin="-100" xmax="100" zmin="-160" zmax="160">
+               <speed>speedmap_track_lms01.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track_lms01_frankreich/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track_lms01.pcx" xmin="-100" xmax="100" zmin="-160"
+            zmax="160" />
+         <minimap filename="MinimapFrance.png" xmin="-160" xmax="160" zmin="-160" zmax="160" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track_lms01.bmp" xmin="-100" xmax="100"
+            zmin="-160" zmax="160" />
+         <menutext>10190</menutext>
+         <menuimage>France</menuimage>
+         <loadingscreen>track_lms01_frankreich.png</loadingscreen>
+         <music>8</music>
+      </level>
+      <level name="london" filename="D:\Mhkart4\3dobjects_tracks\track_lms02_england.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track_lms02_england\" lanes="7">
+            <maps xmin="-225" xmax="225" zmin="-35" zmax="35">
+               <speed>speedmap_track_lms02.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track_lms02_england/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track_lms02.pcx" xmin="-225" xmax="225" zmin="-35"
+            zmax="35" />
+         <minimap filename="MinimapEngland.png" xmin="-225" xmax="225" zmin="-225" zmax="225" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track_lms02.bmp" xmin="-225" xmax="225"
+            zmin="-35" zmax="35" />
+         <menutext>10200</menutext>
+         <menuimage>England</menuimage>
+         <loadingscreen>track_lms02_england.png</loadingscreen>
+         <music>9</music>
+      </level>
+      <level name="miami" filename="D:\Mhkart4\3dobjects_tracks\track_lms03_usa.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track_lms03_usa\" lanes="3">
+            <maps xmin="-320" xmax="320" zmin="-320" zmax="320">
+               <speed>speedmap_track_lms03.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track_lms03_usa/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track_lms03.pcx" xmin="-320" xmax="320" zmin="-320"
+            zmax="320" />
+         <minimap filename="MinimapUSA.png" xmin="-320" xmax="320" zmin="-320" zmax="320" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track_lms03.bmp" xmin="-320" xmax="320"
+            zmin="-320" zmax="320" />
+         <menutext>10210</menutext>
+         <menuimage>USA</menuimage>
+         <loadingscreen>track_lms03_usa.png</loadingscreen>
+         <music>9</music>
+      </level>
+      <level name="barcelona" filename="D:\Mhkart4\3dobjects_tracks\track_lms04_barcelona.lws">
+         <aifiles path="D:\Mhkart4\aifiles\track_lms04_spanien\" lanes="9">
+            <maps xmin="-170" xmax="170" zmin="-170" zmax="170">
+               <speed>speedmap_track_lms04.pcx</speed>
+            </maps>
+         </aifiles>
+         <objectfiles path="D:\Mhkart4/3dobjects_tracks/track_lms04_spanien/" />
+         <posmap filename="D:\Mhkart4\mini_maps\posmap_track_lms04.pcx" xmin="-170" xmax="170" zmin="-170"
+            zmax="170" />
+         <minimap filename="MinimapSpain.png" xmin="-170" xmax="170" zmin="-170" zmax="170" />
+         <colormap filename="D:\Mhkart4\mini_maps\colormap_track_lms04.bmp" xmin="-170" xmax="170"
+            zmin="-170" zmax="170" />
+         <menutext>10220</menutext>
+         <menuimage>Spain</menuimage>
+         <loadingscreen>track_lms04_spanien.png</loadingscreen>
+         <music>9</music>
+      </level>
+   </levels>
+   <singlerace>
+      <tracklist>
+         <track name="berlin" />
+         <track name="sydney" />
+         <track name="macao" />
+         <track name="stpetersburg" />
+         <track name="mexico" />
+         <track name="peking" />
+         <track name="miami" />
+         <track name="vegas" />
+         <track name="dubai" />
+      </tracklist>
+   </singlerace>
+   <lastmanstanding>
+      <tracklist>
+         <track name="london" />
+         <track name="paris" />
+         <track name="barcelona" />
+      </tracklist>
+   </lastmanstanding>
+   <career>
+      <ccm class="50">
+         <tracklist>
+            <track name="berlin" game="singlerace" laps="3" />
+            <track name="sydney" game="singlerace" laps="3" />
+            <track name="macao" game="coinrace" laps="3" />
+            <track name="stpetersburg" game="singlerace" laps="3" />
+            <track name="mexico" game="coinrace" laps="3" />
+            <track name="peking" game="singlerace" laps="3" />
+         </tracklist>
+      </ccm>
+      <ccm class="100">
+         <tracklist>
+            <track name="miami" game="timedrun" laps="3" time="325" />
+            <track name="berlin" game="coinrace" laps="3" />
+            <track name="vegas" game="singlerace" laps="3" />
+            <track name="dubai" game="singlerace" laps="3" />
+            <track name="mexico" game="coinrace" laps="3" />
+            <track name="sydney" game="timedrun" laps="3" time="355" />
+            <track name="peking" game="singlerace" laps="3" />
+            <track name="macao" game="singlerace" laps="3" />
+            <track name="stpetersburg" game="coinrace" laps="3" />
+            <track name="dubai" game="timedrun" laps="3" time="320" />
+         </tracklist>
+      </ccm>
+      <ccm class="150">
+         <tracklist>
+            <track name="vegas" game="coinrace" laps="3" />
+            <track name="peking" game="timedrun" laps="3" time="325" />
+            <track name="berlin" game="singlerace" laps="3" />
+            <track name="miami" game="singlerace" laps="3" />
+            <track name="macao" game="timedrun" laps="3" time="315" />
+            <track name="dubai" game="coinrace" laps="3" />
+            <track name="peking" game="singlerace" laps="3" />
+            <track name="mexico" game="singlerace" laps="3" />
+            <track name="stpetersburg" game="timedrun" laps="3" time="330" />
+            <track name="sydney" game="coinrace" laps="3" />
+            <track name="berlin" game="timedrun" laps="3" time="345" />
+            <track name="dubai" game="singlerace" laps="3" />
+            <track name="macao" game="coinrace" laps="3" />
+            <track name="vegas" game="timedrun" laps="3" time="345" />
+            <track name="miami" game="coinrace" laps="3" />
+            <track name="mexico" game="timedrun" laps="3" time="300" />
+         </tracklist>
+      </ccm>
+   </career>
+</mhk4>
