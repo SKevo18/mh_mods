@@ -63,8 +63,7 @@ func packMhk4(dataFileLocation string, inputFolder string) error {
 
 	// write header
 	dataFile.Seek(0x0, io.SeekStart)
-	dataFile.Write([]byte("SARCFV"))
-	dataFile.Write([]byte{0x1, 0x1})
+	dataFile.Write([]byte("SARCFV\x01\x01"))
 
 	// file count and begin
 	filesCount := uint32(len(fileEntries))

@@ -1,5 +1,6 @@
 // "MHK 3 is almost the same format [as MHK 4], just the index is stored before the data.
 // And the file offset is relative to the beginning of the data blob, not the sar file offset."
+// - pyramidensurfer
 package transformers
 
 import (
@@ -28,8 +29,7 @@ func packMhk3(dataFileLocation string, inputFolder string) error {
 
 	// write header
 	dataFile.Seek(0x0, io.SeekStart)
-	dataFile.Write([]byte("SARC"))
-	dataFile.Write([]byte{0x2, 0x0, 0x0, 0x0})
+	dataFile.Write([]byte("SARC2\x00\x00\x00\x00"))
 	filesCount := uint32(len(fileEntries))
 	binary.Write(dataFile, binary.LittleEndian, filesCount)
 
@@ -77,23 +77,18 @@ func unpackMhk3(dataFileLocation string, outputDirectory string) error {
 	defer dataFile.Close()
 
 	// header
-	dataFileType := make([]byte, 0x6)
+	dataFileType := make([]byte, 0x8)
 	dataFile.Read(dataFileType)
-	fileInfo, err := dataFile.Stat()
-	if err != nil {
-		return err
-	}
-	dataSize := fileInfo.Size()
-	log.Printf("Data file type: %s; Data size: %d", dataFileType, dataSize)
+	log.Printf("Data file type: %s;", dataFileType)
 
 	// read file count
 	var fileCount uint32
-	dataFile.Seek(0x8, io.SeekStart)
 	binary.Read(dataFile, binary.LittleEndian, &fileCount)
 	log.Printf("File count: %d", fileCount)
 
 	// read file entries
 	unpackedFilesCount := 0
+	fileEntries := make([]FileEntry, fileCount)
 	log.Printf("Reading file entries...")
 	for i := 0; i < int(fileCount); i++ {
 		// read filename
@@ -102,8 +97,28 @@ func unpackMhk3(dataFileLocation string, outputDirectory string) error {
 		filenameBytes := make([]byte, filenameLength)
 		dataFile.Read(filenameBytes)
 
+		dataFile.Seek(0x1, io.SeekCurrent) // skip null byte after filename
+
+		// get file offset and length
+		var fileOffset, fileLength uint32
+		binary.Read(dataFile, binary.LittleEndian, &fileOffset)
+		binary.Read(dataFile, binary.LittleEndian, &fileLength)
+
+		// skip 4 bytes, file length is written twice
+		dataFile.Seek(0x4, io.SeekCurrent)
+
+		fileEntries[i] = FileEntry{
+			FilePath:     string(filenameBytes),
+			ContentOffset: int64(fileOffset),
+			FileSize:     int64(fileLength),
+		}
+		log.Printf("Filename: %s; Offset: %d; Size: %d", fileEntries[i].FilePath, fileEntries[i].ContentOffset, fileEntries[i].FileSize)
+	}
+
+	dataStart, _ := dataFile.Seek(0, io.SeekCurrent)
+	for _, entry := range fileEntries {
 		// make parent dir for file
-		filename := strings.ReplaceAll(string(filenameBytes), ":", "")
+		filename := strings.ReplaceAll(entry.FilePath, ":", "")
 		filename = strings.ReplaceAll(filename, "\\", "/")
 		outputDirectory := filepath.Join(outputDirectory, filepath.Dir(filename))
 		if err := os.MkdirAll(outputDirectory, os.ModePerm); err != nil {
@@ -111,29 +126,24 @@ func unpackMhk3(dataFileLocation string, outputDirectory string) error {
 		}
 		outputPath := filepath.Join(outputDirectory, filepath.Base(filename))
 
-		dataFile.Seek(0x1, io.SeekCurrent) // skip byte after filename
-
-		// get file offset and length
-		var fileOffset, fileLength uint32
-		binary.Read(dataFile, binary.LittleEndian, &fileOffset)
-		binary.Read(dataFile, binary.LittleEndian, &fileLength)
-
 		// offset of the next file entry
 		nextOffset, _ := dataFile.Seek(0x4, io.SeekCurrent)
 
 		// write file
-		dataFile.Seek(int64(fileOffset), io.SeekStart)
+		dataFile.Seek(dataStart + entry.ContentOffset, io.SeekStart)
 		outputFile, err := os.Create(outputPath)
 		if err != nil {
 			return err
 		}
-		io.CopyN(outputFile, dataFile, int64(fileLength))
+		if _, err := io.CopyN(outputFile, dataFile, entry.FileSize); err != nil {
+			return err
+		}
 		outputFile.Close()
 		unpackedFilesCount++
 
 		// go to next file
 		dataFile.Seek(nextOffset, io.SeekStart)
-		log.Printf("Filename: %s; Offset: %d; Size: %d", filename, fileOffset, fileLength)
+		log.Printf("Filename: %s; Offset: %d; Size: %d", filename, entry.ContentOffset, entry.FileSize)
 	}
 
 	log.Printf("Unpack complete: %d/%d.", unpackedFilesCount, fileCount)

@@ -1,0 +1,2 @@
+data/config.xml
+data/image.bmp

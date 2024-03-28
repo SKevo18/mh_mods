@@ -11,10 +11,10 @@ import (
 )
 
 const (
-	originalPath = "merge_data/original.txt"
-	modPath      = "merge_data/mod_%d.txt"
-	mergedPath   = "merge_data/merged.txt"
-	expectedPath = "merge_data/expected.txt"
+	originalPath = "fixture/original.txt"
+	modPath      = "fixture/mod_%d.txt"
+	mergedPath   = "fixture/merged.txt"
+	expectedPath = "fixture/expected.txt"
 )
 
 func getModPaths(nMods int) []string {

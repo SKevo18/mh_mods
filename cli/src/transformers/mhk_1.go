@@ -201,8 +201,10 @@ func zipFolder(folderPath string, zipFilePath string) error {
 		}
 		defer file.Close()
 
-		// use base path, to keep files at root
-		zipPath := filepath.Base(filePath)
+		// get relative path for the zip file
+		zipPath, _ := filepath.Rel(folderPath, filePath)
+
+		// create file in zip
 		zipFile, err := zipWriter.Create(zipPath)
 		if err != nil {
 			return err

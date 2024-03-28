@@ -1,0 +1,37 @@
+<gameSettings>
+    <graphics>
+        <resolution>1920x1080</resolution>
+        <quality>high</quality>
+        <antiAliasing>on</antiAliasing>
+    </graphics>
+    <audio>
+        <volume>80</volume>
+        <mute>false</mute>
+    </audio>
+    <controls>
+        <keyboard>
+            <movement>
+                <up>W</up>
+                <down>S</down>
+                <left>A</left>
+                <right>D</right>
+            </movement>
+            <actions>
+                <jump>Space</jump>
+                <shoot>LeftMouse</shoot>
+            </actions>
+        </keyboard>
+        <gamepad>
+            <movement>
+                <up>DPadUp</up>
+                <down>DPadDown</down>
+                <left>DPadLeft</left>
+                <right>DPadRight</right>
+            </movement>
+            <actions>
+                <jump>AButton</jump>
+                <shoot>RightTrigger</shoot>
+            </actions>
+        </gamepad>
+    </controls>
+</gameSettings>
