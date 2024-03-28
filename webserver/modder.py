@@ -118,12 +118,12 @@ GAMES = {
         out_filename="mhk2-00.dat",
         mods_folder=MODS_ROOT / "mhk_2",
     ),
-    #"mhk_3": Game(
-    #    id="mhk_3",
-    #    name="Moorhuhn Kart 3",
-    #    out_filename="data.sar",
-    #    original_datafile=DATAFILE_ROOT / "mhk_3.sar",
-    #),
+    "mhk_3": Game(
+        id="mhk_3",
+        name="Moorhuhn Kart 3",
+        out_filename="data.sar",
+        original_datafile=DATAFILE_ROOT / "mhk_3.sar",
+    ),
     "mhk_4": Game(
         id="mhk_4",
         name="Moorhuhn Kart: Thunder",
