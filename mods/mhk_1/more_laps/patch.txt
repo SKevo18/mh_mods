@@ -1,2 +1,0 @@
-@ + Track.ini 4 0 true
-NumberOfLaps=5
