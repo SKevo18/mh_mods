@@ -1,0 +1,11 @@
+@ + Track.ini 698 0 true
+Acceleration=5.0
+
+@ + Track.ini 700 0 true
+MaximumSpeed=800
+TurnGain=5.0
+TurnSpeedDown=0.05
+MaximumTurn=150.0
+
+@ + Track.ini 706 0 true
+Mass=10.0

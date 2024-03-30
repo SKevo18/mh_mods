@@ -32,9 +32,6 @@
                         <div class="mb-6 markdown-body" data-content="{{ mod.readme|e }}"></div>
                     {% endif %}
                     <div class="flex flex-row gap-4">
-                        {% if mod.config and mod.config.noMerge %}
-                            <span class="text-xl ml-2 font-bold self-center text-yellow-500" title="This mod has `noMerge` set in its config, so it can't be merged properly with other mods, and should be used as standalone mod. Using it with other mods might make the game not behave properly.">⚠️</span>
-                        {% endif %}
                         <button onclick="javascript:selectMod(this, '{{ mod.id}}');" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded">
                             Select this mod
                         </button>
