@@ -1,3 +1,4 @@
+// deprecated in favor of gopatch files
 package util
 
 import (
@@ -16,8 +17,6 @@ func MergeModFilesRecursively(originalDir string, modDirs []string, destDir stri
 		if err != nil {
 			return err
 		}
-
-		// ensure it's a file
 		if info.IsDir() {
 			return nil
 		}
@@ -37,7 +36,7 @@ func MergeModFilesRecursively(originalDir string, modDirs []string, destDir stri
 
 		// can only merge UTF-8 files
 		if isUTF8File(path) {
-			// collect existing modified file paths
+			// collect mod file paths that exist
 			existingModPaths := []string{}
 			for _, modDir := range modDirs {
 				modPath := filepath.Join(modDir, relPath)

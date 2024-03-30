@@ -1,0 +1,17 @@
+@ + data/mk2/settings/karts/karts.txt 12 0 true
+        "homing missile life time" 1500.000000
+
+@ + data/mk2/settings/karts/karts.txt 16 0 true
+        "glibber ball move time" 25.000000
+        "glibber ball timeout" 200.000000
+        "blue light time" 32.000000
+
+@ + data/mk2/settings/karts/karts.txt 20 0 true
+        "blue light max. speed factor" 2.200000
+        "shield time" 30.000000
+
+@ + data/mk2/settings/karts/karts.txt 24 0 true
+        "black hole size" 5.000000
+        "turbo can time" 10.000000
+        "turbo can accel factor" 1.666667
+        "turbo can max. speed factor" 3.450000

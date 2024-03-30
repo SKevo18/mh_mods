@@ -1,0 +1,27 @@
+@ + data/mk2/settings/karts/karts.txt 109 0 true
+        "steering washout" 0.000000
+        "steering washout power" 5.000000
+
+@ + data/mk2/settings/karts/karts.txt 112 0 true
+        "downforce coefficient" 0.000100
+
+@ + data/mk2/settings/karts/karts.txt 118 0 true
+        "friction equalizer" 0.100000
+
+@ + data/mk2/settings/karts/karts.txt 209 0 true
+        "downforce coefficient" 0.000100
+
+@ + data/mk2/settings/karts/karts.txt 306 0 true
+        "downforce coefficient" 0.000100
+
+@ + data/mk2/settings/karts/karts.txt 403 0 true
+        "downforce coefficient" 0.000100
+
+@ + data/mk2/settings/karts/karts.txt 500 0 true
+        "downforce coefficient" 0.000100
+
+@ + data/mk2/settings/karts/karts.txt 597 0 true
+        "downforce coefficient" 0.000100
+
+@ + data/mk2/settings/karts/karts.txt 694 0 true
+        "downforce coefficient" 0.000100

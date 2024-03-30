@@ -1,0 +1,2 @@
+@ + data/mk2/settings/karts/karts.txt 9 0 true
+        "respawn delay" 0.40000

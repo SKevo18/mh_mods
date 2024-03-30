@@ -35,7 +35,7 @@ func packMhk3(dataFileLocation string, inputFolder string) error {
 
 	var relativeDataOffset uint32 = 0
 	for _, fileEntry := range fileEntries {
-		// write filename 
+		// write filename
 		filename := strings.ReplaceAll(fileEntry.FilePath, "/", "\\")
 		filename = strings.Replace(filename, "\\", ":\\", 1)
 		filenameLength := uint8(len(filename))

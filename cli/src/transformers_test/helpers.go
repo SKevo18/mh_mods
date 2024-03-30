@@ -49,7 +49,6 @@ func compareDirectories(dir1, dir2 string) (bool, error) {
 			return false, nil
 		}
 
-
 		if files1[i].IsDir() {
 			same, err := compareDirectories(filePath1, filePath2)
 			if err != nil {

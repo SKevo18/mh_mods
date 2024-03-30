@@ -8,7 +8,7 @@ import (
 
 const (
 	fixtureAssetsFolder = "fixture/assets"
-	fixturePackedFolder   = "fixture/packed"
+	fixturePackedFolder = "fixture/packed"
 )
 
 func compareUnpacked(gameId string) (bool, error) {
@@ -34,7 +34,6 @@ func compareUnpacked(gameId string) (bool, error) {
 
 	return ok, nil
 }
-
 
 func comparePacked(gameId string) (bool, error) {
 	packedPath := fixturePackedFolder + "/sample_" + gameId

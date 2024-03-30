@@ -1,0 +1,8 @@
+@ + data/mk2/settings/karts/karts.txt 10 0 true
+        "homing missile speed" 120.000000
+        "homing missile arm delay" 0.000000
+
+@ + data/mk2/settings/karts/karts.txt 13 0 true
+        "homing missile activation distance" 0.000000
+        "homing missile lock distance" 10000.000000
+        "homing missile locked speed" 30.000000
