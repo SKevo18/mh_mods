@@ -3,7 +3,7 @@ module mhmods
 go 1.22.1
 
 require (
-	github.com/SKevo18/gopatch v0.0.4
+	github.com/SKevo18/gopatch v0.0.5
 	github.com/otiai10/copy v1.14.0
 	github.com/spf13/cobra v1.8.0
 )
