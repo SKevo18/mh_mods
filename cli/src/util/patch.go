@@ -30,7 +30,7 @@ func PatchModFiles(rootDir string, outputDir string, patchFilePaths []string) er
 func CopyModFiles(modRootPaths []string, outputDir string) ([]string, error) {
 	patchFilePaths := []string{}
 	for _, modPath := range modRootPaths {
-		patchFile := filepath.Join(modPath, "patch.txt")
+		patchFile := filepath.Join(modPath, "mod.gopatch")
 		if _, err := os.Stat(patchFile); !os.IsNotExist(err) {
 			patchFilePaths = append(patchFilePaths, patchFile)
 		}
