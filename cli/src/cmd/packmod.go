@@ -22,26 +22,21 @@ func PackmodCmd() *cobra.Command {
 			outputDataFile := args[2]
 			modPaths := args[3:]
 
-			// create temp dirs
-			tempDirUnpacked, err := os.MkdirTemp("", "mhmods_temp_patched")
+			// create temp dir
+			tempDir, err := os.MkdirTemp("", "mhmods_temp_patched")
 			if err != nil {
 				log.Fatalf("Fatal error: %s", err)
 			}
-			defer os.RemoveAll(tempDirUnpacked)
-			tempDirPatched, err := os.MkdirTemp("", "mhmods_temp_patched")
-			if err != nil {
-				log.Fatalf("Fatal error: %s", err)
-			}
-			defer os.RemoveAll(tempDirPatched)
+			defer os.RemoveAll(tempDir)
 
 			// unpack
-			if err := transformers.Transform("unpack", gameID, originalDataFile, tempDirUnpacked); err != nil {
+			if err := transformers.Transform("unpack", gameID, originalDataFile, tempDir); err != nil {
 				log.Fatalf("Fatal error during unpacking: %s", err)
 			}
 
 			// copy mod files into unpacked dir, collect existing patch files
 			log.Print("Copying mod files...")
-			patchFilePaths, err := util.CopyModFiles(modPaths, tempDirUnpacked)
+			patchFilePaths, err := util.CopyModFiles(modPaths, tempDir)
 			if err != nil {
 				log.Fatalf("Fatal error while copying mods: %s", err)
 			}
@@ -49,14 +44,14 @@ func PackmodCmd() *cobra.Command {
 			// patch
 			if len(patchFilePaths) > 0 {
 				log.Print("Patching mod files...")
-				if err := util.PatchModFiles(tempDirUnpacked, tempDirPatched, patchFilePaths); err != nil {
+				if err := util.PatchModFiles(tempDir, tempDir, patchFilePaths); err != nil {
 					log.Fatalf("Fatal error while patching mods: %s", err)
 				}
 			}
 
 			// repack
 			log.Print("Repacking...")
-			if err := transformers.Transform("pack", gameID, outputDataFile, tempDirPatched); err != nil {
+			if err := transformers.Transform("pack", gameID, outputDataFile, tempDir); err != nil {
 				log.Fatalf("Fatal error during repacking: %s", err)
 			}
 
