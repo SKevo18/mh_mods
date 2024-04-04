@@ -47,9 +47,11 @@ func PackmodCmd() *cobra.Command {
 			}
 
 			// patch
-			log.Print("Patching mod files...")
-			if err := util.PatchModFiles(tempDirUnpacked, tempDirPatched, patchFilePaths); err != nil {
-				log.Fatalf("Fatal error while patching mods: %s", err)
+			if len(patchFilePaths) > 0 {
+				log.Print("Patching mod files...")
+				if err := util.PatchModFiles(tempDirUnpacked, tempDirPatched, patchFilePaths); err != nil {
+					log.Fatalf("Fatal error while patching mods: %s", err)
+				}
 			}
 
 			// repack
