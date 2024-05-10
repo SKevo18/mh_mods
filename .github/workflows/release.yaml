@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                go-version: [1.22]
+                go-version: ["1.22.3"]
                 os: [linux, windows, darwin]
                 arch: [amd64, arm64]
                 include:
@@ -29,9 +29,9 @@ jobs:
               with:
                   swap-size-gb: 10
 
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - name: Set up Go
-              uses: actions/setup-go@v3
+              uses: actions/setup-go@v5
               with:
                   go-version: ${{ matrix.go-version }}
 

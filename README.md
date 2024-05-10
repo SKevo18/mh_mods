@@ -14,7 +14,7 @@ An all-in-one experimental Go command-line tool for patching Moorhuhn data files
 - [x] Moorhuhn Kart Extra XXL (game ID: `mhk_1`/`mhk_extra`) - untested!;
 - [x] Moorhuhn Kart 2 (game ID: `mhk_2`);
   - [ ] Schatzjäger (untested) (game ID: `schatzjaeger`) - note: this uses the exact same algorithm as MHK2;
-- [ ] Moorhuhn Kart 3 (game ID: `mhk_3`);
+- [x] Moorhuhn Kart 3 (game ID: `mhk_3`);
 - [x] Moorhuhn Kart 4 (Thunder) (game ID: `mhk_4`/`mhk_thunder`);
 
 ## Wait, what?
