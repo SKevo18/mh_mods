@@ -81,6 +81,10 @@ async def pack(
     """mhmods packmod <game ID> <original data file> <output modded data file> <mod paths>... [flags]"""
     cmd = f""""{MHMODS_BINARY}" packmod {game.id.split('.', 2)[0]} "{game.original_datafile}" "{output_path}" {' '.join(f'"{mod.path}"' for mod in mods)}"""
 
+    return await run_cmd(cmd)
+
+
+async def run_cmd(cmd: str | bytes) -> tuple[str, bytes, bytes, t.Optional[int]]:
     process = await create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
@@ -89,7 +93,7 @@ async def pack(
 
     out, err = await process.communicate()
     code = process.returncode
-    return cmd, out, err, code
+    return str(cmd), out, err, code
 
 
 GAMES = {
