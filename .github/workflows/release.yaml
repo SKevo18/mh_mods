@@ -39,24 +39,23 @@ jobs:
               run: |
                   sudo apt install -y gcc pkg-config libwayland-dev libx11-dev libx11-xcb-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev libxcursor-dev libvulkan-dev
 
-            - name: Run Tests
-              run: go test ./...
-
             - name: Build CLI
               env:
                   GOOS: ${{ matrix.os }}
                   GOARCH: ${{ matrix.arch }}
+              working-directory: ./cli
               run: |
-                  cd cli/
-                  go build -o mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
+                  go test ./...
+                  go build -o ../mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
 
             - name: Build GUI
               env:
                   GOOS: ${{ matrix.os }}
                   GOARCH: ${{ matrix.arch }}
+              working-directory: ./gui
               run: |
-                  cd gui/
-                  go build -o mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
+                  go test ./...
+                  go build -o ../mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
 
             - name: Compress CLI binary
               run: |
