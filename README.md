@@ -64,6 +64,10 @@ You can't use the tool to create new assets, such as models or textures, but you
 
 The tools aims to simplify this process as much as possible, and to provide a simple way to share mods with others. It also includes a webserver, which can be used to build and download modded data files on the fly, without the need for end-users to use the command-line tool at all.
 
+### What is the gopatch format about?
+
+It's a custom format I have developed for the purpose of patching and joining multiple modded files together in an unified way that doesn't make mods overwrite each others' changes. Please, see this repository for more information: https://github.com/SKevo18/gopatch
+
 ## Credits
 
 This tool wouldn't be possible without the help of a few talented humans. I'd like to thank the following people for their help towards making this tool a reality:
