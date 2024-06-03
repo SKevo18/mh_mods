@@ -11,8 +11,8 @@ var rootCmd = &cobra.Command{
 	Use:   "mhmods <pack/unpack/packmod> ...",
 	Short: "Moorhuhn modding tool for packing and unpacking game data files",
 	Long: `
-A Fast and Flexible Moorhuhn modding tool built with love in Go.
-Complete documentation (including game IDs) is available at http://github.com/SKevo18/mh_mods`,
+A fast and flexible Moorhuhn modding tool built with the Go programming language.
+More information is available at http://github.com/SKevo18/mh_mods`,
 	Args: cobra.MinimumNArgs(4),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(cmd.Use)
