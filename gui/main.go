@@ -17,14 +17,17 @@ func main() {
 	modWindow := modApp.NewWindow("Moorhuhn Kart Modding Tool")
 
 	gameList := widget.NewList(
-		func() int { return 5 },
+		func() int { return 4 },
 		func() fyne.CanvasObject { return widget.NewLabel("Template") },
 		func(i widget.ListItemID, o fyne.CanvasObject) {
-			o.(*widget.Label).SetText(fmt.Sprintf("Game %d", i))
+			o.(*widget.Label).SetText(fmt.Sprintf("MHK %d", i+1))
 		},
 	)
+	gameList.OnSelected = func(id widget.ListItemID) {
+		dialog.ShowInformation("Game Selected", fmt.Sprintf("Game %d selected", id+1), modWindow)
+	}
 
-	addGameButton := widget.NewButtonWithIcon("", theme.ContentAddIcon(), func() {
+	addGameButton := widget.NewButtonWithIcon("Add Game", theme.ContentAddIcon(), func() {
 		openAddGameModal(modWindow)
 	})
 
@@ -42,7 +45,7 @@ func main() {
 
 	tabs := container.NewAppTabs(
 		container.NewTabItem("Installed", installedTab),
-		container.NewTabItem("Browse New", browseNewTab),
+		container.NewTabItem("Download Mods", browseNewTab),
 	)
 
 	launchButton := widget.NewButton("Launch", func() {
@@ -56,9 +59,11 @@ func main() {
 }
 
 func createModListItem(modWindow fyne.Window, title, description string) fyne.CanvasObject {
-	checkbox := widget.NewCheck("Enabled", nil)
+	checkbox := widget.NewCheck("", nil)
 	titleLabel := widget.NewLabel(title)
+	titleLabel.TextStyle.Bold = true
 	descriptionLabel := widget.NewLabel(description)
+
 	downloadButton := widget.NewButtonWithIcon("", theme.DownloadIcon(), func() {
 		// ...
 	})
