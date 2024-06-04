@@ -44,8 +44,8 @@ func main() {
 	)
 
 	tabs := container.NewAppTabs(
-		container.NewTabItem("Installed", installedTab),
-		container.NewTabItem("Download Mods", browseNewTab),
+		container.NewTabItem("Downloaded Mods", installedTab),
+		container.NewTabItem("Discover Mods", browseNewTab),
 	)
 
 	launchButton := widget.NewButton("Launch", func() {
@@ -54,7 +54,7 @@ func main() {
 
 	mainLayout := container.NewBorder(nil, launchButton, leftSide, nil, tabs)
 	modWindow.SetContent(mainLayout)
-	modWindow.Resize(fyne.NewSize(800, 600))
+	modWindow.Resize(fyne.NewSize(1000, 600))
 	modWindow.ShowAndRun()
 }
 

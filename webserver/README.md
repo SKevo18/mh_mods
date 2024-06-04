@@ -14,3 +14,4 @@ You can access it live at [https://mhmods.svit.ac](https://mhmods.svit.ac).
 3. Install dependencies: `pip install -r requirements.txt`;
 4. `service mhmods start` if running via systemd, or simply `./start.sh`;
     - The webserver operates as a socket file. You can use `systemd` to manage it (see `mhmods.service` for example), or simply run `./start.sh` to start the Flask app.
+5. Place your original data files in `../data/` (see `../data/README.md` for more info);

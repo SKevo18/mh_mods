@@ -1,12 +1,11 @@
 # Data Files Root
 
-Place your ORIGINAL Moorhuhn data files in this directory. Name the files as follows (without file extensions):
+Place your ORIGINAL Moorhuhn data files in this directory. Name the files as follows:
 
-- `mhk_extra` - for Moorhuhn Kart Extra (XXL) (`mhke.dat`);
-- Moorhuhn Kart 2 (XXL) (`mhk2-00.dat`):
-  - `mhk_2_de` - German version (original);
-  - `mhk_2_en` - English version;
-- `mhk_3` - for Moorhuhn Kart 3 (`data.sar`);
-- `mhk_4` - for Moorhuhn Kart 4 (Thunder; version 1.0.3) (`data.sar`);
+- `mhk_1.dat` - for Moorhuhn Kart 1;
+- `mhk_2.en.dat` - for Moorhuhn Kart 2 (English);
+- `mhk_2.de.dat` - for Moorhuhn Kart 2 (German)
+- `mhk_3.sar` - for Moorhuhn Kart 3;
+- `mhk_4.sar` - for Moorhuhn Kart 4;
 
 They will be used by the webserver at runtime, to serve the modded game files to the client.
