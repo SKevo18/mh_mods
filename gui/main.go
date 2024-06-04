@@ -12,22 +12,29 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+var supportedGames = []string{
+	"Moorhuhn Kart 1",
+	"Moorhuhn Kart 2",
+	"Moorhuhn Kart 3",
+	"Moorhuhn Kart 4",
+}
+
 func main() {
 	modApp := app.New()
 	modWindow := modApp.NewWindow("Moorhuhn Kart Modding Tool")
 
 	gameList := widget.NewList(
-		func() int { return 4 },
-		func() fyne.CanvasObject { return widget.NewLabel("Template") },
+		func() int { return len(supportedGames) },
+		func() fyne.CanvasObject { return widget.NewLabel("Loading...") },
 		func(i widget.ListItemID, o fyne.CanvasObject) {
-			o.(*widget.Label).SetText(fmt.Sprintf("MHK %d", i+1))
+			o.(*widget.Label).SetText(supportedGames[i])
 		},
 	)
 	gameList.OnSelected = func(id widget.ListItemID) {
 		dialog.ShowInformation("Game Selected", fmt.Sprintf("Game %d selected", id+1), modWindow)
 	}
 
-	addGameButton := widget.NewButtonWithIcon("Add Game", theme.ContentAddIcon(), func() {
+	addGameButton := widget.NewButtonWithIcon("   Add Game", theme.ContentAddIcon(), func() {
 		openAddGameModal(modWindow)
 	})
 
@@ -51,6 +58,7 @@ func main() {
 	launchButton := widget.NewButton("Launch", func() {
 		dialog.ShowInformation("Launch", "Launching the game...", modWindow)
 	})
+	launchButton.Importance = widget.HighImportance
 
 	mainLayout := container.NewBorder(nil, launchButton, leftSide, nil, tabs)
 	modWindow.SetContent(mainLayout)
@@ -67,6 +75,7 @@ func createModListItem(modWindow fyne.Window, title, description string) fyne.Ca
 	downloadButton := widget.NewButtonWithIcon("", theme.DownloadIcon(), func() {
 		// ...
 	})
+	downloadButton.Importance = widget.HighImportance
 	settingsButton := widget.NewButtonWithIcon("", theme.SettingsIcon(), func() {
 		dialog.NewForm("Mod Settings", "Save", "Dismiss", []*widget.FormItem{
 			{Text: "Setting 1", Widget: widget.NewEntry()},
@@ -77,9 +86,11 @@ func createModListItem(modWindow fyne.Window, title, description string) fyne.Ca
 			}
 		}, modWindow).Show()
 	})
+	settingsButton.Importance = widget.WarningImportance
 	deleteButton := widget.NewButtonWithIcon("", theme.DeleteIcon(), func() {
 		confirmDeleteDialog()
 	})
+	deleteButton.Importance = widget.DangerImportance
 
 	item := container.NewHBox(
 		checkbox,

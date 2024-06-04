@@ -1,4 +1,5 @@
-quart
-aiofiles
+fastapi
+gitpython
+
 hypercorn[uvloop]
 orjson

@@ -1,12 +1,8 @@
-# MH Mods Webserver
+# MH Mods API
 
-This is the (very simple) Flask MHK mods webserver. It is used for packing existing mods present in this repository into a single data file - useful for people that do not want to use the CLI and want to simply play the mods.
+This is a simple Python FastAPI webserver to query and download mods from the GitHub repository, for the GUI application to use.
 
-You can access it live at [https://mhmods.svit.ac](https://mhmods.svit.ac).
-
-> **Note:** Mod folders starting with dot (`.`) are marked as WIP/temporary, and will be excluded from the webpage's mod list.
-
-## Running it locally (for development)
+## Running
 
 1. Install Python 3.10+ virtualenv in `./.venv`: `python3 -m venv .venv`;
     - Python 3.12 is recommended;
