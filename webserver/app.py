@@ -15,21 +15,39 @@ REPO = git.Repo(REPO_ROOT)
 
 
 @APP.get("/mods")
-async def get_mods() -> dict[str, dict[str, str]]:
+@APP.get("/mods/{game}")
+async def get_mods(
+    game: str | None = None,
+) -> dict[str, str] | dict[str, dict[str, str]]:
     """
-    Get a list of all mods for all games in the repository (key), and their last update commit hash (value).
+    Returns a list of mods for the specified game, or all games if no game is specified.
+    Keys are mod names, values are the latest commit hash of the mod.
     """
+
+    def get_mods(folder: Path) -> dict[str, str]:
+        mods = {}
+        for mod_folder in folder.iterdir():
+            if mod_folder.is_dir():
+                mods[mod_folder.name] = REPO.git.log(
+                    "-1", "--format=%h", "--", mod_folder
+                )
+
+        return mods
 
     mods = {}
-    for game_folder in MODS_ROOT.iterdir():
-        if game_folder.is_dir():
-            mods.setdefault(game_folder.name, {})
 
-            for mod_folder in game_folder.iterdir():
-                if mod_folder.is_dir():
-                    mods[game_folder.name][mod_folder.name] = REPO.git.log(
-                        "-1", "--format=%h", "--", mod_folder
-                    )
+    if game:
+        game_folder = MODS_ROOT / game
+        if not game_folder.exists():
+            raise fa.HTTPException(status_code=404, detail="Game not found")
+
+        mods = get_mods(game_folder)
+    else:
+        for game_folder in MODS_ROOT.iterdir():
+            if game_folder.is_dir():
+                mods.setdefault(game_folder.name, {})
+
+                mods[game_folder.name] = get_mods(game_folder)
 
     return mods
 
@@ -62,3 +80,12 @@ async def get_mod(
     return fa.responses.FileResponse(
         mod_zip, media_type="application/zip", filename=mod_zip.name
     )
+
+
+if __name__ == "__main__":
+    import asyncio
+
+    async def main():
+        print(await get_mods())
+
+    asyncio.run(main())

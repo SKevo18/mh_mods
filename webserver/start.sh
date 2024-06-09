@@ -7,4 +7,9 @@ if [ ! -d ../.venv ]; then
 fi
 
 export PYTHONPATH=$(pwd)
-../.venv/bin/hypercorn app:APP --bind=unix:server.sock -m 007 -w 2
+
+if [[ $* == *--local* ]]; then
+  ../.venv/bin/hypercorn app:APP -m 007 -w 2 --bind=localhost:8080 --reload
+else
+  ../.venv/bin/hypercorn app:APP -m 007 -w 2 --bind=unix:server.sock
+fi
