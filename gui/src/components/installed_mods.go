@@ -27,7 +27,7 @@ func installedModsItems(parent fyne.Window, gameId string, dataDir string) []fyn
 
 	items := make([]fyne.CanvasObject, 0, len(mods))
 	for _, mod := range mods {
-		items = append(items, modItem(parent, mod, "Description " + mod, false))
+		items = append(items, modItem(parent, mod, false))
 	}
 
 	if len(items) == 0 {

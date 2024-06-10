@@ -9,15 +9,15 @@ import (
 	"mhmods_gui/src/utils"
 )
 
-func browseModsTab(parent fyne.Window, gameId string) *container.TabItem {
-	browseTab := container.NewGridWithColumns(1,
-		browseModsItems(parent, gameId)...,
+func downloadModsTab(parent fyne.Window, gameId string) *container.TabItem {
+	downloadTab := container.NewGridWithColumns(1,
+		downloadModsItems(parent, gameId)...,
 	)
 
-	return container.NewTabItem("Browse Mods", browseTab)
+	return container.NewTabItem("Download Mods", downloadTab)
 }
 
-func browseModsItems(parent fyne.Window, gameId string) []fyne.CanvasObject {
+func downloadModsItems(parent fyne.Window, gameId string) []fyne.CanvasObject {
 	mods, err := api.GetMods(gameId)
 	if err != nil {
 		return utils.TextLabel(err.Error())
@@ -25,7 +25,7 @@ func browseModsItems(parent fyne.Window, gameId string) []fyne.CanvasObject {
 
 	items := make([]fyne.CanvasObject, 0, len(mods))
 	for mod, hash := range mods {
-		items = append(items, modItem(parent, mod, hash, true))
+		items = append(items, modItem(parent, mod+" "+hash, true))
 	}
 
 	if len(items) == 0 {

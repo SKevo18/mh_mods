@@ -9,16 +9,20 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-func modItem(parent fyne.Window, title, description string, downloadOnly bool) fyne.CanvasObject {
-	// enable/disable checkbox
-	checkbox := widget.NewCheck(title, func(enabled bool) {
-		if enabled {
-			// ...
-		}
-	})
+func modItem(parent fyne.Window, textLabel string, downloadOnly bool) fyne.CanvasObject {
+	modItemContainer := container.NewHBox()
 
-	// description
-	descriptionLabel := widget.NewLabel(description)
+	// enable/disable checkbox
+	if !downloadOnly {
+		checkbox := widget.NewCheck("", func(enabled bool) {
+			if enabled {
+				// ...
+			}
+		})
+		modItemContainer.Add(checkbox)
+	}
+
+	label := widget.NewLabel(textLabel)
 
 	// download
 	downloadButton := widget.NewButtonWithIcon("", theme.DownloadIcon(), func() {
@@ -56,10 +60,10 @@ func modItem(parent fyne.Window, title, description string, downloadOnly bool) f
 		buttons.Add(deleteButton)
 	}
 
-	return container.NewHBox(
-		checkbox,
-		descriptionLabel,
-		layout.NewSpacer(),
-		buttons,
-	)
+	
+	modItemContainer.Add(label)
+	modItemContainer.Add(layout.NewSpacer())
+	modItemContainer.Add(buttons)
+
+	return modItemContainer
 }

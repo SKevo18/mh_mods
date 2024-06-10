@@ -7,7 +7,7 @@ const (
 )
 
 var SupportedGames = map[string]string{
-	"mhk_extra": "Moorhuhn Kart 1",
+	"mhk_1": "Moorhuhn Kart 1",
 	"mhk_2": "Moorhuhn Kart 2",
 	"mhk_3": "Moorhuhn Kart 3",
 	"mhk_4": "Moorhuhn Kart 4",

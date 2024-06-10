@@ -22,7 +22,7 @@ func gameTab(parent fyne.Window, gameName string, gameId string, dataDir string)
 	gameTab := container.NewVBox(
 		container.NewAppTabs(
 			installedModsTab(parent, gameId, dataDir),
-			browseModsTab(parent, gameId),
+			downloadModsTab(parent, gameId),
 		),
 		layout.NewSpacer(),
 		gameButtons(parent, gameId, dataDir),
