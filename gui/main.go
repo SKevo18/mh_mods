@@ -17,6 +17,6 @@ func main() {
 	mainLayout := container.NewBorder(nil, nil, nil, nil, gameTabs)
 	modWindow.SetContent(mainLayout)
 
-	modWindow.Resize(fyne.NewSize(1000, 600))
+	modWindow.Resize(fyne.NewSize(800, 600))
 	modWindow.ShowAndRun()
 }

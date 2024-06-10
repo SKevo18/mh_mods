@@ -8,10 +8,12 @@ import (
 )
 
 func gameButtons(parent fyne.Window, gameId string) fyne.CanvasObject {
-	return container.NewHBox(
+	split := container.NewHSplit(
 		importModButton(parent, gameId), 
 		launchGameButton(parent, gameId),
 	)
+
+	return container.NewPadded(split)
 }
 
 func importModButton(parent fyne.Window, gameId string) *widget.Button {

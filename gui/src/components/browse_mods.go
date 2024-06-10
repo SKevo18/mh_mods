@@ -6,10 +6,10 @@ import (
 )
 
 func browseModsTab(parent fyne.Window, gameId string) *container.TabItem {
-	browseTab := container.NewVScroll(container.NewVBox(
+	browseTab := container.NewGridWithColumns(1,
 		modItem(parent, "Mod A", "Description A"),
 		modItem(parent, "Mod B", "Description B"),
-	))
+	)
 
 	return container.NewTabItem("Browse Mods", browseTab)
 }

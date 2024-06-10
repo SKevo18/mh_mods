@@ -6,6 +6,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
+	"fyne.io/fyne/v2/theme"
 )
 
 func GameTabs(parent fyne.Window) *container.AppTabs {
@@ -24,8 +25,8 @@ func gameTab(parent fyne.Window, gameName string, gameId string) *container.TabI
 			browseModsTab(parent, gameId),
 		),
 		layout.NewSpacer(),
-		GameTabs(parent),
+		gameButtons(parent, gameId),
 	)
 
-	return container.NewTabItem(gameName, gameTab)
+	return container.NewTabItemWithIcon(gameName, theme.MenuIcon(), gameTab)
 }
