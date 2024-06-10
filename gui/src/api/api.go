@@ -33,9 +33,9 @@ func GetAllMods() (map[string]map[string]string, error) {
 }
 
 // GetMods returns a list of mods for the given game.
-func GetMods(game string) (map[string]string, error) {
+func GetMods(gameId string) (map[string]string, error) {
 	var mods map[string]string
-	if err := fetchJson(fmt.Sprintf("/mods/%s", game), &mods); err != nil {
+	if err := fetchJson(fmt.Sprintf("/mods/%s", gameId), &mods); err != nil {
 		return nil, err
 	}
 	return mods, nil

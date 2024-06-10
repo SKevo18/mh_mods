@@ -9,23 +9,23 @@ import (
 	"fyne.io/fyne/v2/theme"
 )
 
-func GameTabs(parent fyne.Window) *container.AppTabs {
+func GameTabs(parent fyne.Window, dataDir string) *container.AppTabs {
 	games := make([]*container.TabItem, 0, len(src.SupportedGames))
 	for gameId, gameName := range src.SupportedGames {
-		games = append(games, gameTab(parent, gameName, gameId))
+		games = append(games, gameTab(parent, gameName, gameId, dataDir))
 	}
 
 	return container.NewAppTabs(games...)
 }
 
-func gameTab(parent fyne.Window, gameName string, gameId string) *container.TabItem {
+func gameTab(parent fyne.Window, gameName string, gameId string, dataDir string) *container.TabItem {
 	gameTab := container.NewVBox(
 		container.NewAppTabs(
-			installedModsTab(parent, gameId),
+			installedModsTab(parent, gameId, dataDir),
 			browseModsTab(parent, gameId),
 		),
 		layout.NewSpacer(),
-		gameButtons(parent, gameId),
+		gameButtons(parent, gameId, dataDir),
 	)
 
 	return container.NewTabItemWithIcon(gameName, theme.MenuIcon(), gameTab)

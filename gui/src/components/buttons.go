@@ -9,16 +9,16 @@ import (
 	"mhmods_gui/src/utils"
 )
 
-func gameButtons(parent fyne.Window, gameId string) fyne.CanvasObject {
+func gameButtons(parent fyne.Window, gameId string, dataDir string) fyne.CanvasObject {
 	split := container.NewHSplit(
-		importModButton(parent, gameId), 
+		importModButton(parent, gameId, dataDir), 
 		launchGameButton(parent, gameId),
 	)
 
 	return container.NewPadded(split)
 }
 
-func importModButton(parent fyne.Window, gameId string) *widget.Button {
+func importModButton(parent fyne.Window, gameId string, dataDir string) *widget.Button {
 	return widget.NewButton("Import Mod", func() {
 		dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
 			if err != nil {
