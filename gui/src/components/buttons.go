@@ -5,6 +5,8 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
+
+	"mhmods_gui/src/utils"
 )
 
 func gameButtons(parent fyne.Window, gameId string) fyne.CanvasObject {
@@ -23,15 +25,12 @@ func importModButton(parent fyne.Window, gameId string) *widget.Button {
 				dialog.ShowError(err, parent)
 				return
 			}
-			defer reader.Close()
-
-			// ...
 		}, parent)
 	})
 }
 
 func launchGameButton(parent fyne.Window, gameId string) *widget.Button {
 	return widget.NewButton("Launch Game", func() {
-		// ...
+		utils.LaunchGame(gameId)
 	})
 }
