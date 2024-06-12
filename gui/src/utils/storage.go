@@ -7,31 +7,28 @@ import (
 	"mhmods_gui/src"
 )
 
-func EnsureDataDirs() (string, error) {
-	dataDirRoot, err := GetDataDir()
+var DataDir string = GetDataDir()
+
+func GetDataDir() string {
+	homeDir, err := os.UserHomeDir()
 	if err != nil {
-		return "", err
+		return "/tmp/mhmods"
 	}
 
-	for gameId, _ := range src.SupportedGames {
-		if err := os.MkdirAll(filepath.Join(dataDirRoot, "mods", gameId), 0755); err != nil {
-			return "", err
+	return filepath.Join(homeDir, src.AppID)
+}
+
+func EnsureDataDirs() error {
+	for _, gameId := range src.SupportedGames {
+		if err := os.MkdirAll(filepath.Join(DataDir, "mods", gameId), 0o755); err != nil {
+			return err
 		}
 	}
 
-	return dataDirRoot, nil
+	return nil
 }
 
-func GetDataDir() (string, error) {
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		return "", err
-	}
-
-	return filepath.Join(homeDir, src.AppID), nil
-}
-
-func GetInstalledMods(parentFolder string) ([]string, error) {
+func GetModFolders(parentFolder string) ([]string, error) {
 	files, err := os.ReadDir(parentFolder)
 	if err != nil {
 		return nil, err

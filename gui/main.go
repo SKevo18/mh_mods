@@ -15,13 +15,12 @@ func main() {
 	modApp := app.New()
 	modWindow := modApp.NewWindow(src.AppName + " - " + src.AppVersion)
 
-	dataDir, err := utils.EnsureDataDirs()
-	if err != nil {
+	if err := utils.EnsureDataDirs(); err != nil {
 		dialog.ShowError(err, modWindow)
 		return
 	}
 
-	gameTabs := components.GameTabs(modWindow, dataDir)
+	gameTabs := components.GameTabs(modWindow)
 	mainLayout := container.NewStack(gameTabs)
 	modWindow.SetContent(mainLayout)
 

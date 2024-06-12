@@ -9,16 +9,16 @@ import (
 	"mhmods_gui/src/utils"
 )
 
-func downloadModsTab(parent fyne.Window, gameId string) *container.TabItem {
+func downloadModsTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 	downloadTab := container.NewGridWithColumns(1,
-		downloadModsItems(parent, gameId)...,
+		downloadModsItems(parent, game)...,
 	)
 
 	return container.NewTabItem("Download Mods", downloadTab)
 }
 
-func downloadModsItems(parent fyne.Window, gameId string) []fyne.CanvasObject {
-	mods, err := api.GetMods(gameId)
+func downloadModsItems(parent fyne.Window, game *utils.Game) []fyne.CanvasObject {
+	mods, err := api.GetMods(game.Id)
 	if err != nil {
 		return utils.TextLabel(err.Error())
 	}

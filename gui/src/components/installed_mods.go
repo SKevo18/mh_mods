@@ -1,8 +1,6 @@
 package components
 
 import (
-	"path/filepath"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
@@ -10,17 +8,17 @@ import (
 	"mhmods_gui/src/utils"
 )
 
-func installedModsTab(parent fyne.Window, gameId string, dataDir string) *container.TabItem {
+func installedModsTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 	installedTab := container.NewGridWithColumns(1,
-		installedModsItems(parent, gameId, dataDir)...,
+		installedModsItems(parent, game)...,
 	)
 
 	return container.NewTabItem("Installed Mods", installedTab)
 }
 
-func installedModsItems(parent fyne.Window, gameId string, dataDir string) []fyne.CanvasObject {
-	modFolder := filepath.Join(dataDir, "mods", gameId)
-	mods, err := utils.GetInstalledMods(modFolder)
+func installedModsItems(parent fyne.Window, game *utils.Game) []fyne.CanvasObject {
+	modFolder := game.ModFolder()
+	mods, err := utils.GetModFolders(modFolder)
 	if err != nil {
 		return utils.TextLabel(err.Error())
 	}

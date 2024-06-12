@@ -2,6 +2,7 @@ package components
 
 import (
 	"mhmods_gui/src"
+	"mhmods_gui/src/utils"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -9,24 +10,27 @@ import (
 	"fyne.io/fyne/v2/theme"
 )
 
-func GameTabs(parent fyne.Window, dataDir string) *container.AppTabs {
+func GameTabs(parent fyne.Window) *container.AppTabs {
 	games := make([]*container.TabItem, 0, len(src.SupportedGames))
-	for gameId, gameName := range src.SupportedGames {
-		games = append(games, gameTab(parent, gameName, gameId, dataDir))
+	for _, gameId := range src.SupportedGames {
+		game := utils.Game{}
+		game.FromConfig(gameId)
+
+		games = append(games, gameTab(parent, &game))
 	}
 
 	return container.NewAppTabs(games...)
 }
 
-func gameTab(parent fyne.Window, gameName string, gameId string, dataDir string) *container.TabItem {
+func gameTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 	gameTab := container.NewVBox(
 		container.NewAppTabs(
-			installedModsTab(parent, gameId, dataDir),
-			downloadModsTab(parent, gameId),
+			installedModsTab(parent, game),
+			downloadModsTab(parent, game),
 		),
 		layout.NewSpacer(),
-		gameButtons(parent, gameId, dataDir),
+		gameButtons(parent, game),
 	)
 
-	return container.NewTabItemWithIcon(gameName, theme.MenuIcon(), gameTab)
+	return container.NewTabItemWithIcon(game.Name, theme.MenuIcon(), gameTab)
 }
