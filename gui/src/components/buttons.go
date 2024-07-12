@@ -24,7 +24,7 @@ func GameButtons(parent fyne.Window, game *utils.Game) fyne.CanvasObject {
 func openModsFolderButton(parent fyne.Window, game *utils.Game) *widget.Button {
 	return widget.NewButton("Open Mods Folder", func() {
 		HandleError(utils.OpenFolder(game.ModsFolder()), parent)
-		ConfirmAppRestart(parent)
+		ConfirmAppRestart(parent, false)
 	})
 }
 
@@ -40,10 +40,12 @@ func DownloadModButton(parent fyne.Window, game *utils.Game, modId string) *widg
 	canUpdate, err := hasUpdates(game.Id, modId)
 	HandleError(err, parent)
 
-	btn := widget.NewButton("Download Mod", func() {
+	btn := widget.NewButton("Download Mod", nil)
+	btn.OnTapped = func() {
 		HandleError(game.DownloadMod(modId), parent)
 		dialog.ShowInformation("Mod Downloaded", "The mod has been downloaded and installed successfully.", parent)
-	})
+		btn.Disable()
+	}
 
 	// disable button if no updates are available
 	if !canUpdate {

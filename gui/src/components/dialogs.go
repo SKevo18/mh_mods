@@ -15,7 +15,13 @@ func HandleError(err error, parent fyne.Window) {
 }
 
 // Shows a confirmation dialog to restart the app
-func ConfirmAppRestart(parent fyne.Window) {
+// If force is true, the app will restart without asking
+func ConfirmAppRestart(parent fyne.Window, force bool) {
+	if force {
+		HandleError(utils.RestartApp(), parent)
+		return
+	}
+
 	dialog.ShowConfirm("Restart", "Restart the app to apply the changes?", func(restart bool) {
 		if restart {
 			HandleError(utils.RestartApp(), parent)

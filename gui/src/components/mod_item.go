@@ -1,6 +1,9 @@
 package components
 
 import (
+	"os"
+	"path/filepath"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
@@ -53,7 +56,8 @@ func modItem(parent fyne.Window, game *utils.Game, modId string, downloadOnly bo
 		deleteButton := widget.NewButtonWithIcon("", theme.DeleteIcon(), func() {
 			dialog.ShowConfirm("Delete Mod", "Are you sure you want to delete this mod?", func(b bool) {
 				if b {
-					// ...
+					HandleError(os.RemoveAll(filepath.Join(game.ModsFolder(), modId)), parent)
+					downloadButton.Enable()
 				}
 			}, parent)
 		})

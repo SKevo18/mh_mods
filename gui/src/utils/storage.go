@@ -87,6 +87,7 @@ func WriteJsonFile(filePath string, data any) error {
 }
 
 // Unzips the given mod ZIP at its location
+// FIXME: also unzip folders recursively (e. g. "source" folder)
 func UnzipMod(modZipPath string) error {
 	// reader
 	zipReader, err := zip.OpenReader(modZipPath)
