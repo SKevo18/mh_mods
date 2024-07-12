@@ -67,7 +67,6 @@ async def get_mod(
     mod_zip = Path(gettempdir()) / mod_folder.with_suffix(".zip")
     if not mod_zip.exists():
         with zipfile.ZipFile(mod_zip, "w") as zf:
-            zf.write(mod_folder, arcname=mod)
             for file in mod_folder.rglob("*"):
                 zf.write(file, arcname=file.relative_to(mod_folder))
 
