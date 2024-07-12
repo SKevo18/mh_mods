@@ -60,11 +60,6 @@ async def get_mod(
     Downloads the mod as a zip file.
     """
 
-    if not all(part.isalnum() for part in (game, mod)):
-        raise fa.HTTPException(
-            status_code=400, detail="Game and mod names must be alphanumeric."
-        )
-
     mod_folder = MODS_ROOT / game / mod
     if not mod_folder.exists():
         raise fa.HTTPException(status_code=404, detail="Mod not found")
