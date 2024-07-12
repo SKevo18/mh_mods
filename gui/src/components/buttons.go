@@ -25,6 +25,8 @@ func openModsFolderButton(parent fyne.Window, game *utils.Game) *widget.Button {
 		if err := utils.OpenFolder(game.ModFolder()); err != nil {
 			dialog.ShowError(err, parent)
 		}
+
+		ConfirmAppRestart(parent)
 	})
 }
 
