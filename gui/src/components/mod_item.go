@@ -7,12 +7,14 @@ import (
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+
+	"mhmods_gui/src/utils"
 )
 
 // TODO: split into two functions - one for installed mods, another for downloadable mods
 // installed mods - settings (simply opens config file for now), delete mod (asks for confirmation, removes dir)
 // browse mods - download: if already downloaded, check updates instead
-func modItem(parent fyne.Window, textLabel string, downloadOnly bool) fyne.CanvasObject {
+func modItem(parent fyne.Window, game *utils.Game, modId string, downloadOnly bool) *fyne.Container {
 	modItemContainer := container.NewHBox()
 
 	// enable/disable checkbox
@@ -25,12 +27,10 @@ func modItem(parent fyne.Window, textLabel string, downloadOnly bool) fyne.Canva
 		modItemContainer.Add(checkbox)
 	}
 
-	label := widget.NewLabel(textLabel)
+	label := widget.NewLabel(modId)
 
 	// download
-	downloadButton := widget.NewButtonWithIcon("", theme.DownloadIcon(), func() {
-		// ...
-	})
+	downloadButton := DownloadModButton(parent, game, modId)
 	downloadButton.Importance = widget.HighImportance
 
 	buttons := container.NewHBox(downloadButton)
@@ -63,7 +63,6 @@ func modItem(parent fyne.Window, textLabel string, downloadOnly bool) fyne.Canva
 		buttons.Add(deleteButton)
 	}
 
-	
 	modItemContainer.Add(label)
 	modItemContainer.Add(layout.NewSpacer())
 	modItemContainer.Add(buttons)

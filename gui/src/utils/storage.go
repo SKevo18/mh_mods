@@ -3,6 +3,7 @@ package utils
 import (
 	"archive/zip"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -10,6 +11,9 @@ import (
 
 	"mhmods_gui/src"
 )
+
+// The name of the file that stores the last known commit hash of a mod.
+const CommitHashFileName = "commit_hash.txt"
 
 // The path to the data directory.
 var DataDir = GetDataDir()
@@ -91,6 +95,15 @@ func UnzipMod(modZipPath string) error {
 	}
 	defer zipReader.Close()
 
+	// create parent mod dir
+	modDir := filepath.Join(
+		filepath.Dir(modZipPath),
+		filepath.Base(modZipPath[:len(modZipPath)-4]),
+	)
+	if err := os.MkdirAll(modDir, 0o755); err != nil {
+		return fmt.Errorf("error creating file dirs: %s", err)
+	}
+
 	// extract
 	for _, file := range zipReader.File {
 		// open zipped file
@@ -101,11 +114,7 @@ func UnzipMod(modZipPath string) error {
 		defer fileReader.Close()
 
 		// create file
-		filePath := filepath.Join(filepath.Dir(modZipPath), file.Name)
-		if err := os.MkdirAll(filepath.Dir(filePath), 0o755); err != nil {
-			return fmt.Errorf("error creating file dirs: %s", err)
-		}
-		newFile, err := os.Create(filePath)
+		newFile, err := os.Create(filepath.Join(modDir, file.Name))
 		if err != nil {
 			return fmt.Errorf("error creating file: %s", err)
 		}
@@ -118,4 +127,25 @@ func UnzipMod(modZipPath string) error {
 	}
 
 	return nil
+}
+
+// Reads the current mod commit hash from "last known hash" file
+func ReadHash(gameId string, modId string) (string, error) {
+	hashFilePath := filepath.Join(DataDir, gameId, "mods", modId, CommitHashFileName)
+
+	hash, err := os.ReadFile(hashFilePath)
+	if errors.Is(err, os.ErrNotExist) {
+		// mod is not downloaded yet
+		return "", nil
+	} else if err != nil {
+		return "", err
+	}
+
+	return string(hash), nil
+}
+
+// Writes the current mod commit hash to "last known hash" file
+func WriteHash(gameId string, modId string, hash string) error {
+	hashFilePath := filepath.Join(DataDir, gameId, "mods", modId, CommitHashFileName)
+	return os.WriteFile(hashFilePath, []byte(hash), 0o644)
 }

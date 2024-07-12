@@ -27,8 +27,8 @@ func downloadModsItems(parent fyne.Window, game *utils.Game) []fyne.CanvasObject
 	}
 
 	items := make([]fyne.CanvasObject, 0, len(mods))
-	for mod, hash := range mods {
-		items = append(items, modItem(parent, mod+" "+hash, true))
+	for mod := range mods {
+		items = append(items, modItem(parent, game, mod, true))
 	}
 
 	if len(items) == 0 {

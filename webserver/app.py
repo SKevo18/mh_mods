@@ -13,6 +13,12 @@ MODS_ROOT = REPO_ROOT / "mods"
 APP = fa.FastAPI(title="MH Mods API", docs_url="/", redoc_url=None)
 REPO = git.Repo(REPO_ROOT)
 
+COMMIT_HASH_FILENAME = "commit_hash.txt"
+
+
+def get_commit_hash(folder: Path) -> str:
+    return REPO.git.log("-1", "--format=%h", "--", folder)
+
 
 @APP.get("/mods")
 @APP.get("/mods/{game}")
@@ -28,9 +34,7 @@ async def get_mods(
         mods = {}
         for mod_folder in folder.iterdir():
             if mod_folder.is_dir():
-                mods[mod_folder.name] = REPO.git.log(
-                    "-1", "--format=%h", "--", mod_folder
-                )
+                mods[mod_folder.name] = get_commit_hash(mod_folder)
 
         return mods
 
@@ -67,6 +71,9 @@ async def get_mod(
     mod_zip = Path(gettempdir()) / mod_folder.with_suffix(".zip")
     if not mod_zip.exists():
         with zipfile.ZipFile(mod_zip, "w") as zf:
+            # write current commit hash
+            zf.writestr(COMMIT_HASH_FILENAME, get_commit_hash(mod_folder))
+
             for file in mod_folder.rglob("*"):
                 zf.write(file, arcname=file.relative_to(mod_folder))
 

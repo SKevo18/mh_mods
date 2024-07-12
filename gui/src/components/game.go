@@ -39,7 +39,7 @@ func gameTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 			downloadModsTab(parent, game),
 		),
 		layout.NewSpacer(),
-		gameButtons(parent, game),
+		GameButtons(parent, game),
 	)
 
 	return container.NewTabItemWithIcon(game.Name, theme.MenuIcon(), gameTab)

@@ -49,11 +49,26 @@ func GetMods(gameId string) (Mods, error) {
 	return mods, nil
 }
 
+// Returns the current (up-to-date) commit hash of the given mod from the API
+func GetCurrentModHash(gameId string, modId string) (string, error) {
+	allMods, err := GetMods(gameId)
+	if err != nil {
+		return "", err
+	}
+	for id, hash := range allMods {
+		if id == modId {
+			return hash, nil
+		}
+	}
+
+	return "", fmt.Errorf("mod not found: %s", modId)
+}
+
 // Downloads a given mod of a game as a ZIP file into destination folder
 // Unzipping the file is handled in the `utils/storage` package
-func DownloadMod(gameId string, modId string, dest string) error {
+func DownloadMod(gameId string, modId string, destFile string) error {
 	// prepare file
-	file, err := os.Create(dest)
+	file, err := os.Create(destFile)
 	if err != nil {
 		return err
 	}

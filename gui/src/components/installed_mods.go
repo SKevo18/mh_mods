@@ -17,7 +17,7 @@ func installedModsTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 }
 
 func installedModsItems(parent fyne.Window, game *utils.Game) []fyne.CanvasObject {
-	modFolder := game.ModFolder()
+	modFolder := game.ModsFolder()
 	mods, err := utils.GetFolderNames(modFolder)
 	if err != nil {
 		return utils.TextLabel(err.Error())
@@ -25,7 +25,7 @@ func installedModsItems(parent fyne.Window, game *utils.Game) []fyne.CanvasObjec
 
 	items := make([]fyne.CanvasObject, 0, len(mods))
 	for _, mod := range mods {
-		items = append(items, modItem(parent, mod, false))
+		items = append(items, modItem(parent, game, mod, false))
 	}
 
 	if len(items) == 0 {
