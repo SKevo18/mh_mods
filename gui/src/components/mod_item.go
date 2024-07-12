@@ -9,6 +9,9 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+// TODO: split into two functions - one for installed mods, another for downloadable mods
+// installed mods - settings (simply opens config file for now), delete mod (asks for confirmation, removes dir)
+// browse mods - download: if already downloaded, check updates instead
 func modItem(parent fyne.Window, textLabel string, downloadOnly bool) fyne.CanvasObject {
 	modItemContainer := container.NewHBox()
 

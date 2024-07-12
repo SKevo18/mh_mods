@@ -9,6 +9,7 @@ import (
 	"mhmods_gui/src/utils"
 )
 
+// Creates a tab for downloading/updating mods
 func downloadModsTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 	downloadTab := container.NewGridWithColumns(1,
 		downloadModsItems(parent, game)...,
@@ -17,7 +18,9 @@ func downloadModsTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 	return container.NewTabItem("Download Mods", downloadTab)
 }
 
+// Creates a list of mod items that can be downloaded/updated
 func downloadModsItems(parent fyne.Window, game *utils.Game) []fyne.CanvasObject {
+	// fetch mods from API (https://mh-mods.svit.ac/mods/<game.Id>)
 	mods, err := api.GetMods(game.Id)
 	if err != nil {
 		return utils.TextLabel(err.Error())

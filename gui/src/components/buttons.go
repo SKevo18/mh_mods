@@ -9,28 +9,30 @@ import (
 	"mhmods_gui/src/utils"
 )
 
+// A container that holds "the two wide buttons at bottom" (Open Mods Folder and Launch Game).
 func gameButtons(parent fyne.Window, game *utils.Game) fyne.CanvasObject {
 	split := container.NewHSplit(
-		importModButton(parent, game), 
+		openModsFolderButton(parent, game),
 		launchGameButton(game),
 	)
 
 	return container.NewPadded(split)
 }
 
-func importModButton(parent fyne.Window, game *utils.Game) *widget.Button {
-	return widget.NewButton("Import Mod", func() {
-		dialog.ShowFileOpen(func(reader fyne.URIReadCloser, err error) {
-			if err != nil {
-				dialog.ShowError(err, parent)
-				return
-			}
-		}, parent)
+// The "Open Mods Folder" button.
+func openModsFolderButton(parent fyne.Window, game *utils.Game) *widget.Button {
+	return widget.NewButton("Open Mods Folder", func() {
+		if err := utils.OpenFolder(game.ModFolder()); err != nil {
+			dialog.ShowError(err, parent)
+		}
 	})
 }
 
+// The "Launch Game" button.
 func launchGameButton(game *utils.Game) *widget.Button {
 	return widget.NewButton("Launch Game", func() {
-		utils.LaunchGame(game.Id)
+		if err := game.Launch(); err != nil {
+			dialog.ShowError(err, nil)
+		}
 	})
 }

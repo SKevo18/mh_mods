@@ -1,7 +1,6 @@
 package components
 
 import (
-	"mhmods_gui/src"
 	"mhmods_gui/src/utils"
 
 	"fyne.io/fyne/v2"
@@ -10,18 +9,29 @@ import (
 	"fyne.io/fyne/v2/theme"
 )
 
-func GameTabs(parent fyne.Window) *container.AppTabs {
-	games := make([]*container.TabItem, 0, len(src.SupportedGames))
-	for _, gameId := range src.SupportedGames {
-		game := utils.Game{}
-		game.FromConfig(gameId)
-
-		games = append(games, gameTab(parent, &game))
+// Creates a tabbed view for all games.
+func GameTabs(parent fyne.Window) (*container.AppTabs, error) {
+	// get game folders
+	mod_paths, err := utils.GetFolderNames(utils.DataDir)
+	if err != nil {
+		return nil, err
 	}
 
-	return container.NewAppTabs(games...)
+	// load game from config and create tab
+	games := make([]*container.TabItem, 0, len(mod_paths))
+	for _, gameId := range mod_paths {
+		game, err := utils.LoadGame(gameId)
+		if err != nil {
+			return nil, err
+		}
+
+		games = append(games, gameTab(parent, game))
+	}
+
+	return container.NewAppTabs(games...), nil
 }
 
+// Creates a tab for the given game.
 func gameTab(parent fyne.Window, game *utils.Game) *container.TabItem {
 	gameTab := container.NewVBox(
 		container.NewAppTabs(

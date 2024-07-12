@@ -12,18 +12,24 @@ import (
 )
 
 func main() {
+	// create
 	modApp := app.New()
 	modWindow := modApp.NewWindow(src.AppName + " - " + src.AppVersion)
-
 	if err := utils.EnsureDataDirs(); err != nil {
 		dialog.ShowError(err, modWindow)
 		return
 	}
 
-	gameTabs := components.GameTabs(modWindow)
+	// build tabs
+	gameTabs, err := components.GameTabs(modWindow)
+	if err != nil {
+		dialog.ShowError(err, modWindow)
+		return
+	}
 	mainLayout := container.NewStack(gameTabs)
 	modWindow.SetContent(mainLayout)
 
+	// show
 	modWindow.Resize(fyne.NewSize(800, 600))
 	modWindow.ShowAndRun()
 }

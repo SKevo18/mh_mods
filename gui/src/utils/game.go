@@ -1,30 +1,49 @@
 package utils
 
 import (
+	"encoding/json"
+	"fmt"
+	"os"
 	"os/exec"
 	"path/filepath"
 )
 
 type Game struct {
-	Name string
-	Id string
-	ExecutablePath string
-	EnabledMods []string
+	Id             string   `json:"id"`
+	Name           string   `json:"name"`
+	ExecutablePath string   `json:"executable"`
+	EnabledMods    []string `json:"enabledMods"`
 }
 
-func (g *Game) FromConfig(gameId string) {
-	g.Name = "Moorhuhn Kart 1"
-	g.Id = gameId
-	g.ExecutablePath = "/usr/games/mhk1"
-	g.EnabledMods = []string{}
+func (g *Game) ConfigPath() string {
+	return filepath.Join(DataDir, g.Id, "config.json")
+}
+
+func (g *Game) WriteConfig() error {
+	return WriteJsonFile(g.ConfigPath(), g)
 }
 
 func (g *Game) ModFolder() string {
-	return filepath.Join(DataDir, "mods", g.Id)
+	return filepath.Join(DataDir, g.Id, "mods")
 }
 
 func (g *Game) Launch() error {
-	cmd := exec.Command(g.ExecutablePath)
-	return cmd.Start()
+	return exec.Command(g.ExecutablePath).Start()
 }
 
+func LoadGame(gameId string) (*Game, error) {
+	g := &Game{Id: gameId}
+	configPath := g.ConfigPath()
+
+	if _, err := os.Stat(configPath); os.IsNotExist(err) {
+		return nil, fmt.Errorf("game config file not found: %s", configPath)
+	}
+
+	data, err := os.ReadFile(configPath)
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.Unmarshal(data, g)
+	return g, err
+}
