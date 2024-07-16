@@ -2,6 +2,7 @@
 __pycache__/
 .venv/
 *.sock
+.DS_Store
 
 /data/*
 !/data/README.md
