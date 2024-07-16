@@ -34,7 +34,7 @@ func PatchModFiles(rootDir string, outputDir string, patchFilePaths []string) er
 // to `outputDir` and returns a list of patch files found in the mod roots.
 // If a `config.json` file is found in the mod root, it will be used to render
 // the `mod.gopatch` file as a template.
-func CopyModFiles(modRootPaths []string, outputDir string) (patchFilePaths []string, err error) {
+func RenderModFiles(modRootPaths []string, outputDir string) (patchFilePaths []string, err error) {
 	for _, modPath := range modRootPaths {
 		if _, err := os.Stat(modPath); os.IsNotExist(err) {
 			return nil, fmt.Errorf("mod path `%s` does not exist", modPath)
