@@ -32,8 +32,9 @@ func PatchModFiles(rootDir string, outputDir string, patchFilePaths []string) er
 
 // Copies mod files from `modRootPaths` (looks up "source" directory here)
 // to `outputDir` and returns a list of patch files found in the mod roots.
-func CopyModFiles(modRootPaths []string, outputDir string) ([]string, error) {
-	patchFilePaths := []string{}
+// If a `config.json` file is found in the mod root, it will be used to render
+// the `mod.gopatch` file as a template.
+func CopyModFiles(modRootPaths []string, outputDir string) (patchFilePaths []string, err error) {
 	for _, modPath := range modRootPaths {
 		if _, err := os.Stat(modPath); os.IsNotExist(err) {
 			return nil, fmt.Errorf("mod path `%s` does not exist", modPath)
@@ -44,7 +45,7 @@ func CopyModFiles(modRootPaths []string, outputDir string) ([]string, error) {
 		if _, err := os.Stat(patchFile); !os.IsNotExist(err) {
 			patchFilePaths = append(patchFilePaths, patchFile)
 
-			// if config.json is found, render mod.gopatch as template
+			// if config.json is found, render mod.gopatch from that as a template:
 			configFile := filepath.Join(modPath, "config.json")
 			if _, err := os.Stat(configFile); !os.IsNotExist(err) {
 				// read
@@ -81,13 +82,12 @@ func CopyModFiles(modRootPaths []string, outputDir string) ([]string, error) {
 	return patchFilePaths, nil
 }
 
-func readConfigFile(configPath string) (map[string]interface{}, error) {
+func readConfigFile(configPath string) (configData map[string]interface{}, err error) {
 	configFile, err := os.ReadFile(configPath)
 	if err != nil {
 		return nil, err
 	}
 
-	var configData map[string]interface{}
 	if err := json.Unmarshal(configFile, &configData); err != nil {
 		return nil, err
 	}
