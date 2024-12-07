@@ -9,4 +9,4 @@ They are available for download at [https://mhmods.svit.ac](https://mhmods.svit.
 
 1. Obtain modded data file;
 2. Replace it with the data file in the game installation's directory;
-    - It is a good idea to backup the original data file, in case anything goes wrong
+    - It is a good idea to backup the original data file, in case anything goes wrong (e. g.: by renaming it or adding `.old` suffix to it)
