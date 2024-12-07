@@ -1,3 +1,4 @@
+// WIP
 package api
 
 import (
@@ -9,7 +10,7 @@ import (
 )
 
 // The API server to use
-var ApiServer string = "https://mh-mods.svit.ac"
+var ApiServer string = "https://mhmods.svit.ac"
 
 type (
 	Mods  map[string]string

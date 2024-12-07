@@ -1,0 +1,13 @@
+Values for item in item slot.
+
+Empty = 4294967295
+Rocket = 0
+Gum = 1
+Light = 2
+Shield = 3
+Hole = 4
+Fake Item Box = 5
+X = 6
+Speed = 7
+
+Anything else crashes the game.

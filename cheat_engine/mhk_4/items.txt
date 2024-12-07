@@ -1,0 +1,39 @@
+Empty = 4294967295 # NOTE: Or any other value, see # INFO section at the very bottom of this file.
+
+# Normal:
+Speed = 0
+Oil = 1
+Shield/Bubble = 2
+Rocket = 3
+Fake Item Box = 4
+Freeze = 5
+
+# Versus/Battle Mode:
+# NOTE: In normal race, the items do not appear in the item slot, but you can use them.
+Health Increase = 6             # NOTE: Seemingly useless in normal races, as there is no health bar.
+Creepy Ghost Hand Thingy = 7
+Hammer = 8                      # NOTE: Does not affect karts in normal races.
+
+# Special:
+Feather = 9             # WARNING: Untested, will probably crash too (see down)
+Bananas = 10            # NOTE: Surprisingly, this works for any driver (tested with Moorhuhn)
+Turbine (3 uses) = 11   # WARNING: Crashes the game if you use it with driver other than Frog - that's because other drivers don't have Frog's jump animation when using it
+Turbine (2 uses) = 12   # WARNING: (up)
+Turbine (1 use) = 13    # WARNING: (up)
+Turtle Shell = 14       # WARNING: (up, except Turtle)
+Homing Pumpkin = 15     # WARNING: (up, except Pumpkin)
+Electro-ray = 16        # WARNING: (up, :( except Alien)
+Mole Hole = 17          # NOTE: Should work for any driver (Moorhuhn tested). Hank coming in contact with the hole doesn't crash the game, since it's possible in two player mode with 2 Hank players.
+
+
+# INFO:
+# Anything else will make your item slot empty (it won't crash, unlike MHK 2). Negative values do not crash the game either.
+# Only Bananas (10) and Mole Hole (17) should work for any driver - other special items crash the game when you use them without being the driver that owns them (tested with Moorhuhn)
+#
+# You can use multiple items of the same type in a row, unlike MHK 3 which only allows you to use 1 item of the same type (the old item will disappear)
+# This also means that you can spam the Shield powerup to deep fry your game's music and get that sweet earrape. Not sure why would you do that...
+#
+# Be careful - turning on "Infinity Item Uses" cheat will once again affect ALL racers and will make the race twice longer. CPUs have basically become your evil friends, and like to spam a lot of items randomly in a perfect row, making the race a lot more difficult!
+# Shield will definitely come in handy to bypass all these items. Or, at least your steering skills...
+#
+# 420 coins costs the most expensive item in the shop (engine).
