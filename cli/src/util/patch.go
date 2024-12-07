@@ -18,7 +18,7 @@ func PatchModFiles(rootDir string, outputDir string, patchFilePaths []string) er
 		return err
 	}
 
-	// apply config, if found
+	// TODO: apply config, if found
 
 	if len(patchLines) == 0 {
 		return fmt.Errorf("no valid patch files found in mod paths for root `%s`", rootDir)

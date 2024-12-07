@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+{% set title="List of Mods" %}
+
+{% block content %}
+<div class="container mx-auto py-8">
+  <h1 class="text-2xl font-bold mb-4">Moorhuhn Mods</h1>
+
+  <div class="grid grid-cols-1 gap-4">
+    {% for game in games %}
+    <a
+      href="{{ url_for('game', game_id=game.id) }}"
+      class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 p-4 rounded-lg shadow-md"
+    >
+      <h2 class="text-lg font-semibold mb-2">{{ game.name }}</h2>
+      <p class="text-gray-600 dark:text-gray-400 italic">
+        {% if game.mods|length > 0 %}{{ game.mods|length }}{% else %}No{% endif %} mods available
+      </p>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
