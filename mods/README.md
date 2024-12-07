@@ -2,8 +2,8 @@
 
 This directory contains the source of the modded data files for Moorhuhn Kart.
 
-They are available for download at [https://mhk-mods.svit.ac](https://mhk-mods.svit.ac)
-(you can alternatively compile them by yourself - follow instructions in the main [README.md](https://github.com/SKevo18/mhk_mods/blob/main/README.md))
+They are available for download at [https://mhmods.svit.ac](https://mhmods.svit.ac)
+(you can alternatively compile them by yourself - follow instructions in the main [README.md](https://github.com/SKevo18/mh_mods/blob/main/README.md))
 
 ## Generic install instructions
 
