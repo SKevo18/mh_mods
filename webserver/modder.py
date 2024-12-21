@@ -17,7 +17,7 @@ DATAFILE_ROOT = Path(__file__).parent.parent / "data"
 IDLEMOD_BINARY = (
     Path(__file__).parent.parent
     / "build"
-    / ("idlemod.exe" if os_name == "nt" else "mhidlemodmods")
+    / ("idlemod.exe" if os_name == "nt" else "idlemod")
 )
 
 
