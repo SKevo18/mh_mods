@@ -4,11 +4,26 @@ import (
 	"fmt"
 	"os"
 
-	"mhmods/src/util"
+	"idlemod/src/util"
 
 	"github.com/charmbracelet/huh"
 	"github.com/spf13/cobra"
 )
+
+var interactiveCmd = &cobra.Command{
+	Use:   "interactive",
+	Short: "Run the tool in interactive mode",
+	Long:  `Run the tool in interactive mode to download and manage existing mods (recommended for non-mod developers).`,
+	Args:  cobra.NoArgs,
+	Run: func(cmd *cobra.Command, args []string) {
+		if err := actionForm.Run(); err != nil {
+			fmt.Println(err.Error())
+			os.Exit(1)
+		}
+
+		performAction(action, game_id)
+	},
+}
 
 var (
 	action  string
@@ -50,12 +65,7 @@ func manageAllModsGroup(game_id string) *huh.Form {
 	)
 }
 
-func runInteractive(cmd *cobra.Command, args []string) {
-	if err := actionForm.Run(); err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-
+func performAction(action string, game_id string) {
 	switch action {
 	case "open":
 		// TODO: data folder to store mods, etc...
@@ -64,9 +74,9 @@ func runInteractive(cmd *cobra.Command, args []string) {
 			os.Exit(1)
 		}
 		fmt.Println(`
-		Opening the mod folder for ` + game_id + `...
-		You can use this folder to place or configure your local mods for the game.
-		`)
+			Opening the mod folder for ` + game_id + `...
+			You can use this folder to place or configure your local mods for the game.
+			`)
 	case "manage":
 		if err := manageAllModsGroup(game_id).Run(); err != nil {
 			fmt.Println(err.Error())
@@ -74,15 +84,5 @@ func runInteractive(cmd *cobra.Command, args []string) {
 		}
 	case "download":
 		fmt.Println("Not implemented yet.")
-	}
-}
-
-func InteractiveCmd() *cobra.Command {
-	return &cobra.Command{
-		Use:   "interactive",
-		Short: "Run the tool in interactive mode",
-		Long:  `Run the tool in interactive mode to download and manage existing mods (recommended for non-mod developers).`,
-		Args:  cobra.NoArgs,
-		Run:   runInteractive,
 	}
 }

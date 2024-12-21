@@ -11,7 +11,7 @@ from modder import GAMES, pack
 
 WEBSERVER = Quart(__name__)
 TEMPDIR = gettempdir()
-CACHE_DIR = Path(TEMPDIR) / "mhmods_cache"
+CACHE_DIR = Path(TEMPDIR) / "idlemod_cache"
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_LIMIT = 10
 cache = OrderedDict()

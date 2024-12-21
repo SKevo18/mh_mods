@@ -148,12 +148,12 @@ func unpackMhk3(dataFileLocation string, outputDirectory string) error {
 	return nil
 }
 
-func transformMhk3(action string, dataFileLocation string, rootFolder string) error {
+func transformMhk3(action string, args []string) error {
 	switch action {
 	case "pack":
-		return packMhk3(dataFileLocation, rootFolder)
+		return packMhk3(args[0], args[1])
 	case "unpack":
-		return unpackMhk3(dataFileLocation, rootFolder)
+		return unpackMhk3(args[0], args[1])
 	default:
 		return errors.New("invalid action")
 	}

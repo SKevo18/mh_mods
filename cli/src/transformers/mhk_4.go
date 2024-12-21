@@ -163,12 +163,12 @@ func unpackMhk4(dataFileLocation string, outputDirectory string) error {
 	return nil
 }
 
-func transformMhk4(action string, dataFileLocation string, rootFolder string) error {
+func transformMhk4(action string, args []string) error {
 	switch action {
 	case "pack":
-		return packMhk4(dataFileLocation, rootFolder)
+		return packMhk4(args[0], args[1])
 	case "unpack":
-		return unpackMhk4(dataFileLocation, rootFolder)
+		return unpackMhk4(args[0], args[1])
 	default:
 		return errors.New("invalid action")
 	}

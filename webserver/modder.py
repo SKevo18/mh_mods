@@ -14,10 +14,10 @@ asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 MODS_ROOT = Path(__file__).parent.parent / "mods"
 DATAFILE_ROOT = Path(__file__).parent.parent / "data"
-MHMODS_BINARY = (
+IDLEMOD_BINARY = (
     Path(__file__).parent.parent
     / "build"
-    / ("mhmods.exe" if os_name == "nt" else "mhmods")
+    / ("idlemod.exe" if os_name == "nt" else "mhidlemodmods")
 )
 
 
@@ -78,8 +78,8 @@ class Mod:
 async def pack(
     game: Game, output_path: t.AnyStr | Path, mods: list[Mod]
 ) -> tuple[str, bytes, bytes, t.Optional[int]]:
-    """mhmods packmod <game ID> <original data file> <output modded data file> <mod paths>... [flags]"""
-    cmd = f""""{MHMODS_BINARY}" packmod {game.id.split('.', 2)[0]} "{game.original_datafile}" "{output_path}" {' '.join(f'"{mod.path}"' for mod in mods)}"""
+    """idlemod packmod <game ID> <original data file> <output modded data file> <mod paths>... [flags]"""
+    cmd = f""""{IDLEMOD_BINARY}" packmod {game.id.split('.', 2)[0]} "{game.original_datafile}" "{output_path}" {' '.join(f'"{mod.path}"' for mod in mods)}"""
 
     return await run_cmd(cmd)
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"mhmods/src/cmd"
+	"idlemod/src/cmd"
 )
 
 func main() {

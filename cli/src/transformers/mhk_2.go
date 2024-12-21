@@ -225,12 +225,12 @@ func decryptConfig(data []byte) []byte {
 }
 
 // Generic function to pack or unpack MHK2 data files.
-func transformMhk2(action string, dataFileLocation string, rootFolder string) error {
+func transformMhk2(action string, args []string) error {
 	switch action {
 	case "pack":
-		return packMhk2(dataFileLocation, rootFolder)
+		return packMhk2(args[0], args[1])
 	case "unpack":
-		return unpackMhk2(dataFileLocation, rootFolder)
+		return unpackMhk2(args[0], args[1])
 	default:
 		return errors.New("invalid action")
 	}

@@ -1,11 +1,12 @@
-package transformers_test
+package transformers
 
 import (
+	"path/filepath"
 	"testing"
 )
 
 func Test_PackMhk3(t *testing.T) {
-	ok, err := comparePacked("mhk_3")
+	ok, err := comparePacked(t, "mhk_3", mhkFixtures, filepath.Join(fixturePackedFolder, "mhk", "sample_mhk_3"))
 	if err != nil {
 		t.Fatalf("Error: %v", err)
 	}
@@ -15,7 +16,7 @@ func Test_PackMhk3(t *testing.T) {
 }
 
 func Test_UnpackMhk3(t *testing.T) {
-	ok, err := compareUnpacked("mhk_3")
+	ok, err := compareUnpacked(t, "mhk_3", mhkFixtures, filepath.Join(fixturePackedFolder, "mhk", "sample_mhk_3"))
 	if err != nil {
 		t.Fatalf("Error: %v", err)
 	}

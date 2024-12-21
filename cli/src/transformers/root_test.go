@@ -1,11 +1,63 @@
-package transformers_test
+package transformers
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
-	"reflect"
+	"testing"
 )
+
+var (
+	fixtureRootFolder   = filepath.Join("..", "fixture")
+	fixtureAssetsFolder = filepath.Join(fixtureRootFolder, "assets")
+	fixturePackedFolder = filepath.Join(fixtureRootFolder, "packed")
+	mhkFixtures         = filepath.Join(fixtureAssetsFolder, "mhk")
+)
+
+func compareUnpacked(t *testing.T, gameId string, unpackedDir string, correctPackedPath string) (bool, error) {
+	// create temp unpacked dir
+	tempDir := filepath.Join(t.TempDir(), "idlemod_test_"+gameId)
+	if err := os.MkdirAll(tempDir, os.ModePerm); err != nil {
+		return false, err
+	}
+	defer os.RemoveAll(tempDir)
+
+	// unpack
+	if err := Transform(gameId, "unpack", []string{correctPackedPath, tempDir}); err != nil {
+		return false, err
+	}
+
+	// compare
+	ok, err := compareDirectories(unpackedDir, tempDir)
+	if err != nil {
+		return false, err
+	}
+
+	return ok, nil
+}
+
+func comparePacked(t *testing.T, gameId string, packedPath string, correctPackedPath string) (bool, error) {
+	// create temp packed file
+	temp, err := os.CreateTemp(t.TempDir(), "idlemod_"+gameId)
+	if err != nil {
+		return false, err
+	}
+	defer os.Remove(temp.Name())
+
+	// pack
+	if err := Transform(gameId, "pack", []string{temp.Name(), packedPath}); err != nil {
+		return false, err
+	}
+
+	// compare
+	ok, err := compareFiles(correctPackedPath, temp.Name())
+	if err != nil {
+		return false, err
+	}
+
+	return ok, nil
+}
 
 // Compares two files.
 func compareFiles(file1, file2 string) (bool, error) {
@@ -18,7 +70,7 @@ func compareFiles(file1, file2 string) (bool, error) {
 		return false, fmt.Errorf("failed to read file %s: %w", file2, err)
 	}
 
-	return reflect.DeepEqual(content1, content2), nil
+	return bytes.Equal(content1, content2), nil
 }
 
 // Compare two directories and their contents.
@@ -62,13 +114,12 @@ func compareDirectories(dir1, dir2 string) (bool, error) {
 			if err != nil {
 				return false, fmt.Errorf("failed to read file %s: %w", filePath1, err)
 			}
-
 			content2, err := os.ReadFile(filePath2)
 			if err != nil {
 				return false, fmt.Errorf("failed to read file %s: %w", filePath2, err)
 			}
 
-			if !reflect.DeepEqual(content1, content2) {
+			if !bytes.Equal(content1, content2) {
 				return false, nil
 			}
 		}

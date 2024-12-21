@@ -1,8 +1,10 @@
 package transformers
 
 import (
+	"encoding/binary"
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 )
@@ -48,10 +50,45 @@ func walkFiles(rootFolder string) ([]FileEntry, error) {
 	return files, nil
 }
 
+func readUntilNullByte(file *os.File) ([]byte, error) {
+	var name []byte
+	for {
+		var b byte
+		if err := binary.Read(file, binary.LittleEndian, &b); err != nil {
+			return nil, err
+		}
+		if b == 0x0 {
+			break
+		}
+		name = append(name, b)
+	}
+	return name, nil
+}
+
+func copyFile(src, dst string) error {
+	// open src
+	in, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer in.Close()
+
+	// open dst
+	out, err := os.Create(dst)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	// copy
+	_, err = io.Copy(out, in)
+	return err
+}
+
 // Dynamically determines the appropriate transform function based on the game ID.
 // Action can either be `pack` or `unpack`.
-func Transform(action string, gameId string, dataFileLocation string, rootFolder string) error {
-	var transformFunction func(string, string, string) error
+func Transform(gameId string, action string, args []string) error {
+	var transformFunction func(string, []string) error
 
 	switch gameId {
 	case "mhk_extra", "mhk_1", "mhke":
@@ -62,11 +99,13 @@ func Transform(action string, gameId string, dataFileLocation string, rootFolder
 		transformFunction = transformMhk3
 	case "mhk_4", "mhk_thunder":
 		transformFunction = transformMhk4
+	case "dino_aliens":
+		transformFunction = transformDinoAliens
 	default:
-		return errors.New("invalid game ID! Please, use one of the following: `mhk_extra`, `mhk_1`, `mhk_2`, `schatzjaeger`, `mhk_3`, `mhk_4`, `mhk_thunder`")
+		return errors.New("invalid game ID! Please, use one of the following: `mhk_extra`, `mhk_1`, `mhk_2`, `schatzjaeger`, `mhk_3`, `mhk_4`, `mhk_thunder`, `dino_aliens`")
 	}
 
-	err := transformFunction(action, dataFileLocation, rootFolder)
+	err := transformFunction(action, args)
 	if err != nil {
 		return fmt.Errorf("error transforming data: %s", err)
 	}

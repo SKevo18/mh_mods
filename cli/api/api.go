@@ -10,7 +10,7 @@ import (
 )
 
 // The API server to use
-var ApiServer string = "https://mhmods.svit.ac"
+var ApiServer string = "https://idlemod.svit.ac"
 
 type (
 	Mods  map[string]string

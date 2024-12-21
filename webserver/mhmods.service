@@ -1,14 +1,14 @@
-# Place in `/etc/systemd/system/mhmods.service`
+# Place in `/etc/systemd/system/idlemod.service`
 #
 # `systemctl daemon-reload`
-# `systemctl enable mhmods.service`
-# `systemctl start mhmods.service`
+# `systemctl enable idlemod.service`
+# `systemctl start idlemod.service`
 # Update `ExecStart` with the correct path to `start.sh`
 [Install]
 WantedBy=multi-user.target
 
 [Unit]
-Description=MH Mods daemon
+Description=Idlemod daemon
 After=network.target
 
 [Service]

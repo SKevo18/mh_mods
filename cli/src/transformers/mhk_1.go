@@ -218,12 +218,12 @@ func zipFolder(folderPath string, zipFilePath string) error {
 	return err
 }
 
-func transformMhk1(action string, dataFileLocation string, rootFolder string) error {
+func transformMhk1(action string, args []string) error {
 	switch action {
 	case "pack":
-		return packMhk1(dataFileLocation, rootFolder)
+		return packMhk1(args[0], args[1])
 	case "unpack":
-		return unpackMhk1(dataFileLocation, rootFolder)
+		return unpackMhk1(args[0], args[1])
 	default:
 		return errors.New("invalid action")
 	}

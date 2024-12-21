@@ -35,16 +35,8 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
 
-      - name: Install dependencies for GUI
-        run: |
-          sudo apt install -y gcc pkg-config libwayland-dev libx11-dev libx11-xcb-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev libxcursor-dev libvulkan-dev
-
       - name: Test CLI
         working-directory: ./cli
-        run: go test -v
-
-      - name: Test GUI
-        working-directory: ./gui
         run: go test -v
 
       - name: Build CLI
@@ -53,29 +45,14 @@ jobs:
           GOARCH: ${{ matrix.arch }}
         working-directory: ./cli
         run: |
-          go build -o ../mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
-
-      - name: Build GUI
-        env:
-          GOOS: ${{ matrix.os }}
-          GOARCH: ${{ matrix.arch }}
-        working-directory: ./gui
-        run: |
-          go build -o ../mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
+          go build -o ../idlemod-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}
 
       - name: Compress CLI binary
         run: |
-          FILES="mhmods-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
+          FILES="idlemod-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
           [ -f LICENSE ] && FILES="$FILES LICENSE"
           [ -f README.md ] && FILES="$FILES README.md"
-          tar -czvf mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
-
-      - name: Compress GUI binary
-        run: |
-          FILES="mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.extension }}"
-          [ -f LICENSE ] && FILES="$FILES LICENSE"
-          [ -f README.md ] && FILES="$FILES README.md"
-          tar -czvf mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
+          tar -czvf idlemod-${{ matrix.os }}-${{ matrix.arch }}.tar.gz $FILES
 
       - name: Upload CLI binary
         uses: actions/upload-release-asset@v1
@@ -83,16 +60,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
-          asset_name: mhmods-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
-          asset_content_type: application/gzip
-
-      - name: Upload GUI binary
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
-          asset_name: mhmods-gui-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+          asset_path: idlemod-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
+          asset_name: idlemod-${{ matrix.os }}-${{ matrix.arch }}.tar.gz
           asset_content_type: application/gzip
