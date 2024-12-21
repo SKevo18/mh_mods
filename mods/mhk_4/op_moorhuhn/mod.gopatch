@@ -1,0 +1,20 @@
+@ + config.xml 65 0 true
+         <forwardSpeed>200.0</forwardSpeed>
+         <forwardForce>3.0</forwardForce>
+         <backwardSpeed>400.0</backwardSpeed>
+         <backwardForce>5.0</backwardForce>
+         <brakeForce>4.0</brakeForce>
+
+@ + config.xml 73 0 true
+         <slip>0.01</slip>
+         <drift>0.05</drift>
+         <driftexp>1.0</driftexp>
+
+@ + config.xml 78 0 true
+         <mass>2.0</mass>
+
+@ + config.xml 81 0 true
+         <steeranglemin>40</steeranglemin>
+         <steerangle>60</steerangle>
+         <steerspeed>0.3</steerspeed>
+         <turbotime>15</turbotime>

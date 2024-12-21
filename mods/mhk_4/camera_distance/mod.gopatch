@@ -1,0 +1,4 @@
+@ + config.xml 4 0 true
+        <cameraDistance>6.0</cameraDistance>
+        <cameraHeight>0.5</cameraHeight>
+        <cameraFov>2.0</cameraFov>

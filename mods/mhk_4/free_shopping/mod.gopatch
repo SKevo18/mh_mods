@@ -1,0 +1,35 @@
+@ + config.xml 12 0 true
+         <spoiler speed="1.02" price="0" />
+         <spoiler speed="1.04" price="0" />
+         <spoiler speed="1.06" price="0" />
+         <spoiler speed="1.08" price="0" />
+         <spoiler speed="1.10" price="0" />
+         <sideskirts speed="1.01" drift="0.99" price="0" />
+         <sideskirts speed="1.02" drift="0.98" price="0" />
+         <sideskirts speed="1.03" drift="0.97" price="0" />
+         <sideskirts speed="1.04" drift="0.96" price="0" />
+         <sideskirts speed="1.05" drift="0.95" price="0" />
+         <engine speed="1.01" acceleration="1.02" price="0" />
+         <engine speed="1.02" acceleration="1.04" price="0" />
+         <engine speed="1.03" acceleration="1.06" price="0" />
+         <engine speed="1.04" acceleration="1.08" price="0" />
+         <engine speed="1.05" acceleration="1.10" price="0" />
+         <tires drift="0.98" price="0" />
+         <tires drift="0.96" price="0" />
+         <tires drift="0.94" price="0" />
+         <tires drift="0.92" price="0" />
+         <tires drift="0.90" price="0" />
+         <logo price="0" />
+         <logo price="0" />
+         <logo price="0" />
+         <logo price="0" />
+         <logo price="0" />
+         <logo price="0" />
+         <logo price="0" />
+         <color price="0" />
+         <color price="0" />
+         <color price="0" />
+         <color price="0" />
+         <color price="0" />
+         <color price="0" />
+         <color price="0" />
