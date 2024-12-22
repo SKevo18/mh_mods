@@ -64,6 +64,28 @@ The generic procedure for using the tool is as follows:
 5. In the file explorer, click on the top bar (where the full path is displayed), type in `cmd` and press Enter. This will open a command prompt in the current directory.
 6. Now you can type in `idlemod` and press Enter. This will display the help message, confirming that the tool is working.
 
+### Order of mods
+
+If you are using the `packmod` command, then order of the mod paths is important. If a mod is applied after another mod, it will overwrite the changes made by the previous mod.
+
+In other words, if we have two mods, `wait_for_me` (that makes the AI wait for the player if they are too far ahead) and `no_rubberbanding` (that makes the AI not rubberband), and we want to apply them both, doing something like:
+
+```bash
+idlemod packmod mhk_1 mods/mhk_1/no_rubberbanding mods/mhk_1/wait_for_me
+```
+
+will result in a `mhk_1.dat` file that has the changes from both mods applied (because `no_rubberbanding` modifies also the speed of AI that is too far ahead). If you swap the order of the mods like this:
+
+```bash
+idlemod packmod mhk_1 mods/mhk_1/wait_for_me mods/mhk_1/no_rubberbanding
+```
+
+...then the changes from the second mod (`no_rubberbanding`) will overwrite the changes from the first mod (`wait_for_me`), as the latter modifies the speed of AI that is too far ahead, which is also later modified (overwritten) by `no_rubberbanding`.
+
+Sometimes, this can be confusing, but since this tool does not handle merge conflicts, it's the best system we can have. Just remember that mods in the CLI are applied from left to right, so mods on the right will overwrite mods on left (that is, only if they modify the same lines in their patches, or the `source` directory contains the same files).
+
+Also, if you are developing mods, try to use the patches as much as possible and avoid modifying many lines or files in a single mod, to ensure that they can be properly combined in a variety of ways that preserve their characteristics.
+
 ## FaQ
 
 ### What data files are you talking about?
