@@ -66,7 +66,7 @@ The generic procedure for using the tool is as follows:
 
 ### Order of mods
 
-If you are using the `packmod` command, then order of the mod paths is important. If a mod is applied after another mod, it will overwrite the changes made by the previous mod.
+If you are using the `packmod` command, then order of the mod paths is important. If a mod is applied after another mod, it will overwrite the changes made by the previous mod, *if they make the same change*.
 
 In other words, if we have two mods, `wait_for_me` (that makes the AI wait for the player if they are too far ahead) and `no_rubberbanding` (that makes the AI not rubberband), and we want to apply them both, doing something like:
 
