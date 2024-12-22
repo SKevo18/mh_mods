@@ -1,2 +1,5 @@
 @ + Track.ini 12 0 true
 PickUpRespawnTime=1.0
+
+@ - Track.ini 41 0 true
+@ - Track.ini 100 0 true

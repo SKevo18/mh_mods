@@ -3,6 +3,7 @@ package cmd
 import (
 	"log"
 	"os"
+	"path/filepath"
 
 	"idlemod/src/transformers"
 	"idlemod/src/util"
@@ -40,12 +41,15 @@ var packmodCmd = &cobra.Command{
 
 		// copy mod files into unpacked dir, collect existing patch files
 		log.Print("Copying mod files...")
-		patchFilePaths, err := util.CopyModFiles(modPaths, tempDirUnpacked)
-		if err != nil {
+		if err := util.CopyModFiles(modPaths, tempDirUnpacked); err != nil {
 			log.Fatalf("Fatal error while copying mods: %s", err)
 		}
 
 		// patch
+		patchFilePaths, err := filepath.Glob(filepath.Join(tempDirUnpacked, "_patches", "*.gopatch"))
+		if err != nil {
+			log.Fatalf("Fatal error while globbing patch files: %s", err)
+		}
 		if len(patchFilePaths) > 0 {
 			log.Print("Patching mod files...")
 			if err := util.PatchModFiles(tempDirUnpacked, tempDirPatched, patchFilePaths); err != nil {

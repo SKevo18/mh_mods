@@ -1,5 +1,3 @@
 @ + AI.ini 4 0 true
-AdjustInFrontDistance=1000.0
-AdjustBehindDistance=1000.0
-AdjustInFrontSpeedFactor=1.0
-AdjustBehindSpeedFactor=1.0
+AdjustInFrontDistance=1000000.0
+AdjustBehindDistance=1000000.0
