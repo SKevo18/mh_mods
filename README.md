@@ -74,13 +74,13 @@ In other words, if we have two mods, `wait_for_me` (that makes the AI wait for t
 idlemod packmod mhk_1 mods/mhk_1/no_rubberbanding mods/mhk_1/wait_for_me
 ```
 
-will result in a `mhk_1.dat` file that has the changes from both mods applied (because `no_rubberbanding` modifies also the speed of AI that is too far ahead). If you swap the order of the mods like this:
+will result in a `mhk_1.dat` file that has the changes from both mods applied (because `no_rubberbanding` also modifies the speed of AI that is too far ahead, not just behind where they now go slower compared to the base game). If you swap the order of the mods like this:
 
 ```bash
 idlemod packmod mhk_1 mods/mhk_1/wait_for_me mods/mhk_1/no_rubberbanding
 ```
 
-...then the changes from the second mod (`no_rubberbanding`) will overwrite the changes from the first mod (`wait_for_me`), as the latter modifies the speed of AI that is too far ahead, which is also later modified (overwritten) by `no_rubberbanding`.
+...then the changes from the second mod (`no_rubberbanding`) will overwrite the changes from the first mod (`wait_for_me`), as the latter only modifies the speed of AI that is too far ahead, but this is also modified (overwritten) by `no_rubberbanding`. So, only the changes from `no_rubberbanding` will be applied, and the feature from `wait_for_me` will be lost (as if you didn't even apply the mod).
 
 Sometimes, this can be confusing, but since this tool does not handle merge conflicts, it's the best system we can have. Just remember that mods in the CLI are applied from left to right, so mods on the right will overwrite mods on left (that is, only if they modify the same lines in their patches, or the `source` directory contains the same files).
 
