@@ -40,7 +40,7 @@ var packmodCmd = &cobra.Command{
 
 		// copy mod files into unpacked dir, collect existing patch files
 		log.Print("Copying mod files...")
-		patchFilePaths, err := util.RenderModFiles(modPaths, tempDirUnpacked)
+		patchFilePaths, err := util.CopyModFiles(modPaths, tempDirUnpacked)
 		if err != nil {
 			log.Fatalf("Fatal error while copying mods: %s", err)
 		}
